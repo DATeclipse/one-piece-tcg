@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+  --color-page: #0f0f23;
+  --color-panel: #16213e;
+  --color-card-bg: #1a1a2e;
+  --color-accent: #e94560;
+  --color-accent-hover: #d63851;
+  --color-border: #333333;
+  --color-border-subtle: #222222;
+  --color-disabled: #444444;
+  --color-light: #eeeeee;
+  --color-light-dim: #dddddd;
+  --color-light-muted: #cccccc;
+  --color-muted: #999999;
+  --color-muted-dim: #888888;
+  --color-muted-dark: #777777;
+  --color-muted-darker: #666666;
+  --color-valid: #4ade80;
+  --color-valid-bg: #064e3b;
+  --color-warning: #f97316;
+  --color-warning-text: #fde68a;
+  --color-error-bg: #7f1d1d;
+  --color-error-text: #fca5a5;
+  --color-card-red: #dc2626;
+  --color-card-blue: #2563eb;
+  --color-card-green: #16a34a;
+  --color-card-purple: #9333ea;
+  --color-card-black: #374151;
+  --color-card-yellow: #ca8a04;
+  --color-card-placeholder: #2a2a3e;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+    background: var(--color-page);
+    color: var(--color-light);
+  }
+
+  button {
+    background: var(--color-accent);
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+  }
+
+  button:hover {
+    background: var(--color-accent-hover);
+  }
+
+  button:disabled {
+    background: var(--color-disabled);
+    cursor: not-allowed;
+  }
+
+  input,
+  select {
+    background: var(--color-card-bg);
+    color: var(--color-light);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 0.4rem;
+    font-size: 0.85rem;
+  }
+
+  input:focus,
+  select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-page);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 3px;
+  }
+}
