@@ -22,7 +22,7 @@ def card_id_to_image_path(card_set_id: str, cards_dir: Path) -> Optional[Path]:
     for hybrid_dir in cards_dir.iterdir():
         if not hybrid_dir.is_dir():
             continue
-        if "-" in hybrid_dir.name and dir_name in hybrid_dir.name:
+        if "-" in hybrid_dir.name and (dir_name in hybrid_dir.name or set_code in hybrid_dir.name):
             path = hybrid_dir / filename
             if path.exists():
                 return path

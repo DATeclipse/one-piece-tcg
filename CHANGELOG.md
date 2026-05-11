@@ -14,9 +14,15 @@ All notable changes to this project will be documented in this file.
 ### Changed
 - `sync.py` rewritten to load from local JSON instead of external API
 - `config.py` — `CARDS_JSON_PATH` replaces `OPTCG_BASE_URL`
+- `card_image` fields now use local paths (`/static/cards/...`) instead of external URLs
+- `export_cards.py` resolves local card PNG paths during export (2,394/2,422 resolved)
+
+### Fixed
+- `ocr.py` hybrid directory matching — EB04 cards in dirs like `OP14-EB04` now found (300 cards fixed)
 
 ### Removed
-- `httpx` dependency — no more external API calls to `optcgapi.com`
+- `httpx` dependency — no more external API calls
+- All `optcgapi.com` URL references from seed data and database
 
 ## [1.0.0] - 2026-05-11
 
