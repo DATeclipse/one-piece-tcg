@@ -3,8 +3,8 @@ import { NavLink, Outlet } from "react-router-dom";
 export default function Layout() {
   return (
     <div className="min-h-screen flex flex-col">
-      <nav className="flex gap-4 px-6 py-3 bg-card-bg border-b-2 border-accent">
-        <span className="font-bold text-accent mr-4">OPTCG Deck Builder</span>
+      <nav className="flex gap-3 md:gap-4 px-3 md:px-6 py-3 bg-card-bg border-b-2 border-accent">
+        <span className="font-bold text-accent mr-2 md:mr-4 text-sm md:text-base">OPTCG Deck Builder</span>
         <NavLink
           to="/"
           className={({ isActive }) => `no-underline ${isActive ? "text-accent" : "text-light"}`}
@@ -18,7 +18,7 @@ export default function Layout() {
           Meta & Strategy
         </NavLink>
       </nav>
-      <main className="flex-1 p-4">
+      <main className="flex-1 p-2 md:p-4">
         <Outlet />
       </main>
     </div>

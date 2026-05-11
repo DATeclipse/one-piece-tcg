@@ -25,7 +25,7 @@ export default function SearchFilters({ filters, onChange, leaderColors, leaderS
         placeholder="Search by name..."
         value={filters.name}
         onChange={(e) => update("name", e.target.value)}
-        className="p-1.5 min-w-[200px]"
+        className="p-1.5 w-full md:w-auto md:min-w-[200px]"
       />
       {!leaderSelected && (
         <>
@@ -58,7 +58,7 @@ export default function SearchFilters({ filters, onChange, leaderColors, leaderS
         onChange={(e) => update("cost_max", e.target.value)}
         className="w-20 p-1.5"
       />
-      <select value={filters.set_id} onChange={(e) => update("set_id", e.target.value)}>
+      <select value={filters.set_id} onChange={(e) => update("set_id", e.target.value)} className="w-full md:w-auto">
         <option value="">All Sets</option>
         {sets.map((s) => (
           <option key={s.set_id} value={s.set_id}>{s.set_id} - {s.set_name}</option>

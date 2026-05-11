@@ -3,6 +3,7 @@ import { getDeck } from "../api/client";
 import CardGrid from "../components/CardGrid";
 import DeckList from "../components/DeckList";
 import DeckPanel from "../components/DeckPanel";
+import MobileDeckSheet from "../components/MobileDeckSheet";
 import SearchFilters from "../components/SearchFilters";
 import { useCardSearch, useLeaderCardSearch } from "../hooks/useCards";
 import { useCreateDeck, useUpdateDeck, useValidateDeck } from "../hooks/useDecks";
@@ -170,7 +171,7 @@ export default function DeckBuilder() {
       <DeckList onLoad={handleLoad} />
 
       {loadingDeck && <div className="text-muted-dim mb-2">Loading deck...</div>}
-      <div className="flex gap-4">
+      <div className="flex flex-col md:flex-row gap-4 pb-20 md:pb-0">
         <div className="flex-1 min-w-0">
           <SearchFilters
             filters={filters}
@@ -222,7 +223,7 @@ export default function DeckBuilder() {
           )}
         </div>
 
-        <div className="w-80 shrink-0">
+        <div className="hidden md:block w-80 shrink-0">
           <div className="flex justify-end mb-2">
             <button onClick={handleNewDeck} className="text-[0.75rem]">
               New Deck
@@ -246,6 +247,22 @@ export default function DeckBuilder() {
           />
         </div>
       </div>
+      <MobileDeckSheet
+        leader={leader}
+        entries={Array.from(deckCards.values())}
+        onRemoveLeader={() => {
+          setLeader(null);
+          setValidation(null);
+          setFilters((f) => ({ ...f, card_type: "" }));
+        }}
+        onChangeQuantity={handleChangeQuantity}
+        onSave={handleSave}
+        onValidate={handleValidate}
+        deckName={deckName}
+        onDeckNameChange={setDeckName}
+        validation={validation}
+        saving={saving}
+      />
     </div>
   );
 }

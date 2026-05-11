@@ -33,7 +33,7 @@ export default function DeckPanel({
   const totalCards = entries.reduce((sum, e) => sum + e.quantity, 0);
 
   return (
-    <div className="bg-panel rounded-lg p-4 flex flex-col gap-3 h-full overflow-auto">
+    <div className="bg-panel rounded-lg p-4 flex flex-col gap-3 md:h-full overflow-auto">
       <h3 className="m-0 text-accent">Deck</h3>
 
       <input

@@ -24,7 +24,7 @@ export default function CardGrid({
 
   return (
     <div>
-      <div className="grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] gap-3">
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(110px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(140px,1fr))] gap-2 md:gap-3">
         {cards.map((card) => (
           <CardItem
             key={card.card_set_id}
