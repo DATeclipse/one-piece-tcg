@@ -58,7 +58,7 @@ def _extract_top_decks(standings: list[dict], limit: int = 8) -> list[dict]:
 @router.get("/tournaments")
 async def get_meta_tournaments(limit: int = Query(5, ge=1, le=20)):
     tournaments = await _fetch(f"/tournaments?game=OP&limit={limit * 10}")
-    big = [t for t in tournaments if t.get("players", 0) >= 32][:limit]
+    big = [t for t in tournaments if t.get("players", 0) >= 16][:limit]
 
     results = []
     for t in big:
@@ -76,7 +76,7 @@ async def get_meta_tournaments(limit: int = Query(5, ge=1, le=20)):
 @router.get("/leader-stats")
 async def get_leader_stats(tournament_count: int = Query(10, ge=1, le=50)):
     tournaments = await _fetch(f"/tournaments?game=OP&limit={tournament_count * 10}")
-    big = [t for t in tournaments if t.get("players", 0) >= 32][:tournament_count]
+    big = [t for t in tournaments if t.get("players", 0) >= 16][:tournament_count]
 
     stats: dict[str, dict] = {}
     for t in big:

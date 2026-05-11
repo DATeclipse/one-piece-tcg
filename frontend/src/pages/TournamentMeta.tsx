@@ -119,7 +119,7 @@ function DeckRow({
 }) {
   const saveMutation = useSaveMetaDeck();
   const record = entry.record;
-  const recordStr = record ? `${record.wins}-${record.losses}-${record.ties}` : "—";
+  const recordStr = record ? `${record.wins}W-${record.losses}L-${record.ties}T` : "—";
 
   const handleSave = () => {
     if (!entry.decklist) return;
