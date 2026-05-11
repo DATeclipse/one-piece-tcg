@@ -6,6 +6,7 @@ import { queryClient } from "./lib/queryClient";
 import DeckBuilder from "./pages/DeckBuilder";
 import DeckView from "./pages/DeckView";
 import MetaStrategy from "./pages/MetaStrategy";
+import TournamentMeta from "./pages/TournamentMeta";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
             <Route element={<Layout />}>
               <Route index element={<DeckBuilder />} />
               <Route path="decks" element={<DeckView />} />
+              <Route path="tournaments" element={<TournamentMeta />} />
               <Route path="meta" element={<MetaStrategy />} />
             </Route>
           </Routes>

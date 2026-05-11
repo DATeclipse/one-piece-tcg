@@ -3,6 +3,11 @@ import type {
   Deck,
   DeckCardIn,
   DeckSummary,
+  LeaderStat,
+  MetaDeckCreate,
+  MetaDeckOut,
+  MetaDeckSummary,
+  MetaTournament,
   PaginatedCards,
   SearchFilters,
   ValidationResult,
@@ -90,6 +95,33 @@ export function updateDeck(
 
 export function deleteDeck(id: number): Promise<void> {
   return request(`/decks/${id}`, { method: "DELETE" });
+}
+
+export function getMetaTournaments(limit = 5): Promise<MetaTournament[]> {
+  return request(`/meta/tournaments?limit=${limit}`);
+}
+
+export function getLeaderStats(count = 10): Promise<LeaderStat[]> {
+  return request(`/meta/leader-stats?tournament_count=${count}`);
+}
+
+export function saveMetaDeck(payload: MetaDeckCreate): Promise<MetaDeckOut> {
+  return request("/meta/decks", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export function listMetaDecks(): Promise<MetaDeckSummary[]> {
+  return request("/meta/decks");
+}
+
+export function getMetaDeck(id: number): Promise<MetaDeckOut> {
+  return request(`/meta/decks/${id}`);
+}
+
+export function deleteMetaDeck(id: number): Promise<void> {
+  return request(`/meta/decks/${id}`, { method: "DELETE" });
 }
 
 export function validateDeck(payload: {

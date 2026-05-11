@@ -18,10 +18,16 @@ export default function Layout() {
           Deck View
         </NavLink>
         <NavLink
+          to="/tournaments"
+          className={({ isActive }) => `no-underline ${isActive ? "text-accent" : "text-light"}`}
+        >
+          Tournaments
+        </NavLink>
+        <NavLink
           to="/meta"
           className={({ isActive }) => `no-underline ${isActive ? "text-accent" : "text-light"}`}
         >
-          Meta & Strategy
+          Deck Analysis
         </NavLink>
       </nav>
       <main className="flex-1 p-2 md:p-4">

@@ -86,5 +86,41 @@ class ValidationResult(BaseModel):
     warnings: List[str] = []
 
 
+class MetaDeckCreate(BaseModel):
+    name: str
+    leader_card_set_id: str
+    tournament_name: Optional[str] = None
+    tournament_date: Optional[str] = None
+    player_name: Optional[str] = None
+    placing: Optional[int] = None
+    cards: List[DeckCardIn]
+
+
+class MetaDeckOut(BaseModel):
+    id: int
+    name: str
+    leader: CardOut
+    cards: List[DeckCardOut]
+    tournament_name: Optional[str]
+    tournament_date: Optional[str]
+    player_name: Optional[str]
+    placing: Optional[int]
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
+
+
+class MetaDeckSummary(BaseModel):
+    id: int
+    name: str
+    leader_card_set_id: str
+    leader_name: str
+    tournament_name: Optional[str]
+    player_name: Optional[str]
+    placing: Optional[int]
+    card_count: int
+
+
 class SyncResult(BaseModel):
     cards_synced: int

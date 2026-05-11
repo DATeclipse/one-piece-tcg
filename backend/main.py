@@ -7,7 +7,7 @@ from fastapi.staticfiles import StaticFiles
 from config import LOCAL_CARDS_DIR
 from database import Base, SessionLocal, engine
 from models import Card
-from routers import cards, decks, sync
+from routers import cards, decks, meta, sync
 from sync import sync_cards
 
 logging.basicConfig(level=logging.INFO)
@@ -26,6 +26,7 @@ app.add_middleware(
 app.include_router(cards.router)
 app.include_router(decks.router)
 app.include_router(sync.router)
+app.include_router(meta.router)
 
 if LOCAL_CARDS_DIR.exists():
     app.mount("/static/cards", StaticFiles(directory=str(LOCAL_CARDS_DIR)), name="cards")

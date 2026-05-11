@@ -111,3 +111,42 @@ class DeckCard(Base):
 
     deck: Mapped[Deck] = relationship("Deck", back_populates="cards")
     card: Mapped[Card] = relationship("Card")
+
+
+class MetaDeck(Base):
+    __tablename__ = "meta_decks"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    name: Mapped[str] = mapped_column(String)
+    leader_card_set_id: Mapped[str] = mapped_column(
+        String, ForeignKey("cards.card_set_id")
+    )
+    tournament_name: Mapped[Optional[str]] = mapped_column(String, nullable=True)
+    tournament_date: Mapped[Optional[str]] = mapped_column(String, nullable=True)
+    player_name: Mapped[Optional[str]] = mapped_column(String, nullable=True)
+    placing: Mapped[Optional[int]] = mapped_column(Integer, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime, default=lambda: datetime.now(timezone.utc)
+    )
+
+    leader: Mapped[Card] = relationship("Card", foreign_keys=[leader_card_set_id])
+    cards: Mapped[List["MetaDeckCard"]] = relationship(
+        "MetaDeckCard", back_populates="deck", cascade="all, delete-orphan"
+    )
+
+
+class MetaDeckCard(Base):
+    __tablename__ = "meta_deck_cards"
+    __table_args__ = (UniqueConstraint("meta_deck_id", "card_set_id"),)
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    meta_deck_id: Mapped[int] = mapped_column(
+        Integer, ForeignKey("meta_decks.id", ondelete="CASCADE")
+    )
+    card_set_id: Mapped[str] = mapped_column(
+        String, ForeignKey("cards.card_set_id")
+    )
+    quantity: Mapped[int] = mapped_column(Integer)
+
+    deck: Mapped[MetaDeck] = relationship("MetaDeck", back_populates="cards")
+    card: Mapped[Card] = relationship("Card")
