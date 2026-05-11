@@ -12,6 +12,12 @@ export default function Layout() {
           Deck Builder
         </NavLink>
         <NavLink
+          to="/decks"
+          className={({ isActive }) => `no-underline ${isActive ? "text-accent" : "text-light"}`}
+        >
+          Deck View
+        </NavLink>
+        <NavLink
           to="/meta"
           className={({ isActive }) => `no-underline ${isActive ? "text-accent" : "text-light"}`}
         >

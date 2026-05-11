@@ -4,6 +4,7 @@ import Layout from "./components/Layout";
 import { DeckProvider } from "./context/DeckContext";
 import { queryClient } from "./lib/queryClient";
 import DeckBuilder from "./pages/DeckBuilder";
+import DeckView from "./pages/DeckView";
 import MetaStrategy from "./pages/MetaStrategy";
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
           <Routes>
             <Route element={<Layout />}>
               <Route index element={<DeckBuilder />} />
+              <Route path="decks" element={<DeckView />} />
               <Route path="meta" element={<MetaStrategy />} />
             </Route>
           </Routes>

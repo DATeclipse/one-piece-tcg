@@ -1,5 +1,13 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { createDeck, deleteDeck, listDecks, updateDeck, validateDeck } from "../api/client";
+import { createDeck, deleteDeck, getDeck, listDecks, updateDeck, validateDeck } from "../api/client";
+
+export function useDeck(id: number | null) {
+  return useQuery({
+    queryKey: ["deck", id],
+    queryFn: () => getDeck(id!),
+    enabled: id !== null,
+  });
+}
 
 export function useDeckList() {
   return useQuery({
