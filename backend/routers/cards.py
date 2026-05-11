@@ -26,12 +26,18 @@ def list_cards(
     exclude_type: Optional[str] = Query(None, description="Exclude cards of this card_type"),
     colors: Optional[str] = Query(None, description="Comma-separated colors, OR match"),
     rarity: Optional[str] = Query(None),
+    search: Optional[str] = Query(None, description="Search name OR types (OR match)"),
     page: int = Query(1, ge=1),
     page_size: int = Query(50, ge=1, le=200),
     db: Session = Depends(get_db),
 ):
     q = db.query(Card)
 
+    if search:
+        q = q.filter(or_(
+            Card.card_name.ilike(f"%{search}%"),
+            Card.types.like(f"%{search}%"),
+        ))
     if name:
         q = q.filter(Card.card_name.ilike(f"%{name}%"))
     if color:

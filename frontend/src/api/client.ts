@@ -43,6 +43,7 @@ export function searchCards(
   if (filters.types_contains) params.set("types_contains", filters.types_contains);
   if (filters.exclude_type) params.set("exclude_type", filters.exclude_type);
   if (filters.colors) params.set("colors", filters.colors);
+  if (filters.search) params.set("search", filters.search);
   params.set("page", String(page));
   params.set("page_size", String(pageSize));
   return request(`/cards?${params}`);

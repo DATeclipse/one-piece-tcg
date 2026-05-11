@@ -141,4 +141,5 @@ export interface SearchFilters {
   types_contains?: string;
   exclude_type?: string;
   colors?: string;
+  search?: string;
 }
