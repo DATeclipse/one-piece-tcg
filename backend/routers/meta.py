@@ -155,6 +155,7 @@ def list_meta_decks(db: Session = Depends(get_db)):
             name=d.name,
             leader_card_set_id=d.leader_card_set_id,
             leader_name=d.leader.card_name if d.leader else "Unknown",
+            leader_image=d.leader.card_image if d.leader else None,
             tournament_name=d.tournament_name,
             player_name=d.player_name,
             placing=d.placing,

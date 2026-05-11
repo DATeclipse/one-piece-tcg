@@ -48,6 +48,7 @@ export interface DeckSummary {
   name: string;
   leader_card_set_id: string;
   leader_name: string;
+  leader_image: string | null;
   card_count: number;
   created_at: string;
   updated_at: string;
@@ -112,6 +113,7 @@ export interface MetaDeckSummary {
   name: string;
   leader_card_set_id: string;
   leader_name: string;
+  leader_image: string | null;
   tournament_name: string | null;
   player_name: string | null;
   placing: number | null;

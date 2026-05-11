@@ -75,6 +75,7 @@ class DeckSummary(BaseModel):
     name: str
     leader_card_set_id: str
     leader_name: str
+    leader_image: Optional[str]
     card_count: int
     created_at: datetime
     updated_at: datetime
@@ -116,6 +117,7 @@ class MetaDeckSummary(BaseModel):
     name: str
     leader_card_set_id: str
     leader_name: str
+    leader_image: Optional[str]
     tournament_name: Optional[str]
     player_name: Optional[str]
     placing: Optional[int]

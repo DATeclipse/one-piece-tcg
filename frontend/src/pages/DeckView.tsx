@@ -3,7 +3,7 @@ import CardDetailModal from "../components/CardDetailModal";
 import CardItem from "../components/CardItem";
 import { useDeck, useDeckList } from "../hooks/useDecks";
 import { useMetaDeck, useMetaDeckList } from "../hooks/useMeta";
-import type { Card, DeckCard as DeckCardType } from "../types";
+import type { Card, DeckCard as DeckCardType, DeckSummary, MetaDeckSummary } from "../types";
 
 const TYPE_ORDER = ["Character", "Event", "Stage"];
 
@@ -13,145 +13,201 @@ interface DeckSelection {
 }
 
 export default function DeckView() {
-  const [selection, setSelection] = useState<DeckSelection | null>(null);
+  const [expanded, setExpanded] = useState<DeckSelection | null>(null);
   const [selectedCard, setSelectedCard] = useState<Card | null>(null);
 
   const { data: decks = [], isLoading: decksLoading } = useDeckList();
   const { data: metaDecks = [] } = useMetaDeckList();
-  const { data: userDeck, isLoading: userLoading } = useDeck(
-    selection?.type === "user" ? selection.id : null
-  );
-  const { data: metaDeckData, isLoading: metaLoading } = useMetaDeck(
-    selection?.type === "meta" ? selection.id : null
-  );
 
-  const deckLoading = userLoading || metaLoading;
-
-  const activeDeck: { name: string; leader: Card; cards: DeckCardType[] } | null =
-    selection?.type === "user" && userDeck
-      ? userDeck
-      : selection?.type === "meta" && metaDeckData
-        ? metaDeckData
-        : null;
-
-  const totalCards = activeDeck?.cards.reduce((sum, dc) => sum + dc.quantity, 0) ?? 0;
-
-  const groupedCards = TYPE_ORDER.map((type) => ({
-    type,
-    entries: (activeDeck?.cards ?? []).filter((dc) => dc.card.card_type === type),
-  })).filter((g) => g.entries.length > 0);
-
-  const handleSelect = (value: string) => {
-    if (!value) {
-      setSelection(null);
-      return;
+  const toggle = (sel: DeckSelection) => {
+    if (expanded?.type === sel.type && expanded?.id === sel.id) {
+      setExpanded(null);
+    } else {
+      setExpanded(sel);
     }
-    const [type, id] = value.split(":");
-    setSelection({ type: type as "user" | "meta", id: Number(id) });
   };
 
   return (
     <div>
-      <div className="flex items-center gap-3 mb-4">
-        <select
-          value={selection ? `${selection.type}:${selection.id}` : ""}
-          onChange={(e) => handleSelect(e.target.value)}
-          className="p-1.5"
-        >
-          <option value="">Select a deck...</option>
-          {decks.length > 0 && (
-            <optgroup label="Your Decks">
-              {decks.map((d) => (
-                <option key={`user:${d.id}`} value={`user:${d.id}`}>
-                  {d.name} ({d.leader_name})
-                </option>
-              ))}
-            </optgroup>
-          )}
-          {metaDecks.length > 0 && (
-            <optgroup label="Meta Decks">
-              {metaDecks.map((d) => (
-                <option key={`meta:${d.id}`} value={`meta:${d.id}`}>
-                  {d.name} ({d.leader_name})
-                </option>
-              ))}
-            </optgroup>
-          )}
-        </select>
-        {decksLoading && <span className="text-muted-dim text-sm">Loading...</span>}
-      </div>
+      {decksLoading && <div className="text-muted-dim">Loading...</div>}
 
-      {!selection && (
-        <div className="text-muted-dim text-sm">Select a saved deck to view its cards.</div>
+      {!decksLoading && decks.length === 0 && metaDecks.length === 0 && (
+        <div className="text-muted-dim text-sm">No saved decks yet. Build one in Deck Builder or save from Tournaments.</div>
       )}
 
-      {deckLoading && <div className="text-muted-dim">Loading deck...</div>}
-
-      {activeDeck && (
+      {decks.length > 0 && (
         <>
-          <div className="bg-panel rounded-lg p-4 mb-4 flex flex-col md:flex-row gap-4 items-start">
-            <div className="w-32 shrink-0">
-              {activeDeck.leader.card_image ? (
-                <img
-                  src={activeDeck.leader.card_image}
-                  alt={activeDeck.leader.card_name}
-                  className="w-full rounded-lg cursor-pointer hover:scale-[1.03] transition-transform duration-100"
-                  onClick={() => setSelectedCard(activeDeck.leader)}
-                />
-              ) : (
-                <div
-                  className="w-full aspect-[0.716] bg-card-placeholder rounded-lg flex items-center justify-center text-muted-dim text-xs cursor-pointer"
-                  onClick={() => setSelectedCard(activeDeck.leader)}
-                >
-                  {activeDeck.leader.card_name}
-                </div>
-              )}
-            </div>
-            <div>
-              <h2 className="text-accent text-2xl font-bold font-serif m-0">
-                {activeDeck.name}
-              </h2>
-              <div className="text-light mt-1">{activeDeck.leader.card_name}</div>
-              <div className="text-muted-dim text-sm">
-                {activeDeck.leader.card_color.join("/")} | Life: {activeDeck.leader.life}
-              </div>
-              {activeDeck.leader.types?.length > 0 && (
-                <div className="text-muted-dim text-sm">
-                  {activeDeck.leader.types.join(", ")}
-                </div>
-              )}
-              <div className={`text-sm mt-2 ${totalCards === 50 ? "text-valid" : "text-warning"}`}>
-                {totalCards}/50 cards
-              </div>
-            </div>
+          <h3 className="text-accent text-xl font-bold font-serif tracking-wide mb-3">Your Decks</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            {decks.map((d) => (
+              <DeckPreviewCard
+                key={`user-${d.id}`}
+                name={d.name}
+                leaderName={d.leader_name}
+                leaderImage={d.leader_image}
+                cardCount={d.card_count}
+                subtitle={`Updated ${new Date(d.updated_at).toLocaleDateString()}`}
+                isExpanded={expanded?.type === "user" && expanded?.id === d.id}
+                onClick={() => toggle({ type: "user", id: d.id })}
+              />
+            ))}
           </div>
+          {expanded?.type === "user" && (
+            <ExpandedDeck selection={expanded} selectedCard={selectedCard} onCardClick={setSelectedCard} />
+          )}
+        </>
+      )}
 
-          {groupedCards.map(({ type, entries }) => (
-            <div key={type} className="mb-6">
-              <h3 className="text-accent text-xl font-bold font-serif tracking-wide mb-2">
-                {type} ({entries.reduce((sum, e) => sum + e.quantity, 0)})
-              </h3>
-              <div className="grid grid-cols-[repeat(auto-fill,minmax(110px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(140px,1fr))] gap-2 md:gap-3">
-                {entries.map((dc) => (
-                  <CardItem
-                    key={dc.card.card_set_id}
-                    card={dc.card}
-                    onClick={() => setSelectedCard(dc.card)}
-                    deckCount={dc.quantity}
-                  />
-                ))}
-              </div>
-            </div>
-          ))}
+      {metaDecks.length > 0 && (
+        <>
+          <h3 className="text-accent text-xl font-bold font-serif tracking-wide mb-3">Meta Decks</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            {metaDecks.map((d) => (
+              <DeckPreviewCard
+                key={`meta-${d.id}`}
+                name={d.name}
+                leaderName={d.leader_name}
+                leaderImage={d.leader_image}
+                cardCount={d.card_count}
+                subtitle={d.tournament_name ? `${d.tournament_name} · #${d.placing}` : undefined}
+                isExpanded={expanded?.type === "meta" && expanded?.id === d.id}
+                onClick={() => toggle({ type: "meta", id: d.id })}
+              />
+            ))}
+          </div>
+          {expanded?.type === "meta" && (
+            <ExpandedDeck selection={expanded} selectedCard={selectedCard} onCardClick={setSelectedCard} />
+          )}
         </>
       )}
 
       {selectedCard && (
-        <CardDetailModal
-          card={selectedCard}
-          onClose={() => setSelectedCard(null)}
-        />
+        <CardDetailModal card={selectedCard} onClose={() => setSelectedCard(null)} />
       )}
+    </div>
+  );
+}
+
+function DeckPreviewCard({
+  name,
+  leaderName,
+  leaderImage,
+  cardCount,
+  subtitle,
+  isExpanded,
+  onClick,
+}: {
+  name: string;
+  leaderName: string;
+  leaderImage: string | null;
+  cardCount: number;
+  subtitle?: string;
+  isExpanded: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={`bg-panel rounded-lg p-3 flex gap-3 items-start text-left w-full bg-transparent! cursor-pointer transition-all duration-100 ${isExpanded ? "ring-2 ring-accent" : "hover:ring-1 hover:ring-accent/50"}`}
+    >
+      <div className="w-20 shrink-0">
+        {leaderImage ? (
+          <img src={leaderImage} alt={leaderName} className="w-full rounded-lg" loading="lazy" />
+        ) : (
+          <div className="w-full aspect-[0.716] bg-card-placeholder rounded-lg flex items-center justify-center text-muted-dim text-[0.6rem]">
+            {leaderName}
+          </div>
+        )}
+      </div>
+      <div className="min-w-0 flex-1">
+        <div className="text-accent font-bold font-serif text-sm truncate">{name}</div>
+        <div className="text-light text-xs mt-0.5">{leaderName}</div>
+        <div className={`text-xs mt-1 ${cardCount === 50 ? "text-valid" : "text-warning"}`}>
+          {cardCount}/50 cards
+        </div>
+        {subtitle && <div className="text-muted-dim text-[0.65rem] mt-1 truncate">{subtitle}</div>}
+      </div>
+      <span className="text-muted text-xs shrink-0">{isExpanded ? "▲" : "▼"}</span>
+    </button>
+  );
+}
+
+function ExpandedDeck({
+  selection,
+  selectedCard,
+  onCardClick,
+}: {
+  selection: DeckSelection;
+  selectedCard: Card | null;
+  onCardClick: (card: Card) => void;
+}) {
+  const { data: userDeck, isLoading: userLoading } = useDeck(
+    selection.type === "user" ? selection.id : null
+  );
+  const { data: metaDeck, isLoading: metaLoading } = useMetaDeck(
+    selection.type === "meta" ? selection.id : null
+  );
+
+  const isLoading = userLoading || metaLoading;
+  const activeDeck = selection.type === "user" ? userDeck : metaDeck;
+
+  if (isLoading) return <div className="text-muted-dim mb-6">Loading deck...</div>;
+  if (!activeDeck) return null;
+
+  const groupedCards = TYPE_ORDER.map((type) => ({
+    type,
+    entries: activeDeck.cards.filter((dc) => dc.card.card_type === type),
+  })).filter((g) => g.entries.length > 0);
+
+  return (
+    <div className="bg-panel rounded-lg p-4 mb-6 -mt-2">
+      <div className="flex flex-col md:flex-row gap-4 items-start mb-4">
+        <div className="w-28 shrink-0">
+          {activeDeck.leader.card_image ? (
+            <img
+              src={activeDeck.leader.card_image}
+              alt={activeDeck.leader.card_name}
+              className="w-full rounded-lg cursor-pointer hover:scale-[1.03] transition-transform duration-100"
+              onClick={() => onCardClick(activeDeck.leader)}
+            />
+          ) : (
+            <div
+              className="w-full aspect-[0.716] bg-card-placeholder rounded-lg flex items-center justify-center text-muted-dim text-xs cursor-pointer"
+              onClick={() => onCardClick(activeDeck.leader)}
+            >
+              {activeDeck.leader.card_name}
+            </div>
+          )}
+        </div>
+        <div>
+          <h2 className="text-accent text-xl font-bold font-serif m-0">{activeDeck.name}</h2>
+          <div className="text-light text-sm mt-1">{activeDeck.leader.card_name}</div>
+          <div className="text-muted-dim text-xs">
+            {activeDeck.leader.card_color.join("/")} | Life: {activeDeck.leader.life}
+          </div>
+          {activeDeck.leader.types?.length > 0 && (
+            <div className="text-muted-dim text-xs">{activeDeck.leader.types.join(", ")}</div>
+          )}
+        </div>
+      </div>
+
+      {groupedCards.map(({ type, entries }) => (
+        <div key={type} className="mb-4">
+          <h4 className="text-accent text-lg font-bold font-serif tracking-wide mb-2">
+            {type} ({entries.reduce((sum, e) => sum + e.quantity, 0)})
+          </h4>
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-2">
+            {entries.map((dc) => (
+              <CardItem
+                key={dc.card.card_set_id}
+                card={dc.card}
+                onClick={() => onCardClick(dc.card)}
+                deckCount={dc.quantity}
+              />
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
