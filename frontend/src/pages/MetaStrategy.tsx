@@ -166,9 +166,12 @@ export default function MetaStrategy() {
             )}
           </div>
 
-          <h3 className="text-accent text-lg font-bold font-serif tracking-wide mb-3">
+          <h3 className="text-accent text-lg font-bold font-serif tracking-wide mb-1">
             Mana Curve
           </h3>
+          <p className="text-muted-dim text-xs mb-3">
+            How many cards at each cost level. A balanced curve means plays every turn. Low curves (peak 1-3) are aggressive; high curves (peak 4-6) aim for late-game power.
+          </p>
           <div className={`grid ${comparing ? "grid-cols-2" : "grid-cols-1"} gap-4 mb-6`}>
             {deckStats && (
               <div>
@@ -184,9 +187,12 @@ export default function MetaStrategy() {
             )}
           </div>
 
-          <h3 className="text-accent text-lg font-bold font-serif tracking-wide mb-3">
+          <h3 className="text-accent text-lg font-bold font-serif tracking-wide mb-1">
             Type Breakdown
           </h3>
+          <p className="text-muted-dim text-xs mb-3">
+            Characters stay on the field and fight. Events are one-time effects from hand. Stages provide ongoing board effects. Most decks are 70-80% Characters with Events for removal or draw.
+          </p>
           <div className={`grid ${comparing ? "grid-cols-2" : "grid-cols-1"} gap-4 mb-6`}>
             {deckStats && (
               <div>
@@ -202,9 +208,12 @@ export default function MetaStrategy() {
             )}
           </div>
 
-          <h3 className="text-accent text-lg font-bold font-serif tracking-wide mb-3">
+          <h3 className="text-accent text-lg font-bold font-serif tracking-wide mb-1">
             Color Distribution
           </h3>
+          <p className="text-muted-dim text-xs mb-3">
+            Cards must match your Leader's color(s). Multi-color decks are more versatile but may have less focused synergy.
+          </p>
           <div className={`grid ${comparing ? "grid-cols-2" : "grid-cols-1"} gap-4`}>
             {deckStats && (
               <div>
@@ -235,14 +244,17 @@ function StatCards({ label, stats }: { label?: string; stats: DeckStats }) {
           <div className={stats.totalCards === 50 ? "text-valid font-bold" : "text-warning font-bold"}>
             {stats.totalCards}/50
           </div>
+          <div className="text-muted-dim text-[0.6rem] mt-0.5">Need exactly 50</div>
         </div>
         <div className="bg-panel rounded px-3 py-2">
           <div className="text-muted-dim text-xs">Avg Cost</div>
           <div className="text-light font-bold">{stats.avgCost}</div>
+          <div className="text-muted-dim text-[0.6rem] mt-0.5">Lower = faster deck</div>
         </div>
         <div className="bg-panel rounded px-3 py-2">
           <div className="text-muted-dim text-xs">Counter</div>
           <div className="text-light font-bold">{stats.totalCounter.toLocaleString()}</div>
+          <div className="text-muted-dim text-[0.6rem] mt-0.5">Blocks attacks from hand</div>
         </div>
       </div>
     </div>
