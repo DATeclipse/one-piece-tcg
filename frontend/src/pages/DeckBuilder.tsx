@@ -5,9 +5,10 @@ import DeckList from "../components/DeckList";
 import DeckPanel from "../components/DeckPanel";
 import MobileDeckSheet from "../components/MobileDeckSheet";
 import SearchFilters from "../components/SearchFilters";
+import { useDeckState } from "../context/DeckContext";
 import { useCardSearch, useLeaderCardSearch } from "../hooks/useCards";
 import { useCreateDeck, useUpdateDeck, useValidateDeck } from "../hooks/useDecks";
-import type { Card, SearchFilters as Filters, ValidationResult } from "../types";
+import type { Card, SearchFilters as Filters } from "../types";
 
 const EMPTY_FILTERS: Filters = {
   name: "",
@@ -23,13 +24,7 @@ export default function DeckBuilder() {
   const [debouncedFilters, setDebouncedFilters] = useState<Filters>(EMPTY_FILTERS);
   const [page, setPage] = useState(1);
 
-  const [leader, setLeader] = useState<Card | null>(null);
-  const [deckCards, setDeckCards] = useState<Map<string, { card: Card; quantity: number }>>(
-    new Map()
-  );
-  const [deckName, setDeckName] = useState("");
-  const [deckId, setDeckId] = useState<number | null>(null);
-  const [validation, setValidation] = useState<ValidationResult | null>(null);
+  const { leader, setLeader, deckCards, setDeckCards, deckName, setDeckName, deckId, setDeckId, validation, setValidation } = useDeckState();
   const [error, setError] = useState("");
   const [loadingDeck, setLoadingDeck] = useState(false);
 
@@ -45,7 +40,7 @@ export default function DeckBuilder() {
     const t = setTimeout(() => {
       setDebouncedFilters(filters);
       setPage(1);
-    }, 300);
+    }, 150);
     return () => clearTimeout(t);
   }, [filters]);
 
@@ -58,6 +53,8 @@ export default function DeckBuilder() {
     if (!leader) return;
 
     setDeckCards((prev) => {
+      const total = Array.from(prev.values()).reduce((sum, e) => sum + e.quantity, 0);
+      if (total >= 50) return prev;
       const next = new Map(prev);
       const existing = next.get(card.card_set_id);
       if (existing) {
@@ -74,9 +71,13 @@ export default function DeckBuilder() {
 
   const handleChangeQuantity = (cardSetId: string, delta: number) => {
     setDeckCards((prev) => {
-      const next = new Map(prev);
-      const existing = next.get(cardSetId);
+      const existing = prev.get(cardSetId);
       if (!existing) return prev;
+      if (delta > 0) {
+        const total = Array.from(prev.values()).reduce((sum, e) => sum + e.quantity, 0);
+        if (total >= 50) return prev;
+      }
+      const next = new Map(prev);
       const newQty = existing.quantity + delta;
       if (newQty <= 0) {
         next.delete(cardSetId);
@@ -195,7 +196,7 @@ export default function DeckBuilder() {
             />
           ) : (
             <>
-              <h4 className="text-accent text-sm mt-2 mb-1">
+              <h4 className="text-accent text-2xl font-bold mt-4 mb-2 font-serif tracking-wide">
                 Cards by Type — {leader.types?.[0] ?? "Unknown"} ({typeResults?.total ?? 0})
               </h4>
               <CardGrid
@@ -207,7 +208,7 @@ export default function DeckBuilder() {
                 pageSize={100}
                 onPageChange={() => {}}
               />
-              <h4 className="text-accent text-sm mt-4 mb-1">
+              <h4 className="text-accent text-2xl font-bold mt-6 mb-2 font-serif tracking-wide">
                 Cards by Color — {leader.card_color.join("/")} ({colorResults?.total ?? 0})
               </h4>
               <CardGrid
@@ -223,7 +224,7 @@ export default function DeckBuilder() {
           )}
         </div>
 
-        <div className="hidden md:block w-80 shrink-0">
+        <div className="hidden md:block w-80 shrink-0 sticky top-4 self-start">
           <div className="flex justify-end mb-2">
             <button onClick={handleNewDeck} className="text-[0.75rem]">
               New Deck

@@ -25,6 +25,7 @@ def list_cards(
     types_contains: Optional[str] = Query(None, description="Substring match on types/affiliation"),
     exclude_type: Optional[str] = Query(None, description="Exclude cards of this card_type"),
     colors: Optional[str] = Query(None, description="Comma-separated colors, OR match"),
+    rarity: Optional[str] = Query(None),
     page: int = Query(1, ge=1),
     page_size: int = Query(50, ge=1, le=200),
     db: Session = Depends(get_db),
@@ -56,6 +57,8 @@ def list_cards(
     if colors:
         color_list = [c.strip() for c in colors.split(",")]
         q = q.filter(or_(*[Card.card_color.like(f'%"{c}"%') for c in color_list]))
+    if rarity:
+        q = q.filter(Card.rarity == rarity)
 
     total = q.count()
     items = q.offset((page - 1) * page_size).limit(page_size).all()

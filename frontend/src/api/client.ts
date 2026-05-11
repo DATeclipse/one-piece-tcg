@@ -34,6 +34,7 @@ export function searchCards(
   if (filters.cost_min) params.set("cost_min", filters.cost_min);
   if (filters.cost_max) params.set("cost_max", filters.cost_max);
   if (filters.set_id) params.set("set_id", filters.set_id);
+  if (filters.rarity) params.set("rarity", filters.rarity);
   if (filters.types_contains) params.set("types_contains", filters.types_contains);
   if (filters.exclude_type) params.set("exclude_type", filters.exclude_type);
   if (filters.colors) params.set("colors", filters.colors);

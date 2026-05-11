@@ -8,6 +8,7 @@ export function useCardSearch(filters: SearchFilters, page: number, enabled = tr
     queryFn: () => searchCards(filters, page),
     placeholderData: keepPreviousData,
     enabled,
+    staleTime: 60_000,
   });
 }
 
@@ -44,6 +45,7 @@ export function useLeaderCardSearch(
       ),
     placeholderData: keepPreviousData,
     enabled: !!leader && !!leaderType,
+    staleTime: 60_000,
   });
 
   const colorQuery = useQuery({
@@ -56,6 +58,7 @@ export function useLeaderCardSearch(
       ),
     placeholderData: keepPreviousData,
     enabled: !!leader,
+    staleTime: 60_000,
   });
 
   return { typeResults: typeQuery.data, colorResults: colorQuery.data, isLoading: typeQuery.isLoading || colorQuery.isLoading };

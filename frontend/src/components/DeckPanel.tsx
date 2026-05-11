@@ -33,7 +33,7 @@ export default function DeckPanel({
   const totalCards = entries.reduce((sum, e) => sum + e.quantity, 0);
 
   return (
-    <div className="bg-panel rounded-lg p-4 flex flex-col gap-3 md:h-full overflow-auto">
+    <div className="bg-panel rounded-lg p-4 flex flex-col gap-3 md:max-h-[calc(100vh-6rem)] overflow-auto">
       <h3 className="m-0 text-accent">Deck</h3>
 
       <input
@@ -53,6 +53,11 @@ export default function DeckPanel({
               <div className="text-muted-dim text-[0.7rem]">
                 {leader.card_color.join("/")} | Life: {leader.life}
               </div>
+              {leader.types?.length > 0 && (
+                <div className="text-muted-dim text-[0.7rem]">
+                  {leader.types.join(", ")}
+                </div>
+              )}
             </div>
             <button onClick={onRemoveLeader} className="text-[0.7rem]">
               Remove

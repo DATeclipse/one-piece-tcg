@@ -58,6 +58,18 @@ export default function SearchFilters({ filters, onChange, leaderColors, leaderS
         onChange={(e) => update("cost_max", e.target.value)}
         className="w-20 p-1.5"
       />
+      <select value={filters.rarity ?? ""} onChange={(e) => update("rarity", e.target.value)}>
+        <option value="">All Rarities</option>
+        <option value="C">C</option>
+        <option value="UC">UC</option>
+        <option value="R">R</option>
+        <option value="SR">SR</option>
+        <option value="SEC">SEC</option>
+        <option value="L">L</option>
+        <option value="SP">SP</option>
+        <option value="P">P</option>
+        <option value="TR">TR</option>
+      </select>
       <select value={filters.set_id} onChange={(e) => update("set_id", e.target.value)} className="w-full md:w-auto">
         <option value="">All Sets</option>
         {sets.map((s) => (

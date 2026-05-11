@@ -66,6 +66,7 @@ export interface SearchFilters {
   cost_min: string;
   cost_max: string;
   set_id: string;
+  rarity?: string;
   types_contains?: string;
   exclude_type?: string;
   colors?: string;
