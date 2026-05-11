@@ -3,6 +3,7 @@ import CardDetailModal from "../components/CardDetailModal";
 import CardGrid from "../components/CardGrid";
 import SearchFiltersComponent from "../components/SearchFilters";
 import { useCardSearch } from "../hooks/useCards";
+import { useCollectionCounts } from "../hooks/useCollection";
 import type { Card, SearchFilters } from "../types";
 
 const EMPTY_FILTERS: SearchFilters = {
@@ -31,6 +32,8 @@ export default function CardSearch() {
   }, [filters]);
 
   const { data } = useCardSearch(debouncedFilters, page);
+  const { data: collectionData = {} } = useCollectionCounts();
+  const ownedCounts = new Map<string, number>(Object.entries(collectionData));
 
   return (
     <div>
@@ -41,6 +44,7 @@ export default function CardSearch() {
           cards={data.items}
           onCardClick={setSelectedCard}
           deckCounts={new Map()}
+          collectionCounts={ownedCounts}
           total={data.total}
           page={data.page}
           pageSize={data.page_size}

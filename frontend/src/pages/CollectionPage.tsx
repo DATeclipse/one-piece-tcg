@@ -57,15 +57,12 @@ export default function CollectionPage() {
 
       <div className="grid grid-cols-[repeat(auto-fill,minmax(110px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(140px,1fr))] gap-2 md:gap-3">
         {filtered.map((item) => (
-          <div key={item.card.card_set_id} className="relative">
-            <CardItem
-              card={item.card}
-              onClick={() => setSelectedCard(item.card)}
-            />
-            <div className="absolute top-1 right-1 bg-accent text-white rounded-full w-6 h-6 flex items-center justify-center font-bold text-sm">
-              {item.quantity}
-            </div>
-          </div>
+          <CardItem
+            key={item.card.card_set_id}
+            card={item.card}
+            onClick={() => setSelectedCard(item.card)}
+            collectionCount={item.quantity}
+          />
         ))}
       </div>
 

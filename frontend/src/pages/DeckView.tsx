@@ -2,6 +2,7 @@ import { useState } from "react";
 import CardDetailModal from "../components/CardDetailModal";
 import CardItem from "../components/CardItem";
 import { useDeck, useDeckList } from "../hooks/useDecks";
+import { useCollectionCounts } from "../hooks/useCollection";
 import { useMetaDeck, useMetaDeckList } from "../hooks/useMeta";
 import type { Card, DeckCard as DeckCardType, DeckSummary, MetaDeckSummary } from "../types";
 
@@ -18,6 +19,8 @@ export default function DeckView() {
 
   const { data: decks = [], isLoading: decksLoading } = useDeckList();
   const { data: metaDecks = [] } = useMetaDeckList();
+  const { data: collectionData = {} } = useCollectionCounts();
+  const collectionCounts = new Map<string, number>(Object.entries(collectionData));
 
   const toggle = (sel: DeckSelection) => {
     if (expanded?.type === sel.type && expanded?.id === sel.id) {
@@ -53,7 +56,7 @@ export default function DeckView() {
             ))}
           </div>
           {expanded?.type === "user" && (
-            <ExpandedDeck selection={expanded} selectedCard={selectedCard} onCardClick={setSelectedCard} />
+            <ExpandedDeck selection={expanded} selectedCard={selectedCard} onCardClick={setSelectedCard} collectionCounts={collectionCounts} />
           )}
         </>
       )}
@@ -76,7 +79,7 @@ export default function DeckView() {
             ))}
           </div>
           {expanded?.type === "meta" && (
-            <ExpandedDeck selection={expanded} selectedCard={selectedCard} onCardClick={setSelectedCard} />
+            <ExpandedDeck selection={expanded} selectedCard={selectedCard} onCardClick={setSelectedCard} collectionCounts={collectionCounts} />
           )}
         </>
       )}
@@ -136,10 +139,12 @@ function ExpandedDeck({
   selection,
   selectedCard,
   onCardClick,
+  collectionCounts,
 }: {
   selection: DeckSelection;
   selectedCard: Card | null;
   onCardClick: (card: Card) => void;
+  collectionCounts: Map<string, number>;
 }) {
   const { data: userDeck, isLoading: userLoading } = useDeck(
     selection.type === "user" ? selection.id : null
@@ -203,6 +208,7 @@ function ExpandedDeck({
                 card={dc.card}
                 onClick={() => onCardClick(dc.card)}
                 deckCount={dc.quantity}
+                collectionCount={collectionCounts.get(dc.card.card_set_id)}
               />
             ))}
           </div>

@@ -93,7 +93,7 @@ export default function DeckBuilder() {
   const { data: collectionData = {} } = useCollectionCounts();
   const deckCounts = new Map<string, number>();
   deckCards.forEach((v, k) => deckCounts.set(k, v.quantity));
-  const ownedCounts = new Map<string, number>(Object.entries(collectionData));
+  const collectionCounts = new Map<string, number>(Object.entries(collectionData));
 
   const getDeckPayload = () => ({
     name: deckName,
@@ -192,7 +192,7 @@ export default function DeckBuilder() {
               cards={leaderResults?.items ?? []}
               onCardClick={handleCardClick}
               deckCounts={deckCounts}
-              ownedCounts={ownedCounts}
+              collectionCounts={collectionCounts}
               total={leaderResults?.total ?? 0}
               page={page}
               pageSize={leaderResults?.page_size ?? 50}
@@ -207,7 +207,7 @@ export default function DeckBuilder() {
                 cards={typeResults?.items ?? []}
                 onCardClick={handleCardClick}
                 deckCounts={deckCounts}
-              ownedCounts={ownedCounts}
+                collectionCounts={collectionCounts}
                 total={0}
                 page={1}
                 pageSize={100}
@@ -220,7 +220,7 @@ export default function DeckBuilder() {
                 cards={colorResults?.items ?? []}
                 onCardClick={handleCardClick}
                 deckCounts={deckCounts}
-              ownedCounts={ownedCounts}
+                collectionCounts={collectionCounts}
                 total={colorResults?.total ?? 0}
                 page={page}
                 pageSize={colorResults?.page_size ?? 50}
