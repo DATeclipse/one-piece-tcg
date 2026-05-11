@@ -1,7 +1,7 @@
 from typing import List, Optional
 
 from fastapi import APIRouter, Depends, Query
-from sqlalchemy import func
+from sqlalchemy import func, or_
 from sqlalchemy.orm import Session
 
 from database import get_db
@@ -22,6 +22,9 @@ def list_cards(
     power_max: Optional[int] = Query(None),
     set_id: Optional[str] = Query(None),
     types: Optional[str] = Query(None, description="Filter by card type/affiliation"),
+    types_contains: Optional[str] = Query(None, description="Substring match on types/affiliation"),
+    exclude_type: Optional[str] = Query(None, description="Exclude cards of this card_type"),
+    colors: Optional[str] = Query(None, description="Comma-separated colors, OR match"),
     page: int = Query(1, ge=1),
     page_size: int = Query(50, ge=1, le=200),
     db: Session = Depends(get_db),
@@ -46,6 +49,13 @@ def list_cards(
         q = q.filter(Card.set_id == set_id)
     if types:
         q = q.filter(Card.types.like(f'%"{types}"%'))
+    if types_contains:
+        q = q.filter(Card.types.like(f'%{types_contains}%'))
+    if exclude_type:
+        q = q.filter(Card.card_type != exclude_type)
+    if colors:
+        color_list = [c.strip() for c in colors.split(",")]
+        q = q.filter(or_(*[Card.card_color.like(f'%"{c}"%') for c in color_list]))
 
     total = q.count()
     items = q.offset((page - 1) * page_size).limit(page_size).all()

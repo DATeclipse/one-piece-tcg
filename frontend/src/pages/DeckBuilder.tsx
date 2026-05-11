@@ -4,7 +4,7 @@ import CardGrid from "../components/CardGrid";
 import DeckList from "../components/DeckList";
 import DeckPanel from "../components/DeckPanel";
 import SearchFilters from "../components/SearchFilters";
-import { useCardSearch } from "../hooks/useCards";
+import { useCardSearch, useLeaderCardSearch } from "../hooks/useCards";
 import { useCreateDeck, useUpdateDeck, useValidateDeck } from "../hooks/useDecks";
 import type { Card, SearchFilters as Filters, ValidationResult } from "../types";
 
@@ -32,11 +32,10 @@ export default function DeckBuilder() {
   const [error, setError] = useState("");
   const [loadingDeck, setLoadingDeck] = useState(false);
 
-  const effectiveFilters = !leader
-    ? { ...debouncedFilters, card_type: "Leader" }
-    : debouncedFilters;
-
-  const { data: results, isLoading } = useCardSearch(effectiveFilters, page);
+  const leaderFilters = { ...debouncedFilters, card_type: "Leader" };
+  const { data: leaderResults, isLoading: leadersLoading } = useCardSearch(leaderFilters, page, !leader);
+  const { typeResults, colorResults, isLoading: sectionsLoading } = useLeaderCardSearch(leader, debouncedFilters, page);
+  const isLoading = leader ? sectionsLoading : leadersLoading;
   const createMutation = useCreateDeck();
   const updateMutation = useUpdateDeck();
   const validateMutation = useValidateDeck();
@@ -157,9 +156,6 @@ export default function DeckBuilder() {
   };
 
   const saving = createMutation.isPending || updateMutation.isPending;
-  const items = results?.items ?? [];
-  const total = results?.total ?? 0;
-  const pageSize = results?.page_size ?? 50;
 
   return (
     <div>
@@ -186,15 +182,44 @@ export default function DeckBuilder() {
             <div className="text-accent text-sm mb-2">Select a Leader to start building your deck</div>
           )}
           {isLoading && <div className="text-muted-dim">Loading...</div>}
-          <CardGrid
-            cards={items}
-            onCardClick={handleCardClick}
-            deckCounts={deckCounts}
-            total={total}
-            page={page}
-            pageSize={pageSize}
-            onPageChange={setPage}
-          />
+          {!leader ? (
+            <CardGrid
+              cards={leaderResults?.items ?? []}
+              onCardClick={handleCardClick}
+              deckCounts={deckCounts}
+              total={leaderResults?.total ?? 0}
+              page={page}
+              pageSize={leaderResults?.page_size ?? 50}
+              onPageChange={setPage}
+            />
+          ) : (
+            <>
+              <h4 className="text-accent text-sm mt-2 mb-1">
+                Cards by Type — {leader.types?.[0] ?? "Unknown"} ({typeResults?.total ?? 0})
+              </h4>
+              <CardGrid
+                cards={typeResults?.items ?? []}
+                onCardClick={handleCardClick}
+                deckCounts={deckCounts}
+                total={0}
+                page={1}
+                pageSize={100}
+                onPageChange={() => {}}
+              />
+              <h4 className="text-accent text-sm mt-4 mb-1">
+                Cards by Color — {leader.card_color.join("/")} ({colorResults?.total ?? 0})
+              </h4>
+              <CardGrid
+                cards={colorResults?.items ?? []}
+                onCardClick={handleCardClick}
+                deckCounts={deckCounts}
+                total={colorResults?.total ?? 0}
+                page={page}
+                pageSize={colorResults?.page_size ?? 50}
+                onPageChange={setPage}
+              />
+            </>
+          )}
         </div>
 
         <div className="w-80 shrink-0">

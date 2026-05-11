@@ -27,20 +27,22 @@ export default function SearchFilters({ filters, onChange, leaderColors, leaderS
         onChange={(e) => update("name", e.target.value)}
         className="p-1.5 min-w-[200px]"
       />
-      <select value={filters.color} onChange={(e) => update("color", e.target.value)}>
-        <option value="">All Colors</option>
-        {availableColors.map((c) => (
-          <option key={c} value={c}>{c}</option>
-        ))}
-      </select>
-      {leaderSelected && (
-        <select value={filters.card_type} onChange={(e) => update("card_type", e.target.value)}>
-          <option value="">All Types</option>
-          <option value="Character">Character</option>
-          <option value="Event">Event</option>
-          <option value="Stage">Stage</option>
-          <option value="Leader">Leader</option>
-        </select>
+      {!leaderSelected && (
+        <>
+          <select value={filters.color} onChange={(e) => update("color", e.target.value)}>
+            <option value="">All Colors</option>
+            {availableColors.map((c) => (
+              <option key={c} value={c}>{c}</option>
+            ))}
+          </select>
+          <select value={filters.card_type} onChange={(e) => update("card_type", e.target.value)}>
+            <option value="">All Types</option>
+            <option value="Character">Character</option>
+            <option value="Event">Event</option>
+            <option value="Stage">Stage</option>
+            <option value="Leader">Leader</option>
+          </select>
+        </>
       )}
       <input
         type="number"
