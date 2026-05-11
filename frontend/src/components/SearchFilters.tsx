@@ -5,9 +5,10 @@ interface Props {
   filters: Filters;
   onChange: (filters: Filters) => void;
   leaderColors?: string[];
+  leaderSelected?: boolean;
 }
 
-export default function SearchFilters({ filters, onChange, leaderColors }: Props) {
+export default function SearchFilters({ filters, onChange, leaderColors, leaderSelected = false }: Props) {
   const { data: colors = [] } = useColors();
   const { data: sets = [] } = useSets();
 
@@ -32,13 +33,15 @@ export default function SearchFilters({ filters, onChange, leaderColors }: Props
           <option key={c} value={c}>{c}</option>
         ))}
       </select>
-      <select value={filters.card_type} onChange={(e) => update("card_type", e.target.value)}>
-        <option value="">All Types</option>
-        <option value="Character">Character</option>
-        <option value="Event">Event</option>
-        <option value="Stage">Stage</option>
-        <option value="Leader">Leader</option>
-      </select>
+      {leaderSelected && (
+        <select value={filters.card_type} onChange={(e) => update("card_type", e.target.value)}>
+          <option value="">All Types</option>
+          <option value="Character">Character</option>
+          <option value="Event">Event</option>
+          <option value="Stage">Stage</option>
+          <option value="Leader">Leader</option>
+        </select>
+      )}
       <input
         type="number"
         placeholder="Cost min"

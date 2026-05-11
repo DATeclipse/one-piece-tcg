@@ -32,7 +32,11 @@ export default function DeckBuilder() {
   const [error, setError] = useState("");
   const [loadingDeck, setLoadingDeck] = useState(false);
 
-  const { data: results, isLoading } = useCardSearch(debouncedFilters, page);
+  const effectiveFilters = !leader
+    ? { ...debouncedFilters, card_type: "Leader" }
+    : debouncedFilters;
+
+  const { data: results, isLoading } = useCardSearch(effectiveFilters, page);
   const createMutation = useCreateDeck();
   const updateMutation = useUpdateDeck();
   const validateMutation = useValidateDeck();
@@ -176,7 +180,11 @@ export default function DeckBuilder() {
             filters={filters}
             onChange={setFilters}
             leaderColors={leader?.card_color}
+            leaderSelected={!!leader}
           />
+          {!leader && (
+            <div className="text-accent text-sm mb-2">Select a Leader to start building your deck</div>
+          )}
           {isLoading && <div className="text-muted-dim">Loading...</div>}
           <CardGrid
             cards={items}
@@ -201,6 +209,7 @@ export default function DeckBuilder() {
             onRemoveLeader={() => {
               setLeader(null);
               setValidation(null);
+              setFilters((f) => ({ ...f, card_type: "" }));
             }}
             onChangeQuantity={handleChangeQuantity}
             onSave={handleSave}
