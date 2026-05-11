@@ -5,6 +5,7 @@ import { DeckProvider } from "./context/DeckContext";
 import { queryClient } from "./lib/queryClient";
 import CardSearch from "./pages/CardSearch";
 import DeckBuilder from "./pages/DeckBuilder";
+import Glossary from "./pages/Glossary";
 import DeckView from "./pages/DeckView";
 import MetaStrategy from "./pages/MetaStrategy";
 import TournamentMeta from "./pages/TournamentMeta";
@@ -21,6 +22,7 @@ export default function App() {
               <Route path="decks" element={<DeckView />} />
               <Route path="tournaments" element={<TournamentMeta />} />
               <Route path="meta" element={<MetaStrategy />} />
+              <Route path="glossary" element={<Glossary />} />
             </Route>
           </Routes>
         </BrowserRouter>

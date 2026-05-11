@@ -47,6 +47,14 @@ export default function Layout() {
         >
           Deck Analysis
         </NavLink>
+        <NavLink
+          to="/glossary"
+          className={({ isActive }) =>
+            `no-underline ${isActive ? "text-accent" : "text-light"}`
+          }
+        >
+          Glossary
+        </NavLink>
       </nav>
       <main className="flex-1 p-2 md:p-4">
         <Outlet />
