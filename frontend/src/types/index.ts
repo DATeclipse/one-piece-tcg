@@ -145,3 +145,8 @@ export interface SearchFilters {
   colors?: string;
   search?: string;
 }
+
+export interface CollectionItem {
+  card_set_id: string;
+  quantity: number;
+}

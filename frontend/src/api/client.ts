@@ -125,6 +125,24 @@ export function deleteMetaDeck(id: number): Promise<void> {
   return request(`/meta/decks/${id}`, { method: "DELETE" });
 }
 
+export function getCollectionCounts(): Promise<Record<string, number>> {
+  return request("/collections/counts");
+}
+
+export function getFullCollection(): Promise<{ card: Card; quantity: number }[]> {
+  return request("/collections/full");
+}
+
+export function updateCollectionItem(
+  card_set_id: string,
+  quantity: number
+): Promise<void> {
+  return request(`/collections/${card_set_id}`, {
+    method: "PUT",
+    body: JSON.stringify({ card_set_id, quantity }),
+  });
+}
+
 export function validateDeck(payload: {
   name: string;
   leader_card_set_id: string;

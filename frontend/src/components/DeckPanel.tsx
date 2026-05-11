@@ -1,3 +1,4 @@
+import { useCollectionCounts } from "../hooks/useCollection";
 import type { Card } from "../types";
 
 interface DeckEntry {
@@ -31,6 +32,12 @@ export default function DeckPanel({
   saving,
 }: Props) {
   const totalCards = entries.reduce((sum, e) => sum + e.quantity, 0);
+  const { data: counts = {} } = useCollectionCounts();
+
+  const totalMissing = entries.reduce((sum, e) => {
+    const owned = counts[e.card.card_set_id] ?? 0;
+    return sum + Math.max(0, e.quantity - owned);
+  }, 0);
 
   return (
     <div className="bg-panel rounded-lg p-4 flex flex-col gap-3 md:max-h-[calc(100vh-6rem)] overflow-auto">
@@ -75,39 +82,55 @@ export default function DeckPanel({
       <div className="text-muted-dim text-[0.7rem]">10 DON!! cards auto-included</div>
 
       <div className="flex-1 overflow-auto">
-        {entries.map((entry) => (
-          <div
-            key={entry.card.card_set_id}
-            className="flex justify-between items-center py-1 border-b border-border-subtle"
-          >
-            <div className="flex-1 min-w-0">
-              <div className="text-light-dim text-[0.75rem] whitespace-nowrap overflow-hidden text-ellipsis">
-                {entry.card.card_name}
+        {entries.map((entry) => {
+          const owned = counts[entry.card.card_set_id] ?? 0;
+          const need = Math.max(0, entry.quantity - owned);
+          return (
+            <div
+              key={entry.card.card_set_id}
+              className="flex justify-between items-center py-1 border-b border-border-subtle"
+            >
+              <div className="flex-1 min-w-0">
+                <div className="text-light-dim text-[0.75rem] whitespace-nowrap overflow-hidden text-ellipsis">
+                  {entry.card.card_name}
+                </div>
+                <div className="text-muted-dark text-[0.65rem]">
+                  {entry.card.card_type} | Cost: {entry.card.card_cost ?? "-"}
+                  <span className={`ml-1 ${need > 0 ? "text-warning" : "text-valid"}`}>
+                    Own {owned}/{entry.quantity}
+                  </span>
+                  {need > 0 && (
+                    <span className="text-warning ml-1">— Need {need}</span>
+                  )}
+                </div>
               </div>
-              <div className="text-muted-dark text-[0.65rem]">
-                {entry.card.card_type} | Cost: {entry.card.card_cost ?? "-"}
+              <div className="flex items-center gap-1">
+                <button
+                  onClick={() => onChangeQuantity(entry.card.card_set_id, -1)}
+                  className="px-1.5 py-0 text-[0.8rem]"
+                >
+                  -
+                </button>
+                <span className="text-light text-[0.85rem] min-w-4 text-center">
+                  {entry.quantity}
+                </span>
+                <button
+                  onClick={() => onChangeQuantity(entry.card.card_set_id, 1)}
+                  className="px-1.5 py-0 text-[0.8rem]"
+                >
+                  +
+                </button>
               </div>
             </div>
-            <div className="flex items-center gap-1">
-              <button
-                onClick={() => onChangeQuantity(entry.card.card_set_id, -1)}
-                className="px-1.5 py-0 text-[0.8rem]"
-              >
-                -
-              </button>
-              <span className="text-light text-[0.85rem] min-w-4 text-center">
-                {entry.quantity}
-              </span>
-              <button
-                onClick={() => onChangeQuantity(entry.card.card_set_id, 1)}
-                className="px-1.5 py-0 text-[0.8rem]"
-              >
-                +
-              </button>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
+
+      {entries.length > 0 && (
+        <div className={`text-[0.75rem] ${totalMissing > 0 ? "text-warning" : "text-valid"}`}>
+          {totalMissing > 0 ? `Missing ${totalMissing} cards from collection` : "All cards owned"}
+        </div>
+      )}
 
       {validation && (
         <div className={`rounded p-2 text-[0.75rem] ${validation.valid ? "bg-valid-bg" : "bg-error-bg"}`}>

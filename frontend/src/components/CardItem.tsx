@@ -4,6 +4,7 @@ interface Props {
   card: Card;
   onClick?: () => void;
   deckCount?: number;
+  owned?: number;
 }
 
 const COLOR_CLASS_MAP: Record<string, string> = {
@@ -15,7 +16,7 @@ const COLOR_CLASS_MAP: Record<string, string> = {
   Yellow: "border-card-yellow",
 };
 
-export default function CardItem({ card, onClick, deckCount }: Props) {
+export default function CardItem({ card, onClick, deckCount, owned }: Props) {
   const borderClass = COLOR_CLASS_MAP[card.card_color[0]] || "border-muted-darker";
 
   return (
@@ -38,6 +39,16 @@ export default function CardItem({ card, onClick, deckCount }: Props) {
       {deckCount !== undefined && deckCount > 0 && (
         <div className="absolute top-1 right-1 bg-accent text-white rounded-full w-6 h-6 flex items-center justify-center font-bold text-sm">
           {deckCount}
+        </div>
+      )}
+      {deckCount !== undefined && deckCount > 0 && owned !== undefined && owned >= deckCount && (
+        <div className="absolute top-1 left-1 bg-valid text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">
+          &#10003;
+        </div>
+      )}
+      {deckCount !== undefined && deckCount > 0 && owned !== undefined && owned < deckCount && (
+        <div className="absolute top-1 left-1 bg-warning text-white rounded-full w-5 h-5 flex items-center justify-center text-[0.6rem] font-bold">
+          -{deckCount - owned}
         </div>
       )}
       <div className="px-2 py-1 text-[0.7rem] text-light-muted">

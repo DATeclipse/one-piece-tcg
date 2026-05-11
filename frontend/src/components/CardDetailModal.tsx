@@ -1,3 +1,4 @@
+import { useCollectionCounts, useUpdateCollection } from "../hooks/useCollection";
 import type { Card } from "../types";
 
 interface Props {
@@ -6,6 +7,16 @@ interface Props {
 }
 
 export default function CardDetailModal({ card, onClose }: Props) {
+  const { data: counts = {} } = useCollectionCounts();
+  const updateMutation = useUpdateCollection();
+
+  const owned = counts[card.card_set_id] ?? 0;
+
+  const handleUpdate = (delta: number) => {
+    const newQty = Math.max(0, owned + delta);
+    updateMutation.mutate({ card_set_id: card.card_set_id, quantity: newQty });
+  };
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
@@ -74,6 +85,29 @@ export default function CardDetailModal({ card, onClose }: Props) {
               {card.card_text}
             </div>
           )}
+
+          <div className="bg-card-bg rounded p-3 mt-2">
+            <div className="text-muted-dim text-xs mb-1">Collection</div>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => handleUpdate(-1)}
+                disabled={owned === 0 || updateMutation.isPending}
+                className="px-2 py-0.5 text-sm"
+              >
+                -
+              </button>
+              <span className={`text-sm font-bold ${owned > 0 ? "text-valid" : "text-muted-dim"}`}>
+                {owned} owned
+              </span>
+              <button
+                onClick={() => handleUpdate(1)}
+                disabled={updateMutation.isPending}
+                className="px-2 py-0.5 text-sm"
+              >
+                +
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

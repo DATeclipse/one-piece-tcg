@@ -8,6 +8,7 @@ import DeckBuilder from "./pages/DeckBuilder";
 import Glossary from "./pages/Glossary";
 import DeckView from "./pages/DeckView";
 import MetaStrategy from "./pages/MetaStrategy";
+import CollectionPage from "./pages/CollectionPage";
 import TournamentMeta from "./pages/TournamentMeta";
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
               <Route path="decks" element={<DeckView />} />
               <Route path="tournaments" element={<TournamentMeta />} />
               <Route path="meta" element={<MetaStrategy />} />
+              <Route path="collection" element={<CollectionPage />} />
               <Route path="glossary" element={<Glossary />} />
             </Route>
           </Routes>

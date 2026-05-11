@@ -124,5 +124,26 @@ class MetaDeckSummary(BaseModel):
     card_count: int
 
 
+class CollectionItemIn(BaseModel):
+    card_set_id: str
+    quantity: int
+
+
+class CollectionItemOut(BaseModel):
+    card_set_id: str
+    quantity: int
+
+    class Config:
+        from_attributes = True
+
+
+class CollectionFullOut(BaseModel):
+    card: CardOut
+    quantity: int
+
+    class Config:
+        from_attributes = True
+
+
 class SyncResult(BaseModel):
     cards_synced: int

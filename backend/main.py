@@ -7,7 +7,7 @@ from fastapi.staticfiles import StaticFiles
 from config import LOCAL_CARDS_DIR
 from database import Base, SessionLocal, engine
 from models import Card
-from routers import cards, decks, meta, sync
+from routers import cards, collections, decks, meta, sync
 from sync import sync_cards
 
 logging.basicConfig(level=logging.INFO)
@@ -24,6 +24,7 @@ app.add_middleware(
 )
 
 app.include_router(cards.router)
+app.include_router(collections.router)
 app.include_router(decks.router)
 app.include_router(sync.router)
 app.include_router(meta.router)

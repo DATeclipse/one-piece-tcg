@@ -7,6 +7,7 @@ import MobileDeckSheet from "../components/MobileDeckSheet";
 import SearchFilters from "../components/SearchFilters";
 import { useDeckState } from "../context/DeckContext";
 import { useCardSearch, useLeaderCardSearch } from "../hooks/useCards";
+import { useCollectionCounts } from "../hooks/useCollection";
 import { useCreateDeck, useUpdateDeck, useValidateDeck } from "../hooks/useDecks";
 import type { Card, SearchFilters as Filters } from "../types";
 
@@ -89,8 +90,10 @@ export default function DeckBuilder() {
     setValidation(null);
   };
 
+  const { data: collectionData = {} } = useCollectionCounts();
   const deckCounts = new Map<string, number>();
   deckCards.forEach((v, k) => deckCounts.set(k, v.quantity));
+  const ownedCounts = new Map<string, number>(Object.entries(collectionData));
 
   const getDeckPayload = () => ({
     name: deckName,
@@ -189,6 +192,7 @@ export default function DeckBuilder() {
               cards={leaderResults?.items ?? []}
               onCardClick={handleCardClick}
               deckCounts={deckCounts}
+              ownedCounts={ownedCounts}
               total={leaderResults?.total ?? 0}
               page={page}
               pageSize={leaderResults?.page_size ?? 50}
@@ -203,6 +207,7 @@ export default function DeckBuilder() {
                 cards={typeResults?.items ?? []}
                 onCardClick={handleCardClick}
                 deckCounts={deckCounts}
+              ownedCounts={ownedCounts}
                 total={0}
                 page={1}
                 pageSize={100}
@@ -215,6 +220,7 @@ export default function DeckBuilder() {
                 cards={colorResults?.items ?? []}
                 onCardClick={handleCardClick}
                 deckCounts={deckCounts}
+              ownedCounts={ownedCounts}
                 total={colorResults?.total ?? 0}
                 page={page}
                 pageSize={colorResults?.page_size ?? 50}

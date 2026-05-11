@@ -5,6 +5,7 @@ interface Props {
   cards: Card[];
   onCardClick: (card: Card) => void;
   deckCounts: Map<string, number>;
+  ownedCounts?: Map<string, number>;
   total: number;
   page: number;
   pageSize: number;
@@ -15,6 +16,7 @@ export default function CardGrid({
   cards,
   onCardClick,
   deckCounts,
+  ownedCounts,
   total,
   page,
   pageSize,
@@ -31,6 +33,7 @@ export default function CardGrid({
             card={card}
             onClick={() => onCardClick(card)}
             deckCount={deckCounts.get(card.card_set_id)}
+            owned={ownedCounts?.get(card.card_set_id)}
           />
         ))}
       </div>

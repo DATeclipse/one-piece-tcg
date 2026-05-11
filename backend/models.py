@@ -150,3 +150,14 @@ class MetaDeckCard(Base):
 
     deck: Mapped[MetaDeck] = relationship("MetaDeck", back_populates="cards")
     card: Mapped[Card] = relationship("Card")
+
+
+class Collection(Base):
+    __tablename__ = "collections"
+
+    card_set_id: Mapped[str] = mapped_column(
+        String, ForeignKey("cards.card_set_id"), primary_key=True
+    )
+    quantity: Mapped[int] = mapped_column(Integer, default=0)
+
+    card: Mapped[Card] = relationship("Card")
