@@ -10,7 +10,7 @@ cd backend
 source venv/bin/activate
 uvicorn main:app --reload          # runs on :8000
 ```
-On first startup, if the cards table is empty, it auto-syncs from the OPTCG API. Manual sync: `POST /api/sync`.
+On first startup, if the cards table is empty, it auto-syncs from the local JSON seed file (`backend/data/cards.json`). Manual sync: `POST /api/sync`. To regenerate the seed file from the current DB: `python export_cards.py`.
 
 ### Frontend (React + Vite)
 ```bash
@@ -30,7 +30,9 @@ Two-tier app: React SPA talks to FastAPI backend over REST. SQLite database, no 
 ### Backend (`backend/`)
 - **main.py** — FastAPI app, CORS, startup card sync, static file mount
 - **models.py** — SQLAlchemy ORM: `Card`, `Deck`, `DeckCard` with enums `CardType`, `Rarity`, `DataSource`
-- **sync.py** — Fetches card data from `optcgapi.com` API, upserts into SQLite by `card_set_id`
+- **sync.py** — Loads card data from local JSON seed (`data/cards.json`), upserts into SQLite by `card_set_id`
+- **export_cards.py** — One-time script to dump all DB cards to `data/cards.json` seed file
+- **ocr.py** — Utility for mapping `card_set_id` to local card PNG paths in `cards/` directory
 - **validation.py** — Deck rule enforcement. Parses Leader "Under the rules of this game" text for cost/type restrictions and DON!! deck size overrides
 - **routers/** — `cards.py` (search/filter/paginate), `decks.py` (CRUD + validate), `sync.py` (manual trigger)
 - **rules/** — Structured game rules extracted from official Comprehensive Rules v1.2.0 (deck construction, keywords, game flow). Referenced by validation, not currently served via API.
@@ -48,6 +50,8 @@ Two-tier app: React SPA talks to FastAPI backend over REST. SQLite database, no 
 - **Leader overrides**: Some Leaders modify deck construction rules via card text. `validation.py:parse_leader_overrides()` extracts these with regex. Known patterns: max cost, max event cost, DON!! deck size
 - **Deck structure**: Leader (1) + deck cards (exactly 50, max 4 copies each) + DON!! (10, auto-included, not user-managed)
 - **Dynamic border colors**: `CardItem.tsx` uses `COLOR_CLASS_MAP` mapping color names to Tailwind border classes (e.g., `"Red"` → `"border-card-red"`). The theme tokens must exist in `index.css` `@theme` for these to work.
+- **Data verification**: Card model has `verified` (bool) and `data_source` (enum) fields. Use `/ocr-verify` skill to cross-reference card images against DB records and mark cards as verified.
+- **Local card images**: 4,372 PNGs in `cards/` organized by set (e.g., `cards/OP-01/OP01-001.png`). `_p1.png` variants are alternate art.
 
 ## API
 

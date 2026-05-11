@@ -1,130 +1,68 @@
+import json
 import logging
 from datetime import datetime, timezone
 
-import httpx
 from sqlalchemy.orm import Session
 
-from config import OPTCG_BASE_URL
-from database import SessionLocal, engine, Base
+from config import CARDS_JSON_PATH
+from database import Base, SessionLocal, engine
 from models import Card, CardType, DataSource
 
 logger = logging.getLogger(__name__)
 
-ENDPOINTS = [
-    "/allSetCards/",
-    "/allSTCards/",
-    "/promos/filtered/",
-]
-
-
-def _parse_int(value) -> int:
-    if value is None:
-        return None
-    try:
-        return int(value)
-    except (ValueError, TypeError):
-        return None
-
-
-def _parse_float(value) -> float:
-    if value is None:
-        return None
-    try:
-        return float(value)
-    except (ValueError, TypeError):
-        return None
-
-
-def _parse_color(color_str: str) -> list:
-    if not color_str:
-        return []
-    return color_str.split()
-
-
-def _parse_types(sub_types_str: str) -> list:
-    if not sub_types_str:
-        return []
-    return [t.strip() for t in sub_types_str.split("/") if t.strip()]
-
-
-def _parse_card_type(type_str: str) -> str:
-    if not type_str:
-        return None
-    normalized = type_str.strip()
-    for ct in CardType:
-        if ct.value.lower() == normalized.lower():
-            return ct
-    return None
-
-
-def _map_card(raw: dict) -> dict:
-    card_type = _parse_card_type(raw.get("card_type", ""))
-    if card_type is None:
-        return None
-
-    card_set_id = raw.get("card_set_id", "")
-    if not card_set_id:
-        return None
-
-    return dict(
-        card_set_id=card_set_id,
-        card_name=raw.get("card_name", ""),
-        card_color=_parse_color(raw.get("card_color", "")),
-        card_type=card_type,
-        card_cost=_parse_int(raw.get("card_cost")),
-        card_power=_parse_int(raw.get("card_power")),
-        life=_parse_int(raw.get("life")),
-        card_text=raw.get("card_text"),
-        types=_parse_types(raw.get("sub_types", "")),
-        rarity=raw.get("rarity", "C"),
-        counter_amount=_parse_int(raw.get("counter_amount")),
-        attribute=raw.get("attribute"),
-        card_image=raw.get("card_image", ""),
-        set_id=raw.get("set_id", ""),
-        set_name=raw.get("set_name", ""),
-        market_price=_parse_float(raw.get("market_price")),
-        data_source=DataSource.OPTCG_API,
-        verified=False,
-        date_synced=datetime.now(timezone.utc),
-    )
+CARD_TYPE_MAP = {ct.value.lower(): ct for ct in CardType}
 
 
 def sync_cards(db: Session) -> int:
-    all_cards = {}
+    with open(CARDS_JSON_PATH) as f:
+        cards_data = json.load(f)
 
-    with httpx.Client(timeout=60.0) as client:
-        for endpoint in ENDPOINTS:
-            url = f"{OPTCG_BASE_URL}{endpoint}"
-            logger.info(f"Fetching {url}")
-            try:
-                resp = client.get(url)
-                resp.raise_for_status()
-                data = resp.json()
-            except Exception as e:
-                logger.error(f"Failed to fetch {url}: {e}")
-                continue
-
-            if isinstance(data, list):
-                for raw in data:
-                    card_set_id = raw.get("card_set_id", "")
-                    if card_set_id and card_set_id not in all_cards:
-                        all_cards[card_set_id] = raw
-
-    logger.info(f"Fetched {len(all_cards)} unique cards from API")
+    logger.info(f"Loading {len(cards_data)} cards from {CARDS_JSON_PATH}")
 
     upserted = 0
-    for card_set_id, raw in all_cards.items():
-        mapped = _map_card(raw)
-        if mapped is None:
+    now = datetime.now(timezone.utc)
+
+    for entry in cards_data:
+        card_set_id = entry.get("card_set_id")
+        if not card_set_id:
             continue
+
+        card_type_str = entry.get("card_type", "")
+        card_type = CARD_TYPE_MAP.get(card_type_str.lower())
+        if card_type is None:
+            continue
+
+        fields = {
+            "card_name": entry.get("card_name", ""),
+            "card_color": entry.get("card_color", []),
+            "card_type": card_type,
+            "card_cost": entry.get("card_cost"),
+            "card_power": entry.get("card_power"),
+            "life": entry.get("life"),
+            "card_text": entry.get("card_text"),
+            "types": entry.get("types", []),
+            "rarity": entry.get("rarity", "C"),
+            "counter_amount": entry.get("counter_amount"),
+            "attribute": entry.get("attribute"),
+            "card_image": entry.get("card_image", ""),
+            "set_id": entry.get("set_id", ""),
+            "set_name": entry.get("set_name", ""),
+            "market_price": entry.get("market_price"),
+        }
 
         existing = db.query(Card).filter_by(card_set_id=card_set_id).first()
         if existing:
-            for key, value in mapped.items():
-                if key != "card_set_id":
-                    setattr(existing, key, value)
+            for key, value in fields.items():
+                setattr(existing, key, value)
+            existing.date_synced = now
         else:
-            db.add(Card(**mapped))
+            db.add(Card(
+                card_set_id=card_set_id,
+                **fields,
+                data_source=DataSource.OPTCG_API,
+                verified=False,
+                date_synced=now,
+            ))
         upserted += 1
 
     db.commit()
