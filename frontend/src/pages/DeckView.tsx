@@ -4,7 +4,7 @@ import CardItem from "../components/CardItem";
 import { useDeck, useDeckList } from "../hooks/useDecks";
 import { useCollectionCounts } from "../hooks/useCollection";
 import { useMetaDeck, useMetaDeckList } from "../hooks/useMeta";
-import type { Card, DeckCard as DeckCardType, DeckSummary, MetaDeckSummary } from "../types";
+import type { Card } from "../types";
 
 const TYPE_ORDER = ["Character", "Event", "Stage"];
 
@@ -56,7 +56,7 @@ export default function DeckView() {
             ))}
           </div>
           {expanded?.type === "user" && (
-            <ExpandedDeck selection={expanded} selectedCard={selectedCard} onCardClick={setSelectedCard} collectionCounts={collectionCounts} />
+            <ExpandedDeck selection={expanded} onCardClick={setSelectedCard} collectionCounts={collectionCounts} />
           )}
         </>
       )}
@@ -79,7 +79,7 @@ export default function DeckView() {
             ))}
           </div>
           {expanded?.type === "meta" && (
-            <ExpandedDeck selection={expanded} selectedCard={selectedCard} onCardClick={setSelectedCard} collectionCounts={collectionCounts} />
+            <ExpandedDeck selection={expanded} onCardClick={setSelectedCard} collectionCounts={collectionCounts} />
           )}
         </>
       )}
@@ -137,12 +137,10 @@ function DeckPreviewCard({
 
 function ExpandedDeck({
   selection,
-  selectedCard,
   onCardClick,
   collectionCounts,
 }: {
   selection: DeckSelection;
-  selectedCard: Card | null;
   onCardClick: (card: Card) => void;
   collectionCounts: Map<string, number>;
 }) {
