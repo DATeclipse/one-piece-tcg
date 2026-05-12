@@ -18,6 +18,7 @@ class CardOut(BaseModel):
     counter_amount: Optional[int]
     attribute: Optional[str]
     card_image: Optional[str]
+    alt_images: list[str] = []
     set_id: str
     set_name: str
     market_price: Optional[float]

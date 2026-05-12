@@ -61,6 +61,7 @@ class Card(Base):
     counter_amount: Mapped[Optional[int]] = mapped_column(Integer, nullable=True)
     attribute: Mapped[Optional[str]] = mapped_column(String, nullable=True)
     card_image: Mapped[Optional[str]] = mapped_column(String, nullable=True)
+    alt_images: Mapped[list] = mapped_column(JSON, default=list)
     set_id: Mapped[str] = mapped_column(String)
     set_name: Mapped[str] = mapped_column(String)
     market_price: Mapped[Optional[float]] = mapped_column(Float, nullable=True)
