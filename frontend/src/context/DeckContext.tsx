@@ -31,11 +31,16 @@ export function DeckProvider({ children }: { children: ReactNode }) {
   return (
     <DeckContext.Provider
       value={{
-        leader, setLeader,
-        deckCards, setDeckCards,
-        deckName, setDeckName,
-        deckId, setDeckId,
-        validation, setValidation,
+        leader,
+        setLeader,
+        deckCards,
+        setDeckCards,
+        deckName,
+        setDeckName,
+        deckId,
+        setDeckId,
+        validation,
+        setValidation,
       }}
     >
       {children}

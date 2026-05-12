@@ -8,13 +8,18 @@ import type { Card } from "../types";
 
 const TYPE_ORDER = ["Character", "Event", "Stage"];
 
+const COLOR_HEX: Record<string, string> = {
+  Red: "#e63946", Blue: "#3a7ad9", Green: "#3aaa64",
+  Purple: "#8b5cf6", Black: "#5b6470", Yellow: "#e6b53a",
+};
+
 interface DeckSelection {
   type: "user" | "meta";
   id: number;
 }
 
 export default function DeckView() {
-  const [expanded, setExpanded] = useState<DeckSelection | null>(null);
+  const [selected, setSelected] = useState<DeckSelection | null>(null);
   const [selectedCard, setSelectedCard] = useState<Card | null>(null);
 
   const { data: decks = [], isLoading: decksLoading } = useDeckList();
@@ -22,66 +27,84 @@ export default function DeckView() {
   const { data: collectionData = {} } = useCollectionCounts();
   const collectionCounts = new Map<string, number>(Object.entries(collectionData));
 
-  const toggle = (sel: DeckSelection) => {
-    if (expanded?.type === sel.type && expanded?.id === sel.id) {
-      setExpanded(null);
-    } else {
-      setExpanded(sel);
-    }
-  };
+  const allDecks = [
+    ...decks.map(d => ({ ...d, selType: "user" as const })),
+    ...metaDecks.map(d => ({ ...d, selType: "meta" as const, updated_at: "", tournament_name: (d as any).tournament_name })),
+  ];
 
   return (
     <div>
-      {decksLoading && <div className="text-muted-dim">Loading...</div>}
+      {decksLoading && <div style={{ color: "var(--color-muted-dim)" }}>Loading...</div>}
 
-      {!decksLoading && decks.length === 0 && metaDecks.length === 0 && (
-        <div className="text-muted-dim text-sm">No saved decks yet. Build one in Deck Builder or save from Tournaments.</div>
+      {!decksLoading && allDecks.length === 0 && (
+        <div style={{ color: "var(--color-muted-dim)", fontSize: 14 }}>
+          No saved decks yet. Build one in Deck Builder or save from Tournaments.
+        </div>
       )}
 
-      {decks.length > 0 && (
-        <>
-          <h3 className="text-accent text-xl font-bold font-serif tracking-wide mb-3">Your Decks</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-            {decks.map((d) => (
-              <DeckPreviewCard
-                key={`user-${d.id}`}
-                name={d.name}
-                leaderName={d.leader_name}
-                leaderImage={d.leader_image}
-                cardCount={d.card_count}
-                subtitle={`Updated ${new Date(d.updated_at).toLocaleDateString()}`}
-                isExpanded={expanded?.type === "user" && expanded?.id === d.id}
-                onClick={() => toggle({ type: "user", id: d.id })}
-              />
-            ))}
+      {allDecks.length > 0 && (
+        <div className="deck-layout">
+          {/* Sidebar */}
+          <div className="deck-sidebar">
+            {decks.length > 0 && (
+              <>
+                <div style={{ fontFamily: "var(--font-display)", fontSize: 16, color: "var(--color-accent)", letterSpacing: "0.06em", marginBottom: 4 }}>
+                  YOUR DECKS
+                </div>
+                {decks.map(d => (
+                  <div
+                    key={`user-${d.id}`}
+                    className={`deck-row${selected?.type === "user" && selected?.id === d.id ? " selected" : ""}`}
+                    onClick={() => setSelected({ type: "user", id: d.id })}
+                  >
+                    <div className="deck-thumb">
+                      {d.leader_image && <img src={d.leader_image} alt={d.leader_name} />}
+                    </div>
+                    <div className="deck-info">
+                      <div className="deck-title">{d.name}</div>
+                      <div className="deck-sub">{d.leader_name}</div>
+                      <div className="deck-count-sm">{d.card_count}/50 cards</div>
+                    </div>
+                  </div>
+                ))}
+              </>
+            )}
+            {metaDecks.length > 0 && (
+              <>
+                <div style={{ fontFamily: "var(--font-display)", fontSize: 16, color: "var(--color-accent)", letterSpacing: "0.06em", marginTop: 12, marginBottom: 4 }}>
+                  META DECKS
+                </div>
+                {metaDecks.map(d => (
+                  <div
+                    key={`meta-${d.id}`}
+                    className={`deck-row${selected?.type === "meta" && selected?.id === d.id ? " selected" : ""}`}
+                    onClick={() => setSelected({ type: "meta", id: d.id })}
+                  >
+                    <div className="deck-thumb">
+                      {d.leader_image && <img src={d.leader_image} alt={d.leader_name} />}
+                    </div>
+                    <div className="deck-info">
+                      <div className="deck-title">{d.name}</div>
+                      <div className="deck-sub">{d.leader_name}</div>
+                      {d.player_name && <div className="deck-count-sm">{d.player_name} · #{d.placing}</div>}
+                    </div>
+                  </div>
+                ))}
+              </>
+            )}
           </div>
-          {expanded?.type === "user" && (
-            <ExpandedDeck selection={expanded} onCardClick={setSelectedCard} collectionCounts={collectionCounts} />
-          )}
-        </>
-      )}
 
-      {metaDecks.length > 0 && (
-        <>
-          <h3 className="text-accent text-xl font-bold font-serif tracking-wide mb-3">Meta Decks</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-            {metaDecks.map((d) => (
-              <DeckPreviewCard
-                key={`meta-${d.id}`}
-                name={d.name}
-                leaderName={d.leader_name}
-                leaderImage={d.leader_image}
-                cardCount={d.card_count}
-                subtitle={d.tournament_name ? `${d.tournament_name} · #${d.placing}` : undefined}
-                isExpanded={expanded?.type === "meta" && expanded?.id === d.id}
-                onClick={() => toggle({ type: "meta", id: d.id })}
-              />
-            ))}
+          {/* Detail */}
+          <div>
+            {selected ? (
+              <DeckDetail selection={selected} onCardClick={setSelectedCard} collectionCounts={collectionCounts} />
+            ) : (
+              <div style={{ color: "var(--color-muted-dim)", fontSize: 14, padding: "40px 0", textAlign: "center" }}>
+                Select a deck to view details
+              </div>
+            )}
           </div>
-          {expanded?.type === "meta" && (
-            <ExpandedDeck selection={expanded} onCardClick={setSelectedCard} collectionCounts={collectionCounts} />
-          )}
-        </>
+        </div>
       )}
 
       {selectedCard && (
@@ -91,51 +114,7 @@ export default function DeckView() {
   );
 }
 
-function DeckPreviewCard({
-  name,
-  leaderName,
-  leaderImage,
-  cardCount,
-  subtitle,
-  isExpanded,
-  onClick,
-}: {
-  name: string;
-  leaderName: string;
-  leaderImage: string | null;
-  cardCount: number;
-  subtitle?: string;
-  isExpanded: boolean;
-  onClick: () => void;
-}) {
-  return (
-    <button
-      onClick={onClick}
-      className={`bg-panel rounded-lg p-3 flex gap-3 items-start text-left w-full bg-transparent! cursor-pointer transition-all duration-100 ${isExpanded ? "ring-2 ring-accent" : "hover:ring-1 hover:ring-accent/50"}`}
-    >
-      <div className="w-20 shrink-0">
-        {leaderImage ? (
-          <img src={leaderImage} alt={leaderName} className="w-full rounded-lg" loading="lazy" />
-        ) : (
-          <div className="w-full aspect-[0.716] bg-card-placeholder rounded-lg flex items-center justify-center text-muted-dim text-[0.6rem]">
-            {leaderName}
-          </div>
-        )}
-      </div>
-      <div className="min-w-0 flex-1">
-        <div className="text-accent font-bold font-serif text-sm truncate">{name}</div>
-        <div className="text-light text-xs mt-0.5">{leaderName}</div>
-        <div className={`text-xs mt-1 ${cardCount === 50 ? "text-valid" : "text-warning"}`}>
-          {cardCount}/50 cards
-        </div>
-        {subtitle && <div className="text-muted-dim text-[0.65rem] mt-1 truncate">{subtitle}</div>}
-      </div>
-      <span className="text-muted text-xs shrink-0">{isExpanded ? "▲" : "▼"}</span>
-    </button>
-  );
-}
-
-function ExpandedDeck({
+function DeckDetail({
   selection,
   onCardClick,
   collectionCounts,
@@ -152,54 +131,76 @@ function ExpandedDeck({
   );
 
   const isLoading = userLoading || metaLoading;
-  const activeDeck = selection.type === "user" ? userDeck : metaDeck;
+  const deck = selection.type === "user" ? userDeck : metaDeck;
 
-  if (isLoading) return <div className="text-muted-dim mb-6">Loading deck...</div>;
-  if (!activeDeck) return null;
+  if (isLoading) return <div style={{ color: "var(--color-muted-dim)" }}>Loading deck...</div>;
+  if (!deck) return null;
+
+  const leaderColor = COLOR_HEX[deck.leader.card_color[0]] ?? "#444";
 
   const groupedCards = TYPE_ORDER.map((type) => ({
     type,
-    entries: activeDeck.cards.filter((dc) => dc.card.card_type === type),
+    entries: deck.cards
+      .filter((dc) => dc.card.card_type === type)
+      .sort((a, b) => (a.card.card_cost ?? 0) - (b.card.card_cost ?? 0)),
   })).filter((g) => g.entries.length > 0);
 
   return (
-    <div className="bg-panel rounded-lg p-4 mb-6 -mt-2">
-      <div className="flex flex-col md:flex-row gap-4 items-start mb-4">
-        <div className="w-28 shrink-0">
-          {activeDeck.leader.card_image ? (
-            <img
-              src={activeDeck.leader.card_image}
-              alt={activeDeck.leader.card_name}
-              className="w-full rounded-lg cursor-pointer hover:scale-[1.03] transition-transform duration-100"
-              onClick={() => onCardClick(activeDeck.leader)}
-            />
-          ) : (
-            <div
-              className="w-full aspect-[0.716] bg-card-placeholder rounded-lg flex items-center justify-center text-muted-dim text-xs cursor-pointer"
-              onClick={() => onCardClick(activeDeck.leader)}
-            >
-              {activeDeck.leader.card_name}
-            </div>
-          )}
-        </div>
-        <div>
-          <h2 className="text-accent text-xl font-bold font-serif m-0">{activeDeck.name}</h2>
-          <div className="text-light text-sm mt-1">{activeDeck.leader.card_name}</div>
-          <div className="text-muted-dim text-xs">
-            {activeDeck.leader.card_color.join("/")} | Life: {activeDeck.leader.life}
+    <div>
+      {/* Hero */}
+      <div
+        className="deck-detail-hero"
+        style={{ background: `linear-gradient(120deg, var(--color-panel), color-mix(in oklab, ${leaderColor} 25%, var(--color-panel)))` }}
+      >
+        <div style={{ display: "flex", gap: 20, alignItems: "flex-start" }}>
+          <div style={{ width: 120, flexShrink: 0 }}>
+            {deck.leader.card_image ? (
+              <img
+                src={deck.leader.card_image}
+                alt={deck.leader.card_name}
+                style={{ width: "100%", borderRadius: 10, cursor: "pointer" }}
+                onClick={() => onCardClick(deck.leader)}
+              />
+            ) : (
+              <div
+                style={{ width: "100%", aspectRatio: "0.716", background: "var(--color-card-bg)", borderRadius: 10, display: "grid", placeItems: "center", color: "var(--color-muted-dim)", fontSize: 12, cursor: "pointer" }}
+                onClick={() => onCardClick(deck.leader)}
+              >
+                {deck.leader.card_name}
+              </div>
+            )}
           </div>
-          {activeDeck.leader.types?.length > 0 && (
-            <div className="text-muted-dim text-xs">{activeDeck.leader.types.join(", ")}</div>
-          )}
+          <div>
+            <div style={{ fontFamily: "var(--font-display)", fontSize: 28, color: "var(--color-light)", letterSpacing: "0.02em" }}>
+              {deck.name}
+            </div>
+            <div style={{ color: "var(--color-muted)", fontSize: 14, marginTop: 4 }}>
+              {deck.leader.card_name} · {deck.leader.card_color.join("/")}
+            </div>
+            <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
+              <span style={{
+                padding: "4px 10px",
+                borderRadius: 999,
+                fontSize: 12,
+                fontWeight: 700,
+                background: deck.cards.reduce((s, c) => s + c.quantity, 0) === 50 ? "rgba(76,209,133,.15)" : "rgba(255,181,71,.15)",
+                color: deck.cards.reduce((s, c) => s + c.quantity, 0) === 50 ? "var(--color-good)" : "var(--color-warn)",
+              }}>
+                {deck.cards.reduce((s, c) => s + c.quantity, 0)}/50 cards
+              </span>
+            </div>
+          </div>
         </div>
       </div>
 
+      {/* Type sections */}
       {groupedCards.map(({ type, entries }) => (
-        <div key={type} className="mb-4">
-          <h4 className="text-accent text-lg font-bold font-serif tracking-wide mb-2">
-            {type} ({entries.reduce((sum, e) => sum + e.quantity, 0)})
-          </h4>
-          <div className="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-2">
+        <div key={type}>
+          <div className="band">
+            <h2>{type} ({entries.reduce((s, e) => s + e.quantity, 0)})</h2>
+            <div className="band-line" />
+          </div>
+          <div className="cs-grid">
             {entries.map((dc) => (
               <CardItem
                 key={dc.card.card_set_id}

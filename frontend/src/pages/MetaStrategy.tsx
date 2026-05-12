@@ -1,71 +1,58 @@
 import { useState } from "react";
+import ManaCurve from "../components/ManaCurve";
 import { useDeck, useDeckList } from "../hooks/useDecks";
 import { useDeleteMetaDeck, useMetaDeck, useMetaDeckList } from "../hooks/useMeta";
 import type { DeckCard } from "../types";
 
-const COLOR_BAR_MAP: Record<string, string> = {
-  Red: "bg-card-red",
-  Blue: "bg-card-blue",
-  Green: "bg-card-green",
-  Purple: "bg-card-purple",
-  Black: "bg-card-black",
-  Yellow: "bg-card-yellow",
+const COLOR_HEX: Record<string, string> = {
+  Red: "#e63946", Blue: "#3a7ad9", Green: "#3aaa64",
+  Purple: "#8b5cf6", Black: "#5b6470", Yellow: "#e6b53a",
 };
 
 interface DeckStats {
   totalCards: number;
   avgCost: string;
   totalCounter: number;
-  costCurve: Map<number, number>;
-  maxCostCount: number;
+  totalPower: number;
+  costCurve: Record<number, number>;
   typeCounts: Record<string, number>;
-  maxTypeCount: number;
   colorCounts: Record<string, number>;
-  maxColorCount: number;
 }
 
 function computeStats(cards: DeckCard[]): DeckStats {
   const nonLeader = cards.filter((dc) => dc.card.card_type !== "Leader");
   const totalCards = nonLeader.reduce((sum, dc) => sum + dc.quantity, 0);
 
-  const costCurve = new Map<number, number>();
+  const costCurve: Record<number, number> = {};
   let totalCost = 0;
   let costCount = 0;
   let totalCounter = 0;
+  let totalPower = 0;
 
   for (const dc of nonLeader) {
     if (dc.card.card_cost !== null) {
-      costCurve.set(dc.card.card_cost, (costCurve.get(dc.card.card_cost) ?? 0) + dc.quantity);
+      costCurve[dc.card.card_cost] = (costCurve[dc.card.card_cost] ?? 0) + dc.quantity;
       totalCost += dc.card.card_cost * dc.quantity;
       costCount += dc.quantity;
     }
-    if (dc.card.counter_amount !== null) {
-      totalCounter += dc.card.counter_amount * dc.quantity;
-    }
+    if (dc.card.counter_amount !== null) totalCounter += dc.card.counter_amount * dc.quantity;
+    if (dc.card.card_power !== null) totalPower += dc.card.card_power * dc.quantity;
   }
 
   const typeCounts: Record<string, number> = {};
-  for (const dc of nonLeader) {
-    typeCounts[dc.card.card_type] = (typeCounts[dc.card.card_type] ?? 0) + dc.quantity;
-  }
+  for (const dc of nonLeader) typeCounts[dc.card.card_type] = (typeCounts[dc.card.card_type] ?? 0) + dc.quantity;
 
   const colorCounts: Record<string, number> = {};
-  for (const dc of nonLeader) {
-    for (const color of dc.card.card_color) {
-      colorCounts[color] = (colorCounts[color] ?? 0) + dc.quantity;
-    }
-  }
+  for (const dc of nonLeader) for (const c of dc.card.card_color) colorCounts[c] = (colorCounts[c] ?? 0) + dc.quantity;
 
   return {
     totalCards,
     avgCost: costCount > 0 ? (totalCost / costCount).toFixed(1) : "—",
     totalCounter,
+    totalPower,
     costCurve,
-    maxCostCount: Math.max(...Array.from(costCurve.values()), 1),
     typeCounts,
-    maxTypeCount: Math.max(...Object.values(typeCounts), 1),
     colorCounts,
-    maxColorCount: Math.max(...Object.values(colorCounts), 1),
   };
 }
 
@@ -84,32 +71,36 @@ export default function MetaStrategy() {
   const comparing = deckStats && metaStats;
 
   const allColors = new Set<string>();
-  if (deckStats) Object.keys(deckStats.colorCounts).forEach((c) => allColors.add(c));
-  if (metaStats) Object.keys(metaStats.colorCounts).forEach((c) => allColors.add(c));
+  if (deckStats) Object.keys(deckStats.colorCounts).forEach(c => allColors.add(c));
+  if (metaStats) Object.keys(metaStats.colorCounts).forEach(c => allColors.add(c));
 
-  const globalMaxCost = Math.max(deckStats?.maxCostCount ?? 1, metaStats?.maxCostCount ?? 1);
-  const globalMaxType = Math.max(deckStats?.maxTypeCount ?? 1, metaStats?.maxTypeCount ?? 1);
-  const globalMaxColor = Math.max(deckStats?.maxColorCount ?? 1, metaStats?.maxColorCount ?? 1);
+  const globalMaxType = Math.max(
+    ...Object.values(deckStats?.typeCounts ?? {}),
+    ...Object.values(metaStats?.typeCounts ?? {}),
+    1
+  );
+  const globalMaxColor = Math.max(
+    ...Object.values(deckStats?.colorCounts ?? {}),
+    ...Object.values(metaStats?.colorCounts ?? {}),
+    1
+  );
 
   return (
     <div>
+      {/* Saved meta decks */}
       {metaDecks.length > 0 && (
-        <div className="mb-4">
-          <h4 className="text-accent text-sm mb-2">Saved Meta Decks</h4>
-          <div className="flex gap-2 flex-wrap">
-            {metaDecks.map((md) => (
-              <div key={md.id} className="bg-panel rounded-md px-3 py-2 flex items-center gap-3">
+        <div style={{ marginBottom: 20 }}>
+          <div style={{ fontFamily: "var(--font-display)", fontSize: 14, color: "var(--color-accent)", letterSpacing: "0.08em", marginBottom: 8 }}>
+            SAVED META DECKS
+          </div>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+            {metaDecks.map(md => (
+              <div key={md.id} className="stat" style={{ display: "flex", alignItems: "center", gap: 12 }}>
                 <div>
-                  <div className="text-light text-[0.85rem] font-bold">{md.name}</div>
-                  <div className="text-muted-dim text-[0.7rem]">
-                    {md.leader_name} | {md.card_count} cards
-                  </div>
+                  <div style={{ fontWeight: 700, fontSize: 13, color: "var(--color-light)" }}>{md.name}</div>
+                  <div style={{ fontSize: 11, color: "var(--color-muted)" }}>{md.leader_name} · {md.card_count} cards</div>
                 </div>
-                <button
-                  onClick={() => deleteMutation.mutate(md.id)}
-                  disabled={deleteMutation.isPending}
-                  className="text-[0.7rem]"
-                >
+                <button onClick={() => deleteMutation.mutate(md.id)} disabled={deleteMutation.isPending} style={{ fontSize: 11, color: "var(--color-bad)" }}>
                   Delete
                 </button>
               </div>
@@ -118,113 +109,147 @@ export default function MetaStrategy() {
         </div>
       )}
 
-      <div className="flex flex-col md:flex-row gap-4 mb-6">
-        <div className="flex-1">
-          <label className="text-muted-dim text-xs block mb-1">Your Deck</label>
+      {/* Deck pickers */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr", gap: 16, marginBottom: 24, alignItems: "end" }}>
+        <div>
+          <div className="stat-label" style={{ marginBottom: 6 }}>YOUR DECK</div>
           <select
             value={selectedDeckId ?? ""}
-            onChange={(e) => setSelectedDeckId(e.target.value ? Number(e.target.value) : null)}
-            className="p-1.5 w-full"
+            onChange={e => setSelectedDeckId(e.target.value ? Number(e.target.value) : null)}
+            style={{ width: "100%" }}
           >
-            <option value="">Select your deck...</option>
-            {decks.map((d) => (
-              <option key={d.id} value={d.id}>
-                {d.name} ({d.leader_name})
-              </option>
-            ))}
+            <option value="">Select deck...</option>
+            {decks.map(d => <option key={d.id} value={d.id}>{d.name} ({d.leader_name})</option>)}
           </select>
         </div>
-        <div className="flex-1">
-          <label className="text-muted-dim text-xs block mb-1">Meta Deck (compare)</label>
+        <div style={{ fontFamily: "var(--font-display)", fontSize: 24, color: "var(--color-muted-dim)", paddingBottom: 8 }}>VS</div>
+        <div>
+          <div className="stat-label" style={{ marginBottom: 6 }}>META DECK</div>
           <select
             value={selectedMetaId ?? ""}
-            onChange={(e) => setSelectedMetaId(e.target.value ? Number(e.target.value) : null)}
-            className="p-1.5 w-full"
+            onChange={e => setSelectedMetaId(e.target.value ? Number(e.target.value) : null)}
+            style={{ width: "100%" }}
           >
             <option value="">Select meta deck...</option>
-            {metaDecks.map((d) => (
-              <option key={d.id} value={d.id}>
-                {d.name}
-              </option>
-            ))}
+            {metaDecks.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
           </select>
         </div>
       </div>
 
       {!deckStats && !metaStats && (
-        <div className="text-muted-dim text-sm">Select a deck to see analysis. Save meta decks from Tournaments page to compare.</div>
+        <div style={{ color: "var(--color-muted-dim)", fontSize: 14 }}>
+          Select a deck to see analysis. Save meta decks from Tournaments to compare.
+        </div>
       )}
 
       {(deckStats || metaStats) && (
         <>
-          <div className={`grid ${comparing ? "grid-cols-2" : "grid-cols-1"} gap-4 mb-6`}>
-            {deckStats && (
-              <StatCards label={comparing ? "Your Deck" : undefined} stats={deckStats} />
-            )}
-            {metaStats && (
-              <StatCards label={comparing ? "Meta Deck" : undefined} stats={metaStats} />
-            )}
+          {/* Stat comparison */}
+          <div className="compare-grid">
+            <StatTile label="Cards" left={deckStats} right={metaStats} render={s => `${s.totalCards}/50`} />
+            <StatTile label="Avg Cost" left={deckStats} right={metaStats} render={s => s.avgCost} />
+            <StatTile label="Counter" left={deckStats} right={metaStats} render={s => s.totalCounter.toLocaleString()} />
+            <StatTile label="Total Power" left={deckStats} right={metaStats} render={s => (s.totalPower / 1000).toFixed(0) + "K"} />
           </div>
 
-          <h3 className="text-accent text-lg font-bold font-serif tracking-wide mb-1">
-            Mana Curve
-          </h3>
-          <p className="text-muted-dim text-xs mb-3">
-            How many cards at each cost level. A balanced curve means plays every turn. Low curves (peak 1-3) are aggressive; high curves (peak 4-6) aim for late-game power.
-          </p>
-          <div className={`grid ${comparing ? "grid-cols-2" : "grid-cols-1"} gap-4 mb-6`}>
-            {deckStats && (
-              <div>
-                {comparing && <div className="text-muted-dim text-xs mb-1">Your Deck</div>}
-                <ManaCurve stats={deckStats} maxCount={globalMaxCost} color="bg-accent" />
-              </div>
-            )}
-            {metaStats && (
-              <div>
-                {comparing && <div className="text-muted-dim text-xs mb-1">Meta Deck</div>}
-                <ManaCurve stats={metaStats} maxCount={globalMaxCost} color="bg-card-purple" />
-              </div>
-            )}
+          {/* Mana Curve */}
+          <div className="band">
+            <h2>MANA CURVE</h2>
+            <div className="band-line" />
           </div>
-
-          <h3 className="text-accent text-lg font-bold font-serif tracking-wide mb-1">
-            Type Breakdown
-          </h3>
-          <p className="text-muted-dim text-xs mb-3">
-            Characters stay on the field and fight. Events are one-time effects from hand. Stages provide ongoing board effects. Most decks are 70-80% Characters with Events for removal or draw.
-          </p>
-          <div className={`grid ${comparing ? "grid-cols-2" : "grid-cols-1"} gap-4 mb-6`}>
+          <div style={{ display: "grid", gridTemplateColumns: comparing ? "1fr 1fr" : "1fr", gap: 20, marginBottom: 24 }}>
             {deckStats && (
               <div>
-                {comparing && <div className="text-muted-dim text-xs mb-1">Your Deck</div>}
-                <TypeBreakdown stats={deckStats} maxCount={globalMaxType} />
+                {comparing && <div style={{ fontSize: 11, color: "var(--color-muted)", fontFamily: "var(--font-mono)", marginBottom: 4 }}>YOUR DECK</div>}
+                <ManaCurve costs={deckStats.costCurve} />
               </div>
             )}
             {metaStats && (
               <div>
-                {comparing && <div className="text-muted-dim text-xs mb-1">Meta Deck</div>}
-                <TypeBreakdown stats={metaStats} maxCount={globalMaxType} />
+                {comparing && <div style={{ fontSize: 11, color: "var(--color-muted)", fontFamily: "var(--font-mono)", marginBottom: 4 }}>META DECK</div>}
+                <ManaCurve costs={metaStats.costCurve} />
               </div>
             )}
           </div>
 
-          <h3 className="text-accent text-lg font-bold font-serif tracking-wide mb-1">
-            Color Distribution
-          </h3>
-          <p className="text-muted-dim text-xs mb-3">
-            Cards must match your Leader's color(s). Multi-color decks are more versatile but may have less focused synergy.
-          </p>
-          <div className={`grid ${comparing ? "grid-cols-2" : "grid-cols-1"} gap-4`}>
+          {/* Type Breakdown */}
+          <div className="band">
+            <h2>TYPE BREAKDOWN</h2>
+            <div className="band-line" />
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: comparing ? "1fr 1fr" : "1fr", gap: 20, marginBottom: 24 }}>
             {deckStats && (
               <div>
-                {comparing && <div className="text-muted-dim text-xs mb-1">Your Deck</div>}
-                <ColorDist stats={deckStats} allColors={allColors} maxCount={globalMaxColor} />
+                {comparing && <div style={{ fontSize: 11, color: "var(--color-muted)", fontFamily: "var(--font-mono)", marginBottom: 4 }}>YOUR DECK</div>}
+                {["Character", "Event", "Stage"].map(type => {
+                  const count = deckStats.typeCounts[type] ?? 0;
+                  const pct = deckStats.totalCards > 0 ? Math.round((count / deckStats.totalCards) * 100) : 0;
+                  return (
+                    <div key={type} className="bar-row">
+                      <span className="bar-label">{type}</span>
+                      <div className="bar-wrap"><div className="bar-fill" style={{ width: `${(count / globalMaxType) * 100}%` }} /></div>
+                      <span className="bar-val">{count} ({pct}%)</span>
+                    </div>
+                  );
+                })}
               </div>
             )}
             {metaStats && (
               <div>
-                {comparing && <div className="text-muted-dim text-xs mb-1">Meta Deck</div>}
-                <ColorDist stats={metaStats} allColors={allColors} maxCount={globalMaxColor} />
+                {comparing && <div style={{ fontSize: 11, color: "var(--color-muted)", fontFamily: "var(--font-mono)", marginBottom: 4 }}>META DECK</div>}
+                {["Character", "Event", "Stage"].map(type => {
+                  const count = metaStats.typeCounts[type] ?? 0;
+                  const pct = metaStats.totalCards > 0 ? Math.round((count / metaStats.totalCards) * 100) : 0;
+                  return (
+                    <div key={type} className="bar-row">
+                      <span className="bar-label">{type}</span>
+                      <div className="bar-wrap"><div className="bar-fill" style={{ width: `${(count / globalMaxType) * 100}%` }} /></div>
+                      <span className="bar-val">{count} ({pct}%)</span>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
+          {/* Color Distribution */}
+          <div className="band">
+            <h2>COLOR DISTRIBUTION</h2>
+            <div className="band-line" />
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: comparing ? "1fr 1fr" : "1fr", gap: 20 }}>
+            {deckStats && (
+              <div>
+                {comparing && <div style={{ fontSize: 11, color: "var(--color-muted)", fontFamily: "var(--font-mono)", marginBottom: 4 }}>YOUR DECK</div>}
+                {Array.from(allColors).sort((a, b) => (deckStats.colorCounts[b] ?? 0) - (deckStats.colorCounts[a] ?? 0)).map(color => {
+                  const count = deckStats.colorCounts[color] ?? 0;
+                  return (
+                    <div key={color} className="bar-row">
+                      <span className="bar-label">{color}</span>
+                      <div className="bar-wrap">
+                        <div className="bar-fill" style={{ width: `${(count / globalMaxColor) * 100}%`, background: COLOR_HEX[color] ?? "var(--color-accent)" }} />
+                      </div>
+                      <span className="bar-val">{count}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+            {metaStats && (
+              <div>
+                {comparing && <div style={{ fontSize: 11, color: "var(--color-muted)", fontFamily: "var(--font-mono)", marginBottom: 4 }}>META DECK</div>}
+                {Array.from(allColors).sort((a, b) => (metaStats.colorCounts[b] ?? 0) - (metaStats.colorCounts[a] ?? 0)).map(color => {
+                  const count = metaStats.colorCounts[color] ?? 0;
+                  return (
+                    <div key={color} className="bar-row">
+                      <span className="bar-label">{color}</span>
+                      <div className="bar-wrap">
+                        <div className="bar-fill" style={{ width: `${(count / globalMaxColor) * 100}%`, background: COLOR_HEX[color] ?? "var(--color-accent)" }} />
+                      </div>
+                      <span className="bar-val">{count}</span>
+                    </div>
+                  );
+                })}
               </div>
             )}
           </div>
@@ -234,99 +259,20 @@ export default function MetaStrategy() {
   );
 }
 
-function StatCards({ label, stats }: { label?: string; stats: DeckStats }) {
+function StatTile({ label, left, right, render }: {
+  label: string;
+  left: DeckStats | null;
+  right: DeckStats | null;
+  render: (s: DeckStats) => string;
+}) {
   return (
-    <div>
-      {label && <div className="text-muted-dim text-xs mb-1">{label}</div>}
-      <div className="flex gap-3 text-sm">
-        <div className="bg-panel rounded px-3 py-2">
-          <div className="text-muted-dim text-xs">Cards</div>
-          <div className={stats.totalCards === 50 ? "text-valid font-bold" : "text-warning font-bold"}>
-            {stats.totalCards}/50
-          </div>
-          <div className="text-muted-dim text-[0.6rem] mt-0.5">Need exactly 50</div>
-        </div>
-        <div className="bg-panel rounded px-3 py-2">
-          <div className="text-muted-dim text-xs">Avg Cost</div>
-          <div className="text-light font-bold">{stats.avgCost}</div>
-          <div className="text-muted-dim text-[0.6rem] mt-0.5">Lower = faster deck</div>
-        </div>
-        <div className="bg-panel rounded px-3 py-2">
-          <div className="text-muted-dim text-xs">Counter</div>
-          <div className="text-light font-bold">{stats.totalCounter.toLocaleString()}</div>
-          <div className="text-muted-dim text-[0.6rem] mt-0.5">Blocks attacks from hand</div>
-        </div>
+    <div className="stat">
+      <div className="stat-label">{label}</div>
+      <div style={{ display: "flex", gap: 8, alignItems: "baseline" }}>
+        {left && <span className="stat-value">{render(left)}</span>}
+        {left && right && <span style={{ color: "var(--color-muted-dim)", fontSize: 14 }}>vs</span>}
+        {right && <span className="stat-value">{render(right)}</span>}
       </div>
-    </div>
-  );
-}
-
-function ManaCurve({ stats, maxCount, color }: { stats: DeckStats; maxCount: number; color: string }) {
-  return (
-    <div className="flex items-end gap-1.5 h-36">
-      {Array.from({ length: 11 }, (_, cost) => {
-        const count = stats.costCurve.get(cost) ?? 0;
-        const height = maxCount > 0 ? (count / maxCount) * 130 : 0;
-        return (
-          <div key={cost} className="flex flex-col items-center gap-1 flex-1">
-            <span className="text-xs text-muted">{count || ""}</span>
-            <div
-              className={`w-full ${color} rounded-t min-h-0.5`}
-              style={{ height: `${height}px` }}
-            />
-            <span className="text-xs text-muted-dim">{cost}</span>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
-function TypeBreakdown({ stats, maxCount }: { stats: DeckStats; maxCount: number }) {
-  return (
-    <div className="flex flex-col gap-2">
-      {["Character", "Event", "Stage"].map((type) => {
-        const count = stats.typeCounts[type] ?? 0;
-        const pct = stats.totalCards > 0 ? Math.round((count / stats.totalCards) * 100) : 0;
-        return (
-          <div key={type} className="flex items-center gap-2">
-            <span className="w-20 text-sm text-light">{type}</span>
-            <div className="flex-1 flex items-center gap-2">
-              <div
-                className="bg-accent rounded h-5 min-w-0.5"
-                style={{ width: `${(count / maxCount) * 100}%` }}
-              />
-              <span className="text-xs text-muted whitespace-nowrap">
-                {count} ({pct}%)
-              </span>
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
-function ColorDist({ stats, allColors, maxCount }: { stats: DeckStats; allColors: Set<string>; maxCount: number }) {
-  return (
-    <div className="flex flex-col gap-2">
-      {Array.from(allColors)
-        .sort((a, b) => (stats.colorCounts[b] ?? 0) - (stats.colorCounts[a] ?? 0))
-        .map((color) => {
-          const count = stats.colorCounts[color] ?? 0;
-          return (
-            <div key={color} className="flex items-center gap-2">
-              <span className="w-20 text-sm text-light">{color}</span>
-              <div className="flex-1 flex items-center gap-2">
-                <div
-                  className={`${COLOR_BAR_MAP[color] ?? "bg-accent"} rounded h-5 min-w-0.5`}
-                  style={{ width: `${(count / maxCount) * 100}%` }}
-                />
-                <span className="text-xs text-muted">{count}</span>
-              </div>
-            </div>
-          );
-        })}
     </div>
   );
 }

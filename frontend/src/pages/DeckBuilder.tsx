@@ -175,8 +175,8 @@ export default function DeckBuilder() {
       <DeckList onLoad={handleLoad} />
 
       {loadingDeck && <div className="text-muted-dim mb-2">Loading deck...</div>}
-      <div className="flex flex-col md:flex-row gap-4 pb-20 md:pb-0">
-        <div className="flex-1 min-w-0">
+      <div className="builder-grid pb-20 md:pb-0">
+        <div className="min-w-0">
           <SearchFilters
             filters={filters}
             onChange={setFilters}
@@ -230,9 +230,9 @@ export default function DeckBuilder() {
           )}
         </div>
 
-        <div className="hidden md:block w-80 shrink-0 sticky top-4 self-start">
+        <div className="hidden md:block">
           <div className="flex justify-end mb-2">
-            <button onClick={handleNewDeck} className="text-[0.75rem]">
+            <button onClick={handleNewDeck} style={{ fontSize: 12 }}>
               New Deck
             </button>
           </div>

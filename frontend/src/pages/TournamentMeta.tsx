@@ -8,82 +8,105 @@ export default function TournamentMeta() {
   const [expandedTournament, setExpandedTournament] = useState<string | null>(null);
   const [expandedDeck, setExpandedDeck] = useState<string | null>(null);
 
-  const maxAppearances = Math.max(...stats.map((s) => s.appearances), 1);
+  const maxAppearances = Math.max(...stats.map(s => s.appearances), 1);
+  const totalAppearances = stats.reduce((s, x) => s + x.appearances, 0);
+  const totalWins = stats.reduce((s, x) => s + x.wins, 0);
+  const winrate = totalAppearances > 0 ? Math.round((totalWins / totalAppearances) * 100) : 0;
 
   return (
     <div>
-      <h3 className="text-accent text-xl font-bold font-serif tracking-wide mb-3">
-        Leader Popularity (Top 8 across recent tournaments)
-      </h3>
-      {statsLoading && <div className="text-muted-dim">Loading stats...</div>}
-      <div className="flex flex-col gap-1.5 mb-6">
-        {stats.map((s) => (
-          <div key={s.leader_id || s.leader_name} className="flex items-center gap-2">
-            <span className="w-36 text-sm text-light truncate">{s.leader_name}</span>
-            <div className="flex-1 flex items-center gap-2">
-              <div
-                className="bg-accent rounded h-6 min-w-1"
-                style={{ width: `${(s.appearances / maxAppearances) * 100}%` }}
-              />
-              <span className="text-xs text-muted whitespace-nowrap">
-                {s.appearances} app · {s.wins}W
-              </span>
+      {/* Stats grid */}
+      <div className="stat-grid">
+        <div className="stat">
+          <div className="stat-label">Events Tracked</div>
+          <div className="stat-value">{tournaments.length}</div>
+        </div>
+        <div className="stat">
+          <div className="stat-label">Appearances</div>
+          <div className="stat-value">{totalAppearances}</div>
+        </div>
+        <div className="stat">
+          <div className="stat-label">Meta Winrate</div>
+          <div className="stat-value">{winrate}%</div>
+        </div>
+        <div className="stat">
+          <div className="stat-label">Hottest Leader</div>
+          <div className="stat-value" style={{ fontSize: 16 }}>{stats[0]?.leader_name ?? "—"}</div>
+        </div>
+      </div>
+
+      {/* Leader Popularity */}
+      <div className="band">
+        <h2>LEADER POPULARITY</h2>
+        <div className="band-line" />
+      </div>
+      {statsLoading && <div style={{ color: "var(--color-muted-dim)" }}>Loading stats...</div>}
+      <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 24 }}>
+        {stats.map((s, i) => (
+          <div key={s.leader_id || s.leader_name} className="bar-row">
+            <span className="bar-label" style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              {i < 3 && (
+                <span className={`rank`} style={{
+                  width: 22, height: 22, borderRadius: 6, display: "inline-grid", placeItems: "center",
+                  fontSize: 11, fontWeight: 800,
+                  background: i === 0 ? "linear-gradient(135deg, #fbbf24, #f59e0b)" : i === 1 ? "linear-gradient(135deg, #d1d5db, #9ca3af)" : "linear-gradient(135deg, #d97706, #b45309)",
+                  color: i === 1 ? "#000" : i === 0 ? "#000" : "#fff",
+                }}>
+                  {i + 1}
+                </span>
+              )}
+              <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{s.leader_name}</span>
+            </span>
+            <div className="bar-wrap">
+              <div className="bar-fill" style={{ width: `${(s.appearances / maxAppearances) * 100}%`, transition: "width 1.1s cubic-bezier(0.2,0.7,0.2,1)" }} />
             </div>
+            <span className="bar-val">{s.appearances} · {s.wins}W</span>
           </div>
         ))}
       </div>
 
-      <h3 className="text-accent text-xl font-bold font-serif tracking-wide mb-3">
-        Recent Tournaments
-      </h3>
-      {tournamentsLoading && <div className="text-muted-dim">Loading tournaments...</div>}
-      <div className="flex flex-col gap-3">
-        {tournaments.map((t) => {
+      {/* Tournaments */}
+      <div className="band">
+        <h2>RECENT TOURNAMENTS</h2>
+        <div className="band-line" />
+      </div>
+      {tournamentsLoading && <div style={{ color: "var(--color-muted-dim)" }}>Loading tournaments...</div>}
+      <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+        {tournaments.map(t => {
           const isExpanded = expandedTournament === t.id;
           return (
-            <div key={t.id} className="bg-panel rounded-lg overflow-hidden">
+            <div key={t.id} style={{ background: "var(--color-panel)", borderRadius: 12, overflow: "hidden", border: "1px solid var(--color-border)" }}>
               <button
                 onClick={() => setExpandedTournament(isExpanded ? null : t.id)}
-                className="w-full bg-transparent! text-left px-4 py-3 flex justify-between items-center"
+                style={{ width: "100%", background: "transparent", textAlign: "left", padding: "12px 16px", display: "flex", justifyContent: "space-between", alignItems: "center", border: "none" }}
               >
                 <div>
-                  <div className="text-light font-bold text-sm">{t.name}</div>
-                  <div className="text-muted-dim text-xs">
+                  <div style={{ fontWeight: 700, fontSize: 14, color: "var(--color-light)" }}>{t.name}</div>
+                  <div style={{ fontSize: 12, color: "var(--color-muted)", marginTop: 2 }}>
                     {new Date(t.date).toLocaleDateString()} · {t.players} players
                   </div>
                 </div>
-                <span className="text-muted">{isExpanded ? "▲" : "▼"}</span>
+                <span style={{ color: "var(--color-muted)" }}>{isExpanded ? "▲" : "▼"}</span>
               </button>
 
               {isExpanded && (
-                <div className="px-4 pb-3">
-                  <table className="w-full text-sm">
-                    <thead>
-                      <tr className="text-muted-dim text-xs text-left">
-                        <th className="pb-1 w-8">#</th>
-                        <th className="pb-1">Player</th>
-                        <th className="pb-1">Leader</th>
-                        <th className="pb-1 w-20">Record</th>
-                        <th className="pb-1 w-12"></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {t.top_decks.map((d, i) => {
-                        const deckKey = `${t.id}-${i}`;
-                        const isDeckExpanded = expandedDeck === deckKey;
-                        return (
-                          <DeckRow
-                            key={deckKey}
-                            entry={d}
-                            tournamentName={t.name}
-                            tournamentDate={t.date}
-                            isExpanded={isDeckExpanded}
-                            onToggle={() => setExpandedDeck(isDeckExpanded ? null : deckKey)}
-                          />
-                        );
-                      })}
-                    </tbody>
-                  </table>
+                <div style={{ padding: "0 16px 12px" }}>
+                  <div className="tlist">
+                    {t.top_decks.map((d, i) => {
+                      const deckKey = `${t.id}-${i}`;
+                      return (
+                        <DeckRow
+                          key={deckKey}
+                          entry={d}
+                          index={i}
+                          tournamentName={t.name}
+                          tournamentDate={t.date}
+                          isExpanded={expandedDeck === deckKey}
+                          onToggle={() => setExpandedDeck(expandedDeck === deckKey ? null : deckKey)}
+                        />
+                      );
+                    })}
+                  </div>
                 </div>
               )}
             </div>
@@ -106,12 +129,14 @@ function decklistToCards(decklist: MetaDecklist) {
 
 function DeckRow({
   entry,
+  index,
   tournamentName,
   tournamentDate,
   isExpanded,
   onToggle,
 }: {
   entry: MetaDeckEntry;
+  index: number;
   tournamentName: string;
   tournamentDate: string;
   isExpanded: boolean;
@@ -119,7 +144,7 @@ function DeckRow({
 }) {
   const saveMutation = useSaveMetaDeck();
   const record = entry.record;
-  const recordStr = record ? `${record.wins}W-${record.losses}L-${record.ties}T` : "—";
+  const recordStr = record ? `${record.wins}W-${record.losses}L` : "—";
 
   const handleSave = () => {
     if (!entry.decklist) return;
@@ -135,59 +160,62 @@ function DeckRow({
     });
   };
 
-  const renderCards = (cards: MetaDecklistCard[], label: string) => {
-    if (!cards || cards.length === 0) return null;
-    return (
-      <div className="mb-2">
-        <div className="text-muted-dim text-xs font-bold mb-1">{label}</div>
-        {cards.map((c, i) => (
-          <div key={i} className="text-light-dim text-xs">
-            {c.count}x {c.name}
-            <span className="text-muted-dark ml-1">
-              {c.set}-{c.number}
-            </span>
-          </div>
-        ))}
-      </div>
-    );
-  };
+  const topClass = index < 3 ? ` top${index + 1}` : "";
 
   return (
     <>
-      <tr
+      <div
+        className={`trow${topClass}`}
         onClick={entry.decklist ? onToggle : undefined}
-        className={`border-t border-border-subtle ${entry.decklist ? "cursor-pointer hover:bg-card-bg" : ""}`}
+        style={{ cursor: entry.decklist ? "pointer" : "default" }}
       >
-        <td className="py-1.5 text-muted">{entry.placing}</td>
-        <td className="py-1.5 text-light-dim">{entry.player}</td>
-        <td className="py-1.5 text-light">{entry.leader}</td>
-        <td className="py-1.5 text-muted-dim">{recordStr}</td>
-        <td className="py-1.5">
+        <div className="rank">{entry.placing}</div>
+        <div className="trow-info">
+          <div className="trow-name">{entry.leader}</div>
+          <div className="trow-sub">{entry.player}</div>
+        </div>
+        <div className="trow-stat">{recordStr}</div>
+        <div className="trow-stat">{entry.decklist ? `${[...entry.decklist.character, ...entry.decklist.event, ...entry.decklist.stage].reduce((s, c) => s + c.count, 0)} cards` : "—"}</div>
+        <div>
           {entry.decklist && (
             <button
               onClick={(e) => { e.stopPropagation(); handleSave(); }}
               disabled={saveMutation.isPending}
-              className="text-[0.65rem] px-1.5 py-0.5"
+              className={saveMutation.isSuccess ? "" : "btn primary"}
+              style={{ fontSize: 11, padding: "4px 10px" }}
             >
-              {saveMutation.isPending ? "..." : saveMutation.isSuccess ? "Saved" : "Save"}
+              {saveMutation.isPending ? "..." : saveMutation.isSuccess ? "Saved ✓" : "Import"}
             </button>
           )}
-        </td>
-      </tr>
+        </div>
+      </div>
       {isExpanded && entry.decklist && (
-        <tr>
-          <td colSpan={5} className="bg-card-bg px-3 py-2">
-            <div className="text-accent text-xs font-bold mb-2">
-              Leader: {entry.decklist.leader.name} ({entry.decklist.leader.set}-{entry.decklist.leader.number})
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-              {renderCards(entry.decklist.character, "Character")}
-              {renderCards(entry.decklist.event, "Event")}
-              {renderCards(entry.decklist.stage, "Stage")}
-            </div>
-          </td>
-        </tr>
+        <div style={{ background: "var(--color-card-bg)", borderRadius: 8, padding: "10px 14px", margin: "-4px 0 4px" }}>
+          <div style={{ fontWeight: 700, fontSize: 12, color: "var(--color-accent)", marginBottom: 6 }}>
+            Leader: {entry.decklist.leader.name}
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+            <CardList cards={entry.decklist.character} label="Character" />
+            <CardList cards={entry.decklist.event} label="Event" />
+            <CardList cards={entry.decklist.stage} label="Stage" />
+          </div>
+        </div>
       )}
     </>
+  );
+}
+
+function CardList({ cards, label }: { cards: MetaDecklistCard[]; label: string }) {
+  if (!cards || cards.length === 0) return null;
+  return (
+    <div>
+      <div style={{ fontSize: 11, fontWeight: 700, color: "var(--color-muted-dim)", marginBottom: 4, fontFamily: "var(--font-mono)" }}>{label.toUpperCase()}</div>
+      {cards.map((c, i) => (
+        <div key={i} style={{ fontSize: 12, color: "var(--color-light)", lineHeight: 1.6 }}>
+          {c.count}× {c.name}
+          <span style={{ color: "var(--color-muted-dim)", marginLeft: 4, fontSize: 10 }}>{c.set}-{c.number}</span>
+        </div>
+      ))}
+    </div>
   );
 }

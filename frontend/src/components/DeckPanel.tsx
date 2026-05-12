@@ -1,5 +1,11 @@
+import ManaCurve from "./ManaCurve";
 import { useCollectionCounts } from "../hooks/useCollection";
 import type { Card } from "../types";
+
+const COLOR_HEX: Record<string, string> = {
+  Red: "#e63946", Blue: "#3a7ad9", Green: "#3aaa64",
+  Purple: "#8b5cf6", Black: "#5b6470", Yellow: "#e6b53a",
+};
 
 interface DeckEntry {
   card: Card;
@@ -39,119 +45,108 @@ export default function DeckPanel({
     return sum + Math.max(0, e.quantity - owned);
   }, 0);
 
-  return (
-    <div className="bg-panel rounded-lg p-4 flex flex-col gap-3 md:max-h-[calc(100vh-6rem)] overflow-auto">
-      <h3 className="m-0 text-accent">Deck</h3>
+  const costCurve: Record<number, number> = {};
+  for (const e of entries) {
+    const c = e.card.card_cost ?? 0;
+    costCurve[c] = (costCurve[c] ?? 0) + e.quantity;
+  }
 
+  const leaderColor = leader ? COLOR_HEX[leader.card_color[0]] ?? "#444" : "#444";
+  const countClass = totalCards === 50 ? "good" : totalCards >= 40 ? "warn" : "bad";
+
+  return (
+    <div className="builder-side">
       <input
         type="text"
         placeholder="Deck name..."
         value={deckName}
         onChange={(e) => onDeckNameChange(e.target.value)}
-        className="p-1.5 w-full"
+        style={{ width: "100%", marginBottom: 12 }}
       />
 
-      <div className="border-b border-border pb-2">
-        <div className="text-[0.8rem] text-muted mb-1">Leader</div>
+      {/* Leader */}
+      <div style={{ background: "var(--color-bg-2)", borderRadius: 10, padding: 10, borderLeft: `4px solid ${leaderColor}`, marginBottom: 12 }}>
+        <div style={{ fontSize: 11, color: "var(--color-muted-dim)", fontFamily: "var(--font-mono)", marginBottom: 4 }}>LEADER</div>
         {leader ? (
-          <div className="flex justify-between items-center">
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <div>
-              <div className="text-light text-[0.85rem]">{leader.card_name}</div>
-              <div className="text-muted-dim text-[0.7rem]">
-                {leader.card_color.join("/")} | Life: {leader.life}
+              <div style={{ color: "var(--color-light)", fontSize: 14, fontWeight: 700 }}>{leader.card_name}</div>
+              <div style={{ color: "var(--color-muted)", fontSize: 12 }}>
+                {leader.card_color.join("/")} · Life: {leader.life}
               </div>
-              {leader.types?.length > 0 && (
-                <div className="text-muted-dim text-[0.7rem]">
-                  {leader.types.join(", ")}
-                </div>
-              )}
             </div>
-            <button onClick={onRemoveLeader} className="text-[0.7rem]">
-              Remove
-            </button>
+            <button onClick={onRemoveLeader} style={{ fontSize: 12 }}>Remove</button>
           </div>
         ) : (
-          <div className="text-muted-darker text-[0.8rem]">Click a Leader card to select</div>
+          <div style={{ color: "var(--color-muted-dim)", fontSize: 13 }}>Select a Leader card</div>
         )}
       </div>
 
-      <div className={`text-[0.85rem] ${totalCards === 50 ? "text-valid" : "text-warning"}`}>
-        Cards: {totalCards}/50
+      {/* Count */}
+      <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 8 }}>
+        <span className={`deck-count ${countClass}`}>{totalCards}</span>
+        <span style={{ color: "var(--color-muted)", fontSize: 14 }}>/ 50 cards</span>
       </div>
 
-      <div className="text-muted-dim text-[0.7rem]">10 DON!! cards auto-included</div>
-
-      <div className="flex-1 overflow-auto">
+      {/* Mini list */}
+      <div className="mini-list">
         {entries.map((entry) => {
           const owned = counts[entry.card.card_set_id] ?? 0;
           const need = Math.max(0, entry.quantity - owned);
+          const swatch = COLOR_HEX[entry.card.card_color[0]] ?? "#444";
           return (
-            <div
-              key={entry.card.card_set_id}
-              className="flex justify-between items-center py-1 border-b border-border-subtle"
-            >
-              <div className="flex-1 min-w-0">
-                <div className="text-light-dim text-[0.75rem] whitespace-nowrap overflow-hidden text-ellipsis">
-                  {entry.card.card_name}
-                </div>
-                <div className="text-muted-dark text-[0.65rem]">
-                  {entry.card.card_type} | Cost: {entry.card.card_cost ?? "-"}
-                  <span className={`ml-1 ${need > 0 ? "text-warning" : "text-valid"}`}>
-                    Own {owned}/{entry.quantity}
-                  </span>
-                  {need > 0 && (
-                    <span className="text-warning ml-1">— Need {need}</span>
-                  )}
-                </div>
+            <div key={entry.card.card_set_id} className="mini-row">
+              <div className="swatch" style={{ background: swatch }} />
+              <div className="mini-name">
+                {entry.card.card_name}
+                {need > 0 && <span style={{ color: "var(--color-warn)", fontSize: 10, marginLeft: 4 }}>−{need}</span>}
               </div>
-              <div className="flex items-center gap-1">
-                <button
-                  onClick={() => onChangeQuantity(entry.card.card_set_id, -1)}
-                  className="px-1.5 py-0 text-[0.8rem]"
-                >
-                  -
-                </button>
-                <span className="text-light text-[0.85rem] min-w-4 text-center">
+              <div className="qty">
+                <button onClick={() => onChangeQuantity(entry.card.card_set_id, -1)}>−</button>
+                <span style={{ minWidth: 16, textAlign: "center", fontSize: 13, fontWeight: 700, color: "var(--color-light)" }}>
                   {entry.quantity}
                 </span>
-                <button
-                  onClick={() => onChangeQuantity(entry.card.card_set_id, 1)}
-                  className="px-1.5 py-0 text-[0.8rem]"
-                >
-                  +
-                </button>
+                <button onClick={() => onChangeQuantity(entry.card.card_set_id, 1)}>+</button>
               </div>
             </div>
           );
         })}
       </div>
 
+      {/* Mana curve */}
+      {entries.length > 0 && <ManaCurve costs={costCurve} />}
+
+      {/* Footer */}
+      <div style={{ fontSize: 11, color: "var(--color-muted-dim)", marginTop: 8, fontFamily: "var(--font-mono)" }}>
+        10 DON!! auto-included
+      </div>
+
       {entries.length > 0 && (
-        <div className={`text-[0.75rem] ${totalMissing > 0 ? "text-warning" : "text-valid"}`}>
-          {totalMissing > 0 ? `Missing ${totalMissing} cards from collection` : "All cards owned"}
+        <div style={{ fontSize: 12, marginTop: 4, color: totalMissing > 0 ? "var(--color-warn)" : "var(--color-good)" }}>
+          {totalMissing > 0 ? `Missing ${totalMissing} cards` : "All cards owned ✓"}
         </div>
       )}
 
       {validation && (
-        <div className={`rounded p-2 text-[0.75rem] ${validation.valid ? "bg-valid-bg" : "bg-error-bg"}`}>
+        <div style={{
+          borderRadius: 8,
+          padding: 8,
+          fontSize: 12,
+          marginTop: 8,
+          background: validation.valid ? "rgba(76,209,133,.12)" : "rgba(255,90,107,.12)",
+        }}>
           {validation.valid ? (
-            <div className="text-valid">Deck is valid!</div>
+            <div style={{ color: "var(--color-good)" }}>Deck is valid!</div>
           ) : (
-            validation.errors.map((err, i) => (
-              <div key={i} className="text-error-text">{err}</div>
-            ))
+            validation.errors.map((err, i) => <div key={i} style={{ color: "var(--color-bad)" }}>{err}</div>)
           )}
-          {validation.warnings.map((w, i) => (
-            <div key={i} className="text-warning-text">{w}</div>
-          ))}
+          {validation.warnings.map((w, i) => <div key={i} style={{ color: "var(--color-warn)" }}>{w}</div>)}
         </div>
       )}
 
-      <div className="flex gap-2">
-        <button onClick={onValidate} className="flex-1">
-          Validate
-        </button>
-        <button onClick={onSave} disabled={saving || !leader || !deckName} className="flex-1">
+      <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
+        <button onClick={onValidate} style={{ flex: 1 }}>Validate</button>
+        <button onClick={onSave} disabled={saving || !leader || !deckName} className="btn primary" style={{ flex: 1 }}>
           {saving ? "Saving..." : "Save"}
         </button>
       </div>
