@@ -4,7 +4,7 @@ import { getCard, updateCard } from "../api/client";
 import type { Card } from "../types";
 
 const ART_STYLES = ["standard", "manga", "full_art", "alt_art"] as const;
-const RARITY_OVERRIDES = ["SP", "TR"] as const;
+const RARITIES = ["C", "UC", "R", "SR", "SEC", "L", "SP", "TR", "P", "PR"] as const;
 
 function TagButton({
   label,
@@ -95,8 +95,7 @@ function CardTagger({
   });
 
   const handleRarity = (r: string) => {
-    const newRarity = card.rarity === r ? initialCard.rarity : r;
-    mutation.mutate({ rarity: newRarity });
+    mutation.mutate({ rarity: r });
   };
 
   const handleArtStyle = (style: string) => {
@@ -149,17 +148,18 @@ function CardTagger({
         >
           {card.card_name} · {card.rarity} · {card.art_style}
         </div>
-        <div style={{ display: "flex", gap: "4px", flexWrap: "wrap" }}>
-          {RARITY_OVERRIDES.map((r) => (
+        <div style={{ display: "flex", gap: "3px", flexWrap: "wrap", marginBottom: "4px" }}>
+          {RARITIES.map((r) => (
             <TagButton
               key={r}
               label={r}
               active={card.rarity === r}
-              color={r === "SP" ? "#e040fb" : "#00bcd4"}
+              color={r === "SP" ? "#e040fb" : r === "TR" ? "#00bcd4" : "#555"}
               onClick={() => handleRarity(r)}
             />
           ))}
-          <div style={{ width: "4px" }} />
+        </div>
+        <div style={{ display: "flex", gap: "3px", flexWrap: "wrap" }}>
           {ART_STYLES.map((s) => (
             <TagButton
               key={s}

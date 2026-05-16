@@ -60,8 +60,6 @@ export default function CardItem({
         </div>
       )}
 
-      <div className="rarity-badge">{card.rarity}</div>
-
       {isAltArt && <div className="alt-badge">ALT</div>}
 
       {collectionCount !== undefined && collectionCount > 0 && (

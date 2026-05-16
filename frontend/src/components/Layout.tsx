@@ -8,7 +8,7 @@ export default function Layout() {
           OPTCG Deck Builder
         </span>
         <NavLink
-          to="/cards"
+          to="/"
           className={({ isActive }) =>
             `no-underline ${isActive ? "text-accent" : "text-light"}`
           }
@@ -16,7 +16,7 @@ export default function Layout() {
           Card Search
         </NavLink>
         <NavLink
-          to="/"
+          to="/deck-builder"
           className={({ isActive }) =>
             `no-underline ${isActive ? "text-accent" : "text-light"}`
           }

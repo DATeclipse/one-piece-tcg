@@ -19,8 +19,8 @@ export default function App() {
         <BrowserRouter>
           <Routes>
             <Route element={<Layout />}>
-              <Route index element={<DeckBuilder />} />
-              <Route path="cards" element={<CardSearch />} />
+              <Route index element={<CardSearch />} />
+              <Route path="deck-builder" element={<DeckBuilder />} />
               <Route path="decks" element={<DeckView />} />
               <Route path="tournaments" element={<TournamentMeta />} />
               <Route path="meta" element={<MetaStrategy />} />
