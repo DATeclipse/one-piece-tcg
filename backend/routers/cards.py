@@ -37,6 +37,7 @@ def list_cards(
         q = q.filter(or_(
             Card.card_name.ilike(f"%{search}%"),
             Card.types.like(f"%{search}%"),
+            Card.card_set_id.ilike(f"%{search}%"),
         ))
     if name:
         q = q.filter(Card.card_name.ilike(f"%{name}%"))
