@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { getCard, updateCard } from "../api/client";
 import type { Card } from "../types";
 
@@ -37,6 +37,39 @@ function TagButton({
   );
 }
 
+function CardImage({ src, alt }: { src: string; alt: string }) {
+  const [broken, setBroken] = useState(false);
+  const onError = useCallback(() => setBroken(true), []);
+
+  if (broken) {
+    return (
+      <div
+        style={{
+          height: 200,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "var(--color-muted)",
+          background: "var(--color-card-bg)",
+          fontSize: "11px",
+        }}
+      >
+        Image failed
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      style={{ width: "100%", display: "block" }}
+      loading="lazy"
+      onError={onError}
+    />
+  );
+}
+
 function CardTagger({ card: initialCard }: { card: Card }) {
   const [card, setCard] = useState(initialCard);
 
@@ -66,12 +99,7 @@ function CardTagger({ card: initialCard }: { card: Card }) {
       }}
     >
       {card.card_image ? (
-        <img
-          src={card.card_image}
-          alt={card.card_name}
-          style={{ width: "100%", display: "block" }}
-          loading="lazy"
-        />
+        <CardImage src={card.card_image} alt={card.card_name} />
       ) : (
         <div
           style={{
