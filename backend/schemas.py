@@ -22,9 +22,15 @@ class CardOut(BaseModel):
     set_id: str
     set_name: str
     market_price: Optional[float]
+    art_style: str = "standard"
 
     class Config:
         from_attributes = True
+
+
+class CardUpdate(BaseModel):
+    rarity: Optional[str] = None
+    art_style: Optional[str] = None
 
 
 class PaginatedCards(BaseModel):

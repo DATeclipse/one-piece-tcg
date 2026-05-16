@@ -143,6 +143,20 @@ export function updateCollectionItem(
   });
 }
 
+export function getCard(cardSetId: string): Promise<Card> {
+  return request(`/cards/${encodeURIComponent(cardSetId)}`);
+}
+
+export function updateCard(
+  cardSetId: string,
+  updates: { rarity?: string; art_style?: string }
+): Promise<Card> {
+  return request(`/cards/${encodeURIComponent(cardSetId)}`, {
+    method: "PATCH",
+    body: JSON.stringify(updates),
+  });
+}
+
 export function validateDeck(payload: {
   name: string;
   leader_card_set_id: string;

@@ -1,6 +1,7 @@
-import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { getColors, getSets, searchCards } from "../api/client";
+import { keepPreviousData, useMutation, useQuery } from "@tanstack/react-query";
+import { getCard, getColors, getSets, searchCards, updateCard } from "../api/client";
 import type { Card, SearchFilters } from "../types";
+import { queryClient } from "../lib/queryClient";
 
 export function useCardSearch(filters: SearchFilters, page: number, enabled = true) {
   return useQuery({
@@ -25,6 +26,24 @@ export function useSets() {
     queryKey: ["sets"],
     queryFn: getSets,
     staleTime: Infinity,
+  });
+}
+
+export function useCardById(cardSetId: string) {
+  return useQuery({
+    queryKey: ["card", cardSetId],
+    queryFn: () => getCard(cardSetId),
+    staleTime: 60_000,
+  });
+}
+
+export function useUpdateCard() {
+  return useMutation({
+    mutationFn: ({ cardSetId, updates }: { cardSetId: string; updates: { rarity?: string; art_style?: string } }) =>
+      updateCard(cardSetId, updates),
+    onSuccess: (card) => {
+      queryClient.setQueryData(["card", card.card_set_id], card);
+    },
   });
 }
 

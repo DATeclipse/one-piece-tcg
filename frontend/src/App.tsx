@@ -10,6 +10,7 @@ import DeckView from "./pages/DeckView";
 import MetaStrategy from "./pages/MetaStrategy";
 import CollectionPage from "./pages/CollectionPage";
 import TournamentMeta from "./pages/TournamentMeta";
+import DevTagger from "./pages/DevTagger";
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
               <Route path="meta" element={<MetaStrategy />} />
               <Route path="collection" element={<CollectionPage />} />
               <Route path="glossary" element={<Glossary />} />
+              <Route path="dev" element={<DevTagger />} />
             </Route>
           </Routes>
         </BrowserRouter>

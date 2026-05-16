@@ -16,6 +16,7 @@ export interface Card {
   set_id: string;
   set_name: string;
   market_price: number | null;
+  art_style: string;
 }
 
 export interface PaginatedCards {

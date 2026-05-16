@@ -4,9 +4,11 @@ from fastapi import APIRouter, Depends, Query
 from sqlalchemy import func, or_
 from sqlalchemy.orm import Session
 
+from fastapi import HTTPException
+
 from database import get_db
 from models import Card, CardType
-from schemas import CardOut, PaginatedCards
+from schemas import CardOut, CardUpdate, PaginatedCards
 
 router = APIRouter(prefix="/api/cards", tags=["cards"])
 
@@ -103,6 +105,20 @@ def list_sets(db: Session = Depends(get_db)):
 def get_card(card_set_id: str, db: Session = Depends(get_db)):
     card = db.query(Card).filter_by(card_set_id=card_set_id).first()
     if not card:
-        from fastapi import HTTPException
         raise HTTPException(status_code=404, detail="Card not found")
+    return card
+
+
+@router.patch("/{card_set_id}", response_model=CardOut)
+def update_card(card_set_id: str, updates: CardUpdate, db: Session = Depends(get_db)):
+    card = db.query(Card).filter_by(card_set_id=card_set_id).first()
+    if not card:
+        raise HTTPException(status_code=404, detail="Card not found")
+    if updates.rarity is not None:
+        card.rarity = updates.rarity
+    if updates.art_style is not None:
+        card.art_style = updates.art_style
+    card.data_source = "manual"
+    db.commit()
+    db.refresh(card)
     return card

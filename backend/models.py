@@ -38,6 +38,13 @@ class Rarity(str, enum.Enum):
     TR = "TR"
 
 
+class ArtStyle(str, enum.Enum):
+    STANDARD = "standard"
+    MANGA = "manga"
+    FULL_ART = "full_art"
+    ALT_ART = "alt_art"
+
+
 class DataSource(str, enum.Enum):
     OPTCG_API = "optcg_api"
     OCR = "ocr"
@@ -68,6 +75,7 @@ class Card(Base):
     data_source: Mapped[DataSource] = mapped_column(
         Enum(DataSource), default=DataSource.OPTCG_API
     )
+    art_style: Mapped[str] = mapped_column(String, default="standard")
     verified: Mapped[bool] = mapped_column(Boolean, default=False)
     date_synced: Mapped[datetime] = mapped_column(
         DateTime, default=lambda: datetime.now(timezone.utc)
