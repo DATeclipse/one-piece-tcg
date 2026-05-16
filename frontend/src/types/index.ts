@@ -146,6 +146,7 @@ export interface SearchFilters {
   exclude_type?: string;
   colors?: string;
   search?: string;
+  art_style?: string;
 }
 
 export interface CollectionItem {

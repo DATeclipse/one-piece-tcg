@@ -14,11 +14,13 @@ const EMPTY_FILTERS: SearchFilters = {
   set_id: "",
   rarity: "",
   types_contains: "",
+  art_style: "",
 };
 
 const TYPES = ["Character", "Event", "Stage", "Leader"];
 const RARITIES = ["C", "UC", "R", "SR", "SEC", "L", "SP", "P", "TR"];
 const COLORS = ["Red", "Blue", "Green", "Purple", "Black", "Yellow"];
+const ART_STYLES = ["standard", "manga", "full_art", "alt_art"];
 
 function rarityClass(r: string) {
   const key = r.toLowerCase();
@@ -91,7 +93,7 @@ export default function CardSearch() {
   };
 
   const hasFilters = filters.name || filters.card_type || filters.cost_min || filters.cost_max
-    || filters.set_id || filters.rarity || activeColors.size > 0;
+    || filters.set_id || filters.rarity || filters.art_style || activeColors.size > 0;
 
   const clearAll = () => {
     setFilters(EMPTY_FILTERS);
@@ -152,6 +154,15 @@ export default function CardSearch() {
           >
             <option value="">All Rarities</option>
             {RARITIES.map(r => <option key={r} value={r}>{r}</option>)}
+          </select>
+
+          <select
+            className="dpill"
+            value={filters.art_style ?? ""}
+            onChange={e => setFilters(f => ({ ...f, art_style: e.target.value }))}
+          >
+            <option value="">All Art Styles</option>
+            {ART_STYLES.map(s => <option key={s} value={s}>{s.replace("_", " ")}</option>)}
           </select>
 
           <select
