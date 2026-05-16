@@ -70,8 +70,23 @@ function CardImage({ src, alt }: { src: string; alt: string }) {
   );
 }
 
-function CardTagger({ card: initialCard }: { card: Card }) {
+function parseVariantId(id: string): { baseId: string; altIndex: number } | null {
+  const match = id.match(/^(.+)_r(\d+)$/);
+  if (!match) return null;
+  return { baseId: match[1], altIndex: parseInt(match[2], 10) - 1 };
+}
+
+function CardTagger({
+  card: initialCard,
+  displayId,
+  imageOverride,
+}: {
+  card: Card;
+  displayId?: string;
+  imageOverride?: string;
+}) {
   const [card, setCard] = useState(initialCard);
+  const displayImage = imageOverride ?? card.card_image;
 
   const mutation = useMutation({
     mutationFn: (updates: { rarity?: string; art_style?: string }) =>
@@ -98,8 +113,8 @@ function CardTagger({ card: initialCard }: { card: Card }) {
         opacity: mutation.isPending ? 0.7 : 1,
       }}
     >
-      {card.card_image ? (
-        <CardImage src={card.card_image} alt={card.card_name} />
+      {displayImage ? (
+        <CardImage src={displayImage} alt={card.card_name} />
       ) : (
         <div
           style={{
@@ -123,7 +138,7 @@ function CardTagger({ card: initialCard }: { card: Card }) {
             marginBottom: "2px",
           }}
         >
-          {card.card_set_id}
+          {displayId ?? card.card_set_id}
         </div>
         <div
           style={{
@@ -249,9 +264,12 @@ export default function DevTagger() {
 }
 
 function CardLoader({ cardSetId }: { cardSetId: string }) {
+  const variant = parseVariantId(cardSetId);
+  const fetchId = variant ? variant.baseId : cardSetId;
+
   const { data: card, isLoading, error } = useQuery({
-    queryKey: ["card", cardSetId],
-    queryFn: () => getCard(cardSetId),
+    queryKey: ["card", fetchId],
+    queryFn: () => getCard(fetchId),
     staleTime: 60_000,
   });
 
@@ -290,5 +308,13 @@ function CardLoader({ cardSetId }: { cardSetId: string }) {
     );
   }
 
-  return <CardTagger card={card} />;
+  const imageOverride = variant ? card.alt_images[variant.altIndex] : undefined;
+
+  return (
+    <CardTagger
+      card={card}
+      displayId={variant ? cardSetId : undefined}
+      imageOverride={imageOverride}
+    />
+  );
 }
