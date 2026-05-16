@@ -147,6 +147,7 @@ export interface SearchFilters {
   colors?: string;
   search?: string;
   art_style?: string;
+  in_collection?: boolean;
 }
 
 export interface CollectionItem {

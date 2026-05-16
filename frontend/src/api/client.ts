@@ -45,6 +45,7 @@ export function searchCards(
   if (filters.colors) params.set("colors", filters.colors);
   if (filters.search) params.set("search", filters.search);
   if (filters.art_style) params.set("art_style", filters.art_style);
+  if (filters.in_collection) params.set("in_collection", "true");
   params.set("page", String(page));
   params.set("page_size", String(pageSize));
   return request(`/cards?${params}`);

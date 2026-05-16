@@ -1,49 +1,84 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import CardDetailModal from "../components/CardDetailModal";
 import CardItem from "../components/CardItem";
-import { useFullCollection, useUpdateCollection } from "../hooks/useCollection";
-import type { Card } from "../types";
+import CardSearchBar from "../components/CardSearchBar";
+import { useCardSearch, useSets } from "../hooks/useCards";
+import { useCollectionCounts, useUpdateCollection } from "../hooks/useCollection";
+import type { Card, SearchFilters } from "../types";
 
 const COLORS = ["Red", "Blue", "Green", "Purple", "Black", "Yellow"];
-const TYPES = ["Leader", "Character", "Event", "Stage"];
 
 const COLOR_HEX: Record<string, string> = {
   Red: "#e63946", Blue: "#3a7ad9", Green: "#3aaa64",
   Purple: "#8b5cf6", Black: "#5b6470", Yellow: "#e6b53a",
 };
 
+const EMPTY_FILTERS: SearchFilters = {
+  name: "",
+  color: "",
+  card_type: "",
+  cost_min: "",
+  cost_max: "",
+  set_id: "",
+  rarity: "",
+  art_style: "",
+};
+
 export default function CollectionPage() {
-  const { data: collection = [], isLoading } = useFullCollection();
-  const updateCollection = useUpdateCollection();
-  const [search, setSearch] = useState("");
+  const [filters, setFilters] = useState<SearchFilters>(EMPTY_FILTERS);
+  const [debouncedFilters, setDebouncedFilters] = useState<SearchFilters>(EMPTY_FILTERS);
+  const [page, setPage] = useState(1);
   const [activeColors, setActiveColors] = useState<Set<string>>(new Set());
-  const [typeFilter, setTypeFilter] = useState("");
   const [selectedCard, setSelectedCard] = useState<Card | null>(null);
 
-  const totalUnique = collection.length;
-  const totalCopies = collection.reduce((sum, item) => sum + item.quantity, 0);
+  const { data: sets = [] } = useSets();
+  const updateCollection = useUpdateCollection();
+
+  useEffect(() => {
+    const t = setTimeout(() => {
+      const colorStr = activeColors.size === 1 ? [...activeColors][0] : "";
+      setDebouncedFilters({
+        ...filters,
+        search: filters.name,
+        name: "",
+        color: colorStr,
+        in_collection: true,
+      });
+      setPage(1);
+    }, 150);
+    return () => clearTimeout(t);
+  }, [filters, activeColors]);
+
+  const { data } = useCardSearch(debouncedFilters, page);
+  const { data: collectionData = {} } = useCollectionCounts();
+  const collectionCounts = useMemo(
+    () => new Map<string, number>(Object.entries(collectionData)),
+    [collectionData],
+  );
+
+  const items = data?.items ?? [];
+  const total = data?.total ?? 0;
+  const totalPages = Math.ceil(total / (data?.page_size ?? 50));
+
+  const totalCopies = useMemo(
+    () => Array.from(collectionCounts.values()).reduce((s, v) => s + v, 0),
+    [collectionCounts],
+  );
 
   const colorDist = useMemo(() => {
     const counts: Record<string, number> = {};
-    for (const item of collection) {
-      for (const c of item.card.card_color) {
-        counts[c] = (counts[c] ?? 0) + item.quantity;
+    for (const [id, qty] of collectionCounts) {
+      const card = items.find(c => c.card_set_id === id);
+      if (card) {
+        for (const c of card.card_color) {
+          counts[c] = (counts[c] ?? 0) + qty;
+        }
       }
     }
     return COLORS.map(c => ({ color: c, count: counts[c] ?? 0 })).filter(d => d.count > 0);
-  }, [collection]);
+  }, [items, collectionCounts]);
 
   const maxColorCount = Math.max(...colorDist.map(d => d.count), 1);
-
-  const filtered = useMemo(() => {
-    const q = search.toLowerCase();
-    return collection.filter((item) => {
-      if (q && !item.card.card_name.toLowerCase().includes(q) && !item.card.types.some(t => t.toLowerCase().includes(q))) return false;
-      if (activeColors.size > 0 && !item.card.card_color.some(c => activeColors.has(c))) return false;
-      if (typeFilter && item.card.card_type !== typeFilter) return false;
-      return true;
-    });
-  }, [collection, search, activeColors, typeFilter]);
 
   const toggleColor = (c: string) => {
     setActiveColors(prev => {
@@ -53,6 +88,11 @@ export default function CollectionPage() {
     });
   };
 
+  const clearAll = () => {
+    setFilters(EMPTY_FILTERS);
+    setActiveColors(new Set());
+  };
+
   const adjustQty = (cardSetId: string, currentQty: number, delta: number) => {
     const newQty = Math.max(0, currentQty + delta);
     updateCollection.mutate({ card_set_id: cardSetId, quantity: newQty });
@@ -60,22 +100,29 @@ export default function CollectionPage() {
 
   return (
     <div>
-      {/* Hero */}
       <div className="col-hero">
         <div style={{ fontFamily: "var(--font-display)", fontSize: 14, letterSpacing: "0.12em", color: "var(--color-accent)" }}>
           ★ MY COLLECTION ★
         </div>
-        <div className="giant-pct">{totalUnique.toLocaleString()}</div>
+        <div className="giant-pct">{collectionCounts.size.toLocaleString()}</div>
         <div style={{ color: "var(--color-muted)", fontSize: 14 }}>
-          {totalUnique} unique cards · {totalCopies} total copies
+          {collectionCounts.size} unique cards · {totalCopies} total copies
         </div>
+
+        <CardSearchBar
+          filters={filters}
+          onFiltersChange={setFilters}
+          activeColors={activeColors}
+          onToggleColor={toggleColor}
+          onClear={clearAll}
+          sets={sets}
+        />
       </div>
 
-      {/* Stats */}
       <div className="stat-grid">
         <div className="stat">
           <div className="stat-label">Unique Cards</div>
-          <div className="stat-value">{totalUnique}</div>
+          <div className="stat-value">{collectionCounts.size}</div>
         </div>
         <div className="stat">
           <div className="stat-label">Total Copies</div>
@@ -86,12 +133,11 @@ export default function CollectionPage() {
           <div className="stat-value">{colorDist.length}</div>
         </div>
         <div className="stat">
-          <div className="stat-label">Avg Per Card</div>
-          <div className="stat-value">{totalUnique > 0 ? (totalCopies / totalUnique).toFixed(1) : "0"}</div>
+          <div className="stat-label">Showing</div>
+          <div className="stat-value">{total}</div>
         </div>
       </div>
 
-      {/* Color Distribution */}
       {colorDist.length > 0 && (
         <div className="combo-row">
           {colorDist.map(({ color, count }) => (
@@ -110,52 +156,42 @@ export default function CollectionPage() {
         </div>
       )}
 
-      {/* Filters */}
-      <div className="pill-row" style={{ marginBottom: 16 }}>
-        <input
-          type="text"
-          placeholder="Search cards..."
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-          style={{ flex: 1, maxWidth: 300 }}
-        />
-        {COLORS.map(c => (
-          <button key={c} className={`dpill${activeColors.has(c) ? " on" : ""}`} onClick={() => toggleColor(c)}>
-            {c}
-          </button>
-        ))}
-        <select className="dpill" value={typeFilter} onChange={e => setTypeFilter(e.target.value)}>
-          <option value="">All Types</option>
-          {TYPES.map(t => <option key={t} value={t}>{t}</option>)}
-        </select>
-      </div>
-
-      {/* Collection Grid */}
-      {isLoading ? (
-        <div style={{ color: "var(--color-muted-dim)", padding: 32, textAlign: "center" }}>Loading collection...</div>
-      ) : filtered.length > 0 ? (
+      {items.length > 0 ? (
         <div className="coll-grid">
-          {filtered.map((item, i) => (
-            <div key={item.card.card_set_id} className="coll-tile" style={{ animationDelay: `${Math.min(i, 30) * 20}ms` }}>
-              <CardItem
-                card={item.card}
-                onClick={() => setSelectedCard(item.card)}
-                collectionCount={item.quantity}
-              />
-              <div className="coll-controls">
-                <button className="qbtn minus" onClick={() => adjustQty(item.card.card_set_id, item.quantity, -1)}>−</button>
-                <span className="coll-qty">{item.quantity}</span>
-                <button className="qbtn plus" onClick={() => adjustQty(item.card.card_set_id, item.quantity, 1)}>+</button>
+          {items.map((card, i) => {
+            const qty = collectionCounts.get(card.card_set_id) ?? 0;
+            return (
+              <div key={card.card_set_id} className="coll-tile" style={{ animationDelay: `${Math.min(i, 30) * 20}ms` }}>
+                <CardItem
+                  card={card}
+                  onClick={() => setSelectedCard(card)}
+                  collectionCount={qty}
+                />
+                <div className="coll-controls">
+                  <button className="qbtn minus" onClick={() => adjustQty(card.card_set_id, qty, -1)}>&#8722;</button>
+                  <span className="coll-qty">{qty}</span>
+                  <button className="qbtn plus" onClick={() => adjustQty(card.card_set_id, qty, 1)}>+</button>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
-      ) : (
+      ) : data ? (
         <div style={{ textAlign: "center", padding: "60px 0" }}>
-          <div style={{ fontSize: 48 }}>📦</div>
+          <div style={{ fontSize: 48 }}>&#128230;</div>
           <div style={{ fontFamily: "var(--font-display)", fontSize: 24, color: "var(--color-muted)", marginTop: 12 }}>
-            {collection.length === 0 ? "NO CARDS YET" : "NO MATCHES"}
+            {collectionCounts.size === 0 ? "NO CARDS YET" : "NO MATCHES"}
           </div>
+        </div>
+      ) : null}
+
+      {totalPages > 1 && (
+        <div className="flex justify-center gap-2 mt-6">
+          <button disabled={page <= 1} onClick={() => setPage(p => p - 1)}>Prev</button>
+          <span style={{ color: "var(--color-muted)", lineHeight: "36px", fontSize: 14 }}>
+            Page {page} of {totalPages}
+          </span>
+          <button disabled={page >= totalPages} onClick={() => setPage(p => p + 1)}>Next</button>
         </div>
       )}
 

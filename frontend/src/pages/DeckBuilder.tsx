@@ -4,9 +4,9 @@ import CardGrid from "../components/CardGrid";
 import DeckList from "../components/DeckList";
 import DeckPanel from "../components/DeckPanel";
 import MobileDeckSheet from "../components/MobileDeckSheet";
-import SearchFilters from "../components/SearchFilters";
+import CardSearchBar from "../components/CardSearchBar";
 import { useDeckState } from "../context/DeckContext";
-import { useCardSearch, useLeaderCardSearch } from "../hooks/useCards";
+import { useCardSearch, useLeaderCardSearch, useSets } from "../hooks/useCards";
 import { useCollectionCounts } from "../hooks/useCollection";
 import { useCreateDeck, useUpdateDeck, useValidateDeck } from "../hooks/useDecks";
 import type { Card, SearchFilters as Filters } from "../types";
@@ -18,12 +18,15 @@ const EMPTY_FILTERS: Filters = {
   cost_min: "",
   cost_max: "",
   set_id: "",
+  rarity: "",
+  art_style: "",
 };
 
 export default function DeckBuilder() {
   const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
   const [debouncedFilters, setDebouncedFilters] = useState<Filters>(EMPTY_FILTERS);
   const [page, setPage] = useState(1);
+  const [activeColors, setActiveColors] = useState<Set<string>>(new Set());
 
   const { leader, setLeader, deckCards, setDeckCards, deckName, setDeckName, deckId, setDeckId, validation, setValidation } = useDeckState();
   const [error, setError] = useState("");
@@ -37,13 +40,34 @@ export default function DeckBuilder() {
   const updateMutation = useUpdateDeck();
   const validateMutation = useValidateDeck();
 
+  const { data: sets = [] } = useSets();
+
+  const toggleColor = (c: string) => {
+    setActiveColors(prev => {
+      const next = new Set(prev);
+      next.has(c) ? next.delete(c) : next.add(c);
+      return next;
+    });
+  };
+
+  const clearAll = () => {
+    setFilters(EMPTY_FILTERS);
+    setActiveColors(new Set());
+  };
+
   useEffect(() => {
     const t = setTimeout(() => {
-      setDebouncedFilters(filters);
+      const colorStr = activeColors.size === 1 ? [...activeColors][0] : "";
+      setDebouncedFilters({
+        ...filters,
+        search: filters.name,
+        name: "",
+        color: colorStr,
+      });
       setPage(1);
     }, 150);
     return () => clearTimeout(t);
-  }, [filters]);
+  }, [filters, activeColors]);
 
   const handleCardClick = (card: Card) => {
     if (card.card_type === "Leader") {
@@ -177,11 +201,13 @@ export default function DeckBuilder() {
       {loadingDeck && <div className="text-muted-dim mb-2">Loading deck...</div>}
       <div className="builder-grid pb-20 md:pb-0">
         <div className="min-w-0">
-          <SearchFilters
+          <CardSearchBar
             filters={filters}
-            onChange={setFilters}
-            leaderColors={leader?.card_color}
-            leaderSelected={!!leader}
+            onFiltersChange={setFilters}
+            activeColors={activeColors}
+            onToggleColor={toggleColor}
+            onClear={clearAll}
+            sets={sets}
           />
           {!leader && (
             <div className="text-accent text-sm mb-2">Select a Leader to start building your deck</div>

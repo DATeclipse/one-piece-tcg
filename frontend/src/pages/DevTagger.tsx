@@ -1,7 +1,9 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { getCard, updateCard } from "../api/client";
-import type { Card } from "../types";
+import CardSearchBar from "../components/CardSearchBar";
+import { useCardSearch, useSets } from "../hooks/useCards";
+import type { Card, SearchFilters } from "../types";
 
 const ART_STYLES = ["standard", "manga", "full_art", "alt_art"] as const;
 const RARITIES = ["C", "UC", "R", "SR", "SEC", "L", "SP", "TR", "P", "PR"] as const;
@@ -183,9 +185,58 @@ function CardTagger({
   );
 }
 
+const EMPTY_FILTERS: SearchFilters = {
+  name: "",
+  color: "",
+  card_type: "",
+  cost_min: "",
+  cost_max: "",
+  set_id: "",
+  rarity: "",
+  art_style: "",
+};
+
 export default function DevTagger() {
+  const [mode, setMode] = useState<"search" | "paste">("search");
   const [input, setInput] = useState("");
   const [cardIds, setCardIds] = useState<string[]>([]);
+  const [filters, setFilters] = useState<SearchFilters>(EMPTY_FILTERS);
+  const [debouncedFilters, setDebouncedFilters] = useState<SearchFilters>(EMPTY_FILTERS);
+  const [activeColors, setActiveColors] = useState<Set<string>>(new Set());
+  const [page, setPage] = useState(1);
+  const { data: sets = [] } = useSets();
+
+  useEffect(() => {
+    const t = setTimeout(() => {
+      const colorStr = activeColors.size === 1 ? [...activeColors][0] : "";
+      setDebouncedFilters({
+        ...filters,
+        search: filters.name,
+        name: "",
+        color: colorStr,
+      });
+      setPage(1);
+    }, 150);
+    return () => clearTimeout(t);
+  }, [filters, activeColors]);
+
+  const { data: searchData } = useCardSearch(debouncedFilters, page, mode === "search");
+  const searchItems = searchData?.items ?? [];
+  const total = searchData?.total ?? 0;
+  const totalPages = Math.ceil(total / (searchData?.page_size ?? 50));
+
+  const toggleColor = (c: string) => {
+    setActiveColors(prev => {
+      const next = new Set(prev);
+      next.has(c) ? next.delete(c) : next.add(c);
+      return next;
+    });
+  };
+
+  const clearAll = () => {
+    setFilters(EMPTY_FILTERS);
+    setActiveColors(new Set());
+  };
 
   const handleLoad = () => {
     const ids = input
@@ -193,6 +244,7 @@ export default function DevTagger() {
       .map((s) => s.trim())
       .filter(Boolean);
     setCardIds(ids);
+    setMode("paste");
   };
 
   return (
@@ -207,58 +259,132 @@ export default function DevTagger() {
       >
         Dev Card Tagger
       </h1>
-      <div style={{ display: "flex", gap: "12px", marginBottom: "24px" }}>
-        <textarea
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Paste card_set_ids (one per line or comma-separated)"
-          rows={5}
+
+      <div style={{ display: "flex", gap: "8px", marginBottom: "16px" }}>
+        <button
+          onClick={() => setMode("search")}
           style={{
-            flex: 1,
-            background: "var(--color-card-bg)",
+            background: mode === "search" ? "var(--color-accent)" : "var(--color-card-bg)",
+            color: mode === "search" ? "#fff" : "var(--color-muted)",
             border: "1px solid var(--color-border)",
             borderRadius: "6px",
-            color: "var(--color-light)",
-            padding: "10px",
-            fontSize: "12px",
-            fontFamily: "var(--font-mono)",
-            resize: "vertical",
-          }}
-        />
-        <button
-          onClick={handleLoad}
-          style={{
-            background: "var(--color-accent)",
-            color: "#fff",
-            border: "none",
-            borderRadius: "6px",
-            padding: "0 24px",
-            fontWeight: 700,
+            padding: "6px 16px",
+            fontWeight: 600,
             cursor: "pointer",
-            alignSelf: "flex-start",
+            fontSize: "12px",
           }}
         >
-          Load
+          Search
+        </button>
+        <button
+          onClick={() => setMode("paste")}
+          style={{
+            background: mode === "paste" ? "var(--color-accent)" : "var(--color-card-bg)",
+            color: mode === "paste" ? "#fff" : "var(--color-muted)",
+            border: "1px solid var(--color-border)",
+            borderRadius: "6px",
+            padding: "6px 16px",
+            fontWeight: 600,
+            cursor: "pointer",
+            fontSize: "12px",
+          }}
+        >
+          Paste IDs
         </button>
       </div>
 
-      {cardIds.length > 0 && (
-        <div style={{ marginBottom: "12px", color: "var(--color-muted)", fontSize: "13px" }}>
-          {cardIds.length} cards loaded
-        </div>
-      )}
+      {mode === "search" ? (
+        <>
+          <div style={{ marginBottom: "16px" }}>
+            <CardSearchBar
+              filters={filters}
+              onFiltersChange={setFilters}
+              activeColors={activeColors}
+              onToggleColor={toggleColor}
+              onClear={clearAll}
+              sets={sets}
+            />
+          </div>
+          <div style={{ marginBottom: "12px", color: "var(--color-muted)", fontSize: "13px" }}>
+            {total} results
+          </div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))",
+              gap: "12px",
+            }}
+          >
+            {searchItems.map((card) => (
+              <CardTagger key={card.card_set_id} card={card} />
+            ))}
+          </div>
+          {totalPages > 1 && (
+            <div className="flex justify-center gap-2 mt-6">
+              <button disabled={page <= 1} onClick={() => setPage(p => p - 1)}>Prev</button>
+              <span style={{ color: "var(--color-muted)", lineHeight: "36px", fontSize: 14 }}>
+                Page {page} of {totalPages}
+              </span>
+              <button disabled={page >= totalPages} onClick={() => setPage(p => p + 1)}>Next</button>
+            </div>
+          )}
+        </>
+      ) : (
+        <>
+          <div style={{ display: "flex", gap: "12px", marginBottom: "24px" }}>
+            <textarea
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Paste card_set_ids (one per line or comma-separated)"
+              rows={5}
+              style={{
+                flex: 1,
+                background: "var(--color-card-bg)",
+                border: "1px solid var(--color-border)",
+                borderRadius: "6px",
+                color: "var(--color-light)",
+                padding: "10px",
+                fontSize: "12px",
+                fontFamily: "var(--font-mono)",
+                resize: "vertical",
+              }}
+            />
+            <button
+              onClick={handleLoad}
+              style={{
+                background: "var(--color-accent)",
+                color: "#fff",
+                border: "none",
+                borderRadius: "6px",
+                padding: "0 24px",
+                fontWeight: 700,
+                cursor: "pointer",
+                alignSelf: "flex-start",
+              }}
+            >
+              Load
+            </button>
+          </div>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))",
-          gap: "12px",
-        }}
-      >
-        {cardIds.map((id) => (
-          <CardLoader key={id} cardSetId={id} />
-        ))}
-      </div>
+          {cardIds.length > 0 && (
+            <div style={{ marginBottom: "12px", color: "var(--color-muted)", fontSize: "13px" }}>
+              {cardIds.length} cards loaded
+            </div>
+          )}
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))",
+              gap: "12px",
+            }}
+          >
+            {cardIds.map((id) => (
+              <CardLoader key={id} cardSetId={id} />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }

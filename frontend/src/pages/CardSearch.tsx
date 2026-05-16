@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import CardDetailModal from "../components/CardDetailModal";
 import CardItem from "../components/CardItem";
+import CardSearchBar from "../components/CardSearchBar";
 import { useCardSearch, useSets } from "../hooks/useCards";
 import { useCollectionCounts } from "../hooks/useCollection";
 import type { Card, SearchFilters } from "../types";
@@ -16,11 +17,6 @@ const EMPTY_FILTERS: SearchFilters = {
   types_contains: "",
   art_style: "",
 };
-
-const TYPES = ["Character", "Event", "Stage", "Leader"];
-const RARITIES = ["C", "UC", "R", "SR", "SEC", "L", "SP", "P", "TR"];
-const COLORS = ["Red", "Blue", "Green", "Purple", "Black", "Yellow"];
-const ART_STYLES = ["standard", "manga", "full_art", "alt_art"];
 
 function rarityClass(r: string) {
   const key = r.toLowerCase();
@@ -92,9 +88,6 @@ export default function CardSearch() {
     });
   };
 
-  const hasFilters = filters.name || filters.card_type || filters.cost_min || filters.cost_max
-    || filters.set_id || filters.rarity || filters.art_style || activeColors.size > 0;
-
   const clearAll = () => {
     setFilters(EMPTY_FILTERS);
     setActiveColors(new Set());
@@ -102,7 +95,6 @@ export default function CardSearch() {
 
   return (
     <div>
-      {/* Hero */}
       <div className="cs-hero">
         <div style={{ fontFamily: "var(--font-display)", fontSize: 14, letterSpacing: "0.12em", color: "var(--color-accent)" }}>
           ★ CARD LIBRARY ★
@@ -112,91 +104,14 @@ export default function CardSearch() {
           of {total.toLocaleString()} cards · {rareCount} rare or above
         </div>
 
-        {/* Search */}
-        <div className="cs-search">
-          <input
-            type="text"
-            placeholder="Search cards by name, type, or set..."
-            value={filters.name}
-            onChange={e => setFilters(f => ({ ...f, name: e.target.value }))}
-          />
-          <span className="search-icon">🔍</span>
-        </div>
-
-        {/* Color pills */}
-        <div className="pill-row">
-          {COLORS.map(c => (
-            <button
-              key={c}
-              className={`dpill${activeColors.has(c) ? " on" : ""}`}
-              onClick={() => toggleColor(c)}
-            >
-              {c}
-            </button>
-          ))}
-        </div>
-
-        {/* Filter row */}
-        <div className="pill-row">
-          <select
-            className="dpill"
-            value={filters.card_type}
-            onChange={e => setFilters(f => ({ ...f, card_type: e.target.value }))}
-          >
-            <option value="">All Types</option>
-            {TYPES.map(t => <option key={t} value={t}>{t}</option>)}
-          </select>
-
-          <select
-            className="dpill"
-            value={filters.rarity ?? ""}
-            onChange={e => setFilters(f => ({ ...f, rarity: e.target.value }))}
-          >
-            <option value="">All Rarities</option>
-            {RARITIES.map(r => <option key={r} value={r}>{r}</option>)}
-          </select>
-
-          <select
-            className="dpill"
-            value={filters.art_style ?? ""}
-            onChange={e => setFilters(f => ({ ...f, art_style: e.target.value }))}
-          >
-            <option value="">All Art Styles</option>
-            {ART_STYLES.map(s => <option key={s} value={s}>{s.replace("_", " ")}</option>)}
-          </select>
-
-          <select
-            className="dpill"
-            value={filters.set_id}
-            onChange={e => setFilters(f => ({ ...f, set_id: e.target.value }))}
-          >
-            <option value="">All Sets</option>
-            {sets.map(s => <option key={s.set_id} value={s.set_id}>{s.set_id}</option>)}
-          </select>
-
-          <input
-            type="number"
-            className="dpill"
-            placeholder="Cost min"
-            value={filters.cost_min}
-            onChange={e => setFilters(f => ({ ...f, cost_min: e.target.value }))}
-            style={{ width: 90 }}
-          />
-          <input
-            type="number"
-            className="dpill"
-            placeholder="Cost max"
-            value={filters.cost_max}
-            onChange={e => setFilters(f => ({ ...f, cost_max: e.target.value }))}
-            style={{ width: 90 }}
-          />
-
-          {hasFilters && (
-            <button className="dpill" onClick={clearAll} style={{ color: "var(--color-accent)" }}>
-              ✕ Clear
-            </button>
-          )}
-        </div>
+        <CardSearchBar
+          filters={filters}
+          onFiltersChange={setFilters}
+          activeColors={activeColors}
+          onToggleColor={toggleColor}
+          onClear={clearAll}
+          sets={sets}
+        />
       </div>
 
       {/* Card Grid */}

@@ -7,7 +7,7 @@ from sqlalchemy.orm import Session
 from fastapi import HTTPException
 
 from database import get_db
-from models import Card, CardType
+from models import Card, CardType, Collection
 from schemas import CardOut, CardUpdate, PaginatedCards
 
 router = APIRouter(prefix="/api/cards", tags=["cards"])
@@ -29,6 +29,7 @@ def list_cards(
     colors: Optional[str] = Query(None, description="Comma-separated colors, OR match"),
     rarity: Optional[str] = Query(None),
     art_style: Optional[str] = Query(None),
+    in_collection: Optional[bool] = Query(None),
     search: Optional[str] = Query(None, description="Search name OR types (OR match)"),
     page: int = Query(1, ge=1),
     page_size: int = Query(50, ge=1, le=200),
@@ -71,6 +72,8 @@ def list_cards(
         q = q.filter(Card.rarity == rarity)
     if art_style:
         q = q.filter(Card.art_style == art_style)
+    if in_collection:
+        q = q.join(Collection, Card.card_set_id == Collection.card_set_id).filter(Collection.quantity > 0)
 
     total = q.count()
     items = q.offset((page - 1) * page_size).limit(page_size).all()
