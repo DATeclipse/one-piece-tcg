@@ -124,6 +124,10 @@ def update_card(card_set_id: str, updates: CardUpdate, db: Session = Depends(get
         card.rarity = updates.rarity
     if updates.art_style is not None:
         card.art_style = updates.art_style
+    if updates.archetype is not None:
+        card.archetype = updates.archetype or None
+    if updates.archetype_secondary is not None:
+        card.archetype_secondary = updates.archetype_secondary or None
     card.data_source = "manual"
     db.commit()
     db.refresh(card)

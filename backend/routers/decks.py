@@ -137,4 +137,25 @@ def delete_deck(deck_id: int, db: Session = Depends(get_db)):
 
 @router.post("/validate", response_model=ValidationResult)
 def validate_deck_endpoint(payload: DeckCreate, db: Session = Depends(get_db)):
-    return validate_deck(payload.leader_card_set_id, payload.cards, db)
+    from analysis import score_deck
+    from schemas import AxisScoreOut, DeckScoreOut
+
+    result = validate_deck(payload.leader_card_set_id, payload.cards, db)
+    if not result.valid:
+        return result
+
+    leader = db.query(Card).filter_by(card_set_id=payload.leader_card_set_id).first()
+    card_pairs = []
+    for entry in payload.cards:
+        card = db.query(Card).filter_by(card_set_id=entry.card_set_id).first()
+        if card:
+            card_pairs.append((card, entry.quantity))
+
+    deck_score = score_deck(leader, card_pairs)
+    result.score = DeckScoreOut(
+        grade=deck_score.grade,
+        value=deck_score.value,
+        archetype=deck_score.archetype,
+        axes=[AxisScoreOut(name=a.name, have=a.have, ideal=a.ideal, score=a.score) for a in deck_score.axes],
+    )
+    return result

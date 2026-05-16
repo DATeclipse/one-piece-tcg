@@ -76,6 +76,8 @@ class Card(Base):
         Enum(DataSource), default=DataSource.OPTCG_API
     )
     art_style: Mapped[str] = mapped_column(String, default="standard")
+    archetype: Mapped[Optional[str]] = mapped_column(String, nullable=True)
+    archetype_secondary: Mapped[Optional[str]] = mapped_column(String, nullable=True)
     verified: Mapped[bool] = mapped_column(Boolean, default=False)
     date_synced: Mapped[datetime] = mapped_column(
         DateTime, default=lambda: datetime.now(timezone.utc)

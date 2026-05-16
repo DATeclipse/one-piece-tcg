@@ -56,10 +56,25 @@ export interface DeckSummary {
   updated_at: string;
 }
 
+export interface AxisScore {
+  name: string;
+  have: number;
+  ideal: number;
+  score: number;
+}
+
+export interface DeckScore {
+  grade: string;
+  value: number;
+  archetype: string;
+  axes: AxisScore[];
+}
+
 export interface ValidationResult {
   valid: boolean;
   errors: string[];
   warnings: string[];
+  score?: DeckScore | null;
 }
 
 export interface MetaDecklistCard {

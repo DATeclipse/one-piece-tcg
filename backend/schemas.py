@@ -23,6 +23,8 @@ class CardOut(BaseModel):
     set_name: str
     market_price: Optional[float]
     art_style: str = "standard"
+    archetype: Optional[str] = None
+    archetype_secondary: Optional[str] = None
 
     class Config:
         from_attributes = True
@@ -31,6 +33,8 @@ class CardOut(BaseModel):
 class CardUpdate(BaseModel):
     rarity: Optional[str] = None
     art_style: Optional[str] = None
+    archetype: Optional[str] = None
+    archetype_secondary: Optional[str] = None
 
 
 class PaginatedCards(BaseModel):
@@ -88,10 +92,25 @@ class DeckSummary(BaseModel):
     updated_at: datetime
 
 
+class AxisScoreOut(BaseModel):
+    name: str
+    have: float
+    ideal: float
+    score: float
+
+
+class DeckScoreOut(BaseModel):
+    grade: str
+    value: int
+    archetype: str
+    axes: List[AxisScoreOut]
+
+
 class ValidationResult(BaseModel):
     valid: bool
     errors: List[str]
     warnings: List[str] = []
+    score: Optional[DeckScoreOut] = None
 
 
 class MetaDeckCreate(BaseModel):
