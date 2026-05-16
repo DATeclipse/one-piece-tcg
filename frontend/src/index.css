@@ -286,6 +286,19 @@
   letter-spacing: 0.05em;
 }
 
+.tcg .alt-badge {
+  position: absolute;
+  top: 38px;
+  right: 6px;
+  z-index: 3;
+  font: 800 9px/1 var(--font-mono);
+  padding: 3px 5px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #e040fb, #7c4dff);
+  color: #fff;
+  letter-spacing: 0.08em;
+}
+
 .tcg .collection-badge {
   position: absolute;
   top: 6px;

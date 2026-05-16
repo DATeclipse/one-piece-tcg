@@ -66,6 +66,20 @@ export default function CardSearch() {
   const items = data?.items ?? [];
   const total = data?.total ?? 0;
   const totalPages = Math.ceil(total / (data?.page_size ?? 20));
+
+  const displayItems = useMemo(() =>
+    items.flatMap(card => {
+      const base = [{ card, altIndex: 0 }];
+      return base.concat(
+        (card.alt_images ?? []).map((img, i) => ({
+          card: { ...card, card_image: img },
+          altIndex: i + 1,
+        }))
+      );
+    }),
+    [items],
+  );
+
   const rareCount = useMemo(() => items.filter(c => isRareOrAbove(c.rarity)).length, [items]);
 
   const toggleColor = (c: string) => {
@@ -177,9 +191,9 @@ export default function CardSearch() {
       {/* Card Grid */}
       {items.length > 0 ? (
         <div className="cs-grid">
-          {items.map((card, i) => (
+          {displayItems.map(({ card, altIndex }, i) => (
             <div
-              key={card.card_set_id}
+              key={`${card.card_set_id}_${altIndex}`}
               className="cs-card-wrap"
               style={{ animationDelay: `${Math.min(i, 30) * 25}ms` }}
             >
@@ -192,6 +206,7 @@ export default function CardSearch() {
                 card={card}
                 onClick={() => setSelectedCard(card)}
                 collectionCount={collectionCounts.get(card.card_set_id)}
+                isAltArt={altIndex > 0}
               />
             </div>
           ))}

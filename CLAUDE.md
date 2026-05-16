@@ -1,58 +1,46 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+## Commands
 
-## Development Commands
-
-### Backend (FastAPI)
 ```bash
-cd backend
-source venv/bin/activate
-uvicorn main:app --reload          # runs on :8000
+# Backend
+cd backend && source venv/bin/activate
+uvicorn main:app --reload                    # :8000
+
+# Frontend (requires Node 23 — see .nvmrc)
+cd frontend && npm run dev                   # :5173, proxies /api + /static to :8000
+npm run build                                # tsc -b && vite build
+npx tsc --noEmit                             # type-check
 ```
-On first startup, if the cards table is empty, it auto-syncs from the local JSON seed file (`backend/data/cards.json`). Manual sync: `POST /api/sync`. To regenerate the seed file from the current DB: `python export_cards.py`.
 
-### Frontend (React + Vite)
-```bash
-cd frontend
-npm install
-npm run dev                        # runs on :5173 (or next available port)
-npm run build                      # tsc -b && vite build
-npm run lint                       # eslint
-npx tsc --noEmit                   # type-check without emitting
-```
-Vite proxies `/api` and `/static` to `localhost:8000` — both servers must be running for full functionality.
+Auto-syncs cards from `backend/data/cards.json` on empty DB. Re-export seed: `python export_cards.py`.
 
-## Architecture
+## Core Rules
 
-Two-tier app: React SPA talks to FastAPI backend over REST. SQLite database, no auth.
+- **Card identity**: `card_set_id` (e.g. `OP01-077`, `OP01-077_p2`) is the unique key across DB, API, and frontend
+- **Deck structure**: Leader (1) + deck cards (exactly 50, max 4 copies) + DON!! (10, auto-included)
+- **Color matching**: deck cards must share ≥1 color with Leader. `card_color` is JSON array
+- **Variant cards**: `_p\d+` suffix = separate printing (may differ in rarity). `_r\d+` = alt art tracked in `alt_images`
 
-### Backend (`backend/`)
-- **main.py** — FastAPI app, CORS, startup card sync, static file mount
-- **models.py** — SQLAlchemy ORM: `Card`, `Deck`, `DeckCard` with enums `CardType`, `Rarity`, `DataSource`
-- **sync.py** — Loads card data from local JSON seed (`data/cards.json`), upserts into SQLite by `card_set_id`
-- **export_cards.py** — One-time script to dump all DB cards to `data/cards.json` seed file
-- **ocr.py** — Utility for mapping `card_set_id` to local card PNG paths in `cards/` directory
-- **validation.py** — Deck rule enforcement. Parses Leader "Under the rules of this game" text for cost/type restrictions and DON!! deck size overrides
-- **routers/** — `cards.py` (search/filter/paginate), `decks.py` (CRUD + validate), `sync.py` (manual trigger)
-- **rules/** — Structured game rules extracted from official Comprehensive Rules v1.2.0 (deck construction, keywords, game flow). Referenced by validation, not currently served via API.
+## Skills
 
-### Frontend (`frontend/src/`)
-- **Tailwind CSS v4** — zero inline styles. Theme tokens defined via `@theme` in `index.css`, global element styles in `@layer base`. No `tailwind.config.js` — uses `@tailwindcss/vite` plugin.
-- **React Query v5** — all server state managed through hooks in `hooks/useCards.ts` and `hooks/useDecks.ts`. Mutations invalidate `["decks"]` cache key. `api/client.ts` is a thin fetch wrapper called by the hooks.
-- **Pages**: `DeckBuilder.tsx` (main page — card search + deck editing), `MetaStrategy.tsx` (placeholder)
-- **DeckBuilder state**: Local useState for UI state (filters, leader, deckCards map, deckName, deckId, validation). Server state (card search results, deck list, save/delete) handled by React Query. Debounced search: `filters` → 300ms timeout → `debouncedFilters` → `useCardSearch` with `keepPreviousData`.
+Always invoke at the start of every conversation:
+- `/caveman` — terse, substance-only responses
+- `/grill-with-docs` — interview-driven design with domain doc maintenance
 
-## Key Patterns
+## Gotchas
 
-- **Card identity**: `card_set_id` (e.g., "OP01-077") is the unique key across the entire stack — DB, API, and frontend Map keys
-- **Color matching**: Cards in a deck must share at least one color with the Leader. `card_color` is stored as a JSON array (e.g., `["Blue", "Purple"]`) to support multi-color cards
-- **Leader overrides**: Some Leaders modify deck construction rules via card text. `validation.py:parse_leader_overrides()` extracts these with regex. Known patterns: max cost, max event cost, DON!! deck size
-- **Deck structure**: Leader (1) + deck cards (exactly 50, max 4 copies each) + DON!! (10, auto-included, not user-managed)
-- **Dynamic border colors**: `CardItem.tsx` uses `COLOR_CLASS_MAP` mapping color names to Tailwind border classes (e.g., `"Red"` → `"border-card-red"`). The theme tokens must exist in `index.css` `@theme` for these to work.
-- **Data verification**: Card model has `verified` (bool) and `data_source` (enum) fields. Use `/ocr-verify` skill to cross-reference card images against DB records and mark cards as verified.
-- **Local card images**: 4,372 PNGs in `cards/` organized by set (e.g., `cards/OP-01/OP01-001.png`). `_p1.png` variants are alternate art.
+- SQLite DB at `backend/one_piece_tcg.db` — no migrations, uses `create_all()`
+- `backend/data/cards.json` seed is ~2MB — don't cat it, query DB instead
+- Both servers must run for full functionality (backend :8000 + frontend :5173)
 
-## API
+## DB State
 
-All endpoints prefixed with `/api`. Card search supports query params: `name`, `color`, `card_type`, `cost_min`, `cost_max`, `set_id`, `page`, `page_size`. Deck validation available at `POST /api/decks/validate` (same payload as create/update).
+- 4,013 cards (2,505 base + 1,508 `_p` variants)
+- Rarities: C(1286) UC(626) R(865) SR(615) SEC(120) L(289) P(125) PR(75) SP(4) TR(8)
+- 328 cards have `alt_images` (`_r` variants)
+- Card images in `cards/` by set dir (e.g. `cards/OP-01/`, `cards/Promotion_card/`)
+
+## Reference
+
+See `ARCHITECTURE.md` for file map, patterns, API endpoints, and tech stack details.

@@ -5,6 +5,7 @@ interface Props {
   onClick?: () => void;
   deckCount?: number;
   collectionCount?: number;
+  isAltArt?: boolean;
 }
 
 const COLOR_HEX: Record<string, [string, string]> = {
@@ -30,6 +31,7 @@ export default function CardItem({
   onClick,
   deckCount,
   collectionCount,
+  isAltArt,
 }: Props) {
   const [hex, glow] = COLOR_HEX[card.card_color[0]] ?? ["#444", "transparent"];
   const collectionBg =
@@ -59,6 +61,8 @@ export default function CardItem({
       )}
 
       <div className="rarity-badge">{card.rarity}</div>
+
+      {isAltArt && <div className="alt-badge">ALT</div>}
 
       {collectionCount !== undefined && collectionCount > 0 && (
         <div className="collection-badge" style={{ background: collectionBg }}>

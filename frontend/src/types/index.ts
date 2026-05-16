@@ -12,6 +12,7 @@ export interface Card {
   counter_amount: number | null;
   attribute: string | null;
   card_image: string | null;
+  alt_images: string[];
   set_id: string;
   set_name: string;
   market_price: number | null;
