@@ -6,7 +6,18 @@ import { useCardSearch, useSets } from "../hooks/useCards";
 import type { Card, SearchFilters } from "../types";
 
 const ART_STYLES = ["standard", "manga", "full_art", "alt_art"] as const;
-const RARITIES = ["C", "UC", "R", "SR", "SEC", "L", "SP", "TR", "P", "PR"] as const;
+const RARITIES = [
+  "C",
+  "UC",
+  "R",
+  "SR",
+  "SEC",
+  "L",
+  "SP",
+  "TR",
+  "P",
+  "PR",
+] as const;
 
 function TagButton({
   label,
@@ -72,7 +83,9 @@ function CardImage({ src, alt }: { src: string; alt: string }) {
   );
 }
 
-function parseVariantId(id: string): { baseId: string; altIndex: number } | null {
+function parseVariantId(
+  id: string,
+): { baseId: string; altIndex: number } | null {
   const match = id.match(/^(.+)_r(\d+)$/);
   if (!match) return null;
   return { baseId: match[1], altIndex: parseInt(match[2], 10) - 1 };
@@ -150,7 +163,14 @@ function CardTagger({
         >
           {card.card_name} · {card.rarity} · {card.art_style}
         </div>
-        <div style={{ display: "flex", gap: "3px", flexWrap: "wrap", marginBottom: "4px" }}>
+        <div
+          style={{
+            display: "flex",
+            gap: "3px",
+            flexWrap: "wrap",
+            marginBottom: "4px",
+          }}
+        >
           {RARITIES.map((r) => (
             <TagButton
               key={r}
@@ -201,7 +221,8 @@ export default function DevTagger() {
   const [input, setInput] = useState("");
   const [cardIds, setCardIds] = useState<string[]>([]);
   const [filters, setFilters] = useState<SearchFilters>(EMPTY_FILTERS);
-  const [debouncedFilters, setDebouncedFilters] = useState<SearchFilters>(EMPTY_FILTERS);
+  const [debouncedFilters, setDebouncedFilters] =
+    useState<SearchFilters>(EMPTY_FILTERS);
   const [activeColors, setActiveColors] = useState<Set<string>>(new Set());
   const [page, setPage] = useState(1);
   const { data: sets = [] } = useSets();
@@ -220,13 +241,17 @@ export default function DevTagger() {
     return () => clearTimeout(t);
   }, [filters, activeColors]);
 
-  const { data: searchData } = useCardSearch(debouncedFilters, page, mode === "search");
+  const { data: searchData } = useCardSearch(
+    debouncedFilters,
+    page,
+    mode === "search",
+  );
   const searchItems = searchData?.items ?? [];
   const total = searchData?.total ?? 0;
   const totalPages = Math.ceil(total / (searchData?.page_size ?? 50));
 
   const toggleColor = (c: string) => {
-    setActiveColors(prev => {
+    setActiveColors((prev) => {
       const next = new Set(prev);
       next.has(c) ? next.delete(c) : next.add(c);
       return next;
@@ -264,7 +289,10 @@ export default function DevTagger() {
         <button
           onClick={() => setMode("search")}
           style={{
-            background: mode === "search" ? "var(--color-accent)" : "var(--color-card-bg)",
+            background:
+              mode === "search"
+                ? "var(--color-accent)"
+                : "var(--color-card-bg)",
             color: mode === "search" ? "#fff" : "var(--color-muted)",
             border: "1px solid var(--color-border)",
             borderRadius: "6px",
@@ -279,7 +307,8 @@ export default function DevTagger() {
         <button
           onClick={() => setMode("paste")}
           style={{
-            background: mode === "paste" ? "var(--color-accent)" : "var(--color-card-bg)",
+            background:
+              mode === "paste" ? "var(--color-accent)" : "var(--color-card-bg)",
             color: mode === "paste" ? "#fff" : "var(--color-muted)",
             border: "1px solid var(--color-border)",
             borderRadius: "6px",
@@ -305,7 +334,13 @@ export default function DevTagger() {
               sets={sets}
             />
           </div>
-          <div style={{ marginBottom: "12px", color: "var(--color-muted)", fontSize: "13px" }}>
+          <div
+            style={{
+              marginBottom: "12px",
+              color: "var(--color-muted)",
+              fontSize: "13px",
+            }}
+          >
             {total} results
           </div>
           <div
@@ -321,11 +356,27 @@ export default function DevTagger() {
           </div>
           {totalPages > 1 && (
             <div className="flex justify-center gap-2 mt-6">
-              <button disabled={page <= 1} onClick={() => setPage(p => p - 1)}>Prev</button>
-              <span style={{ color: "var(--color-muted)", lineHeight: "36px", fontSize: 14 }}>
+              <button
+                disabled={page <= 1}
+                onClick={() => setPage((p) => p - 1)}
+              >
+                Prev
+              </button>
+              <span
+                style={{
+                  color: "var(--color-muted)",
+                  lineHeight: "36px",
+                  fontSize: 14,
+                }}
+              >
                 Page {page} of {totalPages}
               </span>
-              <button disabled={page >= totalPages} onClick={() => setPage(p => p + 1)}>Next</button>
+              <button
+                disabled={page >= totalPages}
+                onClick={() => setPage((p) => p + 1)}
+              >
+                Next
+              </button>
             </div>
           )}
         </>
@@ -367,7 +418,13 @@ export default function DevTagger() {
           </div>
 
           {cardIds.length > 0 && (
-            <div style={{ marginBottom: "12px", color: "var(--color-muted)", fontSize: "13px" }}>
+            <div
+              style={{
+                marginBottom: "12px",
+                color: "var(--color-muted)",
+                fontSize: "13px",
+              }}
+            >
               {cardIds.length} cards loaded
             </div>
           )}
@@ -393,7 +450,11 @@ function CardLoader({ cardSetId }: { cardSetId: string }) {
   const variant = parseVariantId(cardSetId);
   const fetchId = variant ? variant.baseId : cardSetId;
 
-  const { data: card, isLoading, error } = useQuery({
+  const {
+    data: card,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["card", fetchId],
     queryFn: () => getCard(fetchId),
     staleTime: 60_000,

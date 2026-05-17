@@ -58,7 +58,7 @@ export function useLeaderCardSearch(
     queryKey: ["cards", "byType", leaderType, filters],
     queryFn: () =>
       searchCards(
-        { ...filters, types_contains: leaderType, colors: leader!.card_color.join(","), exclude_type: "Leader", card_type: "", color: "" },
+        { ...filters, types_contains: leaderType, colors: leader!.card_color.join(","), exclude_type: "Leader", color: "" },
         1,
         100
       ),
@@ -71,7 +71,7 @@ export function useLeaderCardSearch(
     queryKey: ["cards", "byColor", leader?.card_color, filters, colorPage],
     queryFn: () =>
       searchCards(
-        { ...filters, colors: leader!.card_color.join(","), exclude_type: "Leader", card_type: "", color: "" },
+        { ...filters, colors: leader!.card_color.join(","), exclude_type: "Leader", color: "" },
         colorPage,
         50
       ),

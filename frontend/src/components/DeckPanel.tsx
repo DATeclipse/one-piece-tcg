@@ -157,9 +157,12 @@ export default function DeckPanel({
       </div>
 
       {/* Count */}
-      <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 8 }}>
+      <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 4 }}>
         <span className={`deck-count ${countClass}`}>{totalCards}</span>
         <span style={{ color: "var(--color-muted)", fontSize: 14 }}>/ 50 cards</span>
+      </div>
+      <div style={{ fontSize: 12, marginBottom: 8, color: totalCards === 50 ? "var(--color-good)" : "var(--color-muted)" }}>
+        {totalCards === 50 ? "Complete ✓" : `${50 - totalCards} remaining`}
       </div>
 
       {/* Mini list */}
@@ -196,8 +199,8 @@ export default function DeckPanel({
       </div>
 
       {entries.length > 0 && (
-        <div style={{ fontSize: 12, marginTop: 4, color: totalMissing > 0 ? "var(--color-warn)" : "var(--color-good)" }}>
-          {totalMissing > 0 ? `Missing ${totalMissing} cards` : "All cards owned ✓"}
+        <div style={{ fontSize: 11, marginTop: 4, color: totalMissing > 0 ? "var(--color-warn)" : "var(--color-good)" }}>
+          {totalMissing > 0 ? `${totalMissing} not in collection` : "All cards owned ✓"}
         </div>
       )}
 

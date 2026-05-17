@@ -175,6 +175,11 @@
     background: var(--color-border);
     border-radius: 3px;
   }
+    input[type=number] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
 }
 
 /* === TCG Card Component === */
@@ -469,6 +474,124 @@
   color: white;
   border-color: transparent;
   animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.filter-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.filter-dropdown-trigger {
+  padding: 7px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  font: 700 12px/1 var(--font-body);
+  letter-spacing: 0.03em;
+  color: var(--color-muted);
+  transition: all 0.2s;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.filter-dropdown-trigger:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-accent);
+  color: var(--color-light);
+}
+
+.filter-dropdown-trigger.active {
+  border-color: var(--color-accent);
+  color: var(--color-light);
+}
+
+.filter-dropdown-trigger .dd-arrow {
+  font-size: 8px;
+  opacity: 0.5;
+}
+
+.filter-dropdown-panel {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 160px;
+  max-height: 240px;
+  overflow-y: auto;
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 4px;
+  z-index: 100;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.filter-dropdown-panel button {
+  width: 100%;
+  text-align: left;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--color-muted);
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.filter-dropdown-panel button:hover {
+  background: var(--color-card-bg);
+  color: var(--color-light);
+}
+
+.filter-dropdown-panel button.selected {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.cost-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cost-group label {
+  font: 700 11px/1 var(--font-body);
+  color: var(--color-muted-dim);
+  letter-spacing: 0.03em;
+}
+
+.cost-group input {
+  width: 60px;
+  padding: 6px 8px;
+  border-radius: 999px;
+  cursor: pointer;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  font: 700 12px/1 var(--font-body);
+  color: var(--color-muted);
+  transition: all 0.2s;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+
+.cost-group input::-webkit-outer-spin-button,
+.cost-group input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.cost-group input:focus {
+  border-color: var(--color-accent);
+  color: var(--color-light);
+  outline: none;
+}
+
+.cost-group .cost-sep {
+  color: var(--color-muted-dim);
+  font-size: 11px;
 }
 
 .cs-grid {

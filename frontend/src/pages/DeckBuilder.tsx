@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getDeck } from "../api/client";
+import { getDeck, getMetaDeck } from "../api/client";
 import CardGrid from "../components/CardGrid";
 import DeckList from "../components/DeckList";
 import DeckPanel from "../components/DeckPanel";
@@ -176,6 +176,27 @@ export default function DeckBuilder() {
     }
   };
 
+  const handleLoadMeta = async (id: number) => {
+    setLoadingDeck(true);
+    setError("");
+    try {
+      const deck = await getMetaDeck(id);
+      setDeckId(null);
+      setDeckName(`Copy of ${deck.name}`);
+      setLeader(deck.leader);
+      const entries = new Map<string, { card: Card; quantity: number }>();
+      deck.cards.forEach((dc) => {
+        entries.set(dc.card.card_set_id, { card: dc.card, quantity: dc.quantity });
+      });
+      setDeckCards(entries);
+      setValidation(null);
+    } catch (e: any) {
+      setError(e.message);
+    } finally {
+      setLoadingDeck(false);
+    }
+  };
+
   const handleNewDeck = () => {
     setDeckId(null);
     setDeckName("");
@@ -196,7 +217,7 @@ export default function DeckBuilder() {
           </button>
         </div>
       )}
-      <DeckList onLoad={handleLoad} />
+      <DeckList onLoad={handleLoad} onLoadMeta={handleLoadMeta} />
 
       {loadingDeck && <div className="text-muted-dim mb-2">Loading deck...</div>}
       <div className="builder-grid pb-20 md:pb-0">
