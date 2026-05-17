@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { getDeck, getMetaDeck } from "../api/client";
 import CardGrid from "../components/CardGrid";
 import DeckList from "../components/DeckList";
@@ -7,26 +7,13 @@ import MobileDeckSheet from "../components/MobileDeckSheet";
 import CardSearchBar from "../components/CardSearchBar";
 import { useDeckState } from "../context/DeckContext";
 import { useCardSearch, useLeaderCardSearch, useSets } from "../hooks/useCards";
-import { useCollectionCounts } from "../hooks/useCollection";
+import { useCardFilters } from "../hooks/useCardFilters";
+import { useCollectionCountsMap } from "../hooks/useCollection";
 import { useCreateDeck, useUpdateDeck, useValidateDeck } from "../hooks/useDecks";
-import type { Card, SearchFilters as Filters } from "../types";
-
-const EMPTY_FILTERS: Filters = {
-  name: "",
-  color: "",
-  card_type: "",
-  cost_min: "",
-  cost_max: "",
-  set_id: "",
-  rarity: "",
-  art_style: "",
-};
+import type { Card } from "../types";
 
 export default function DeckBuilder() {
-  const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
-  const [debouncedFilters, setDebouncedFilters] = useState<Filters>(EMPTY_FILTERS);
-  const [page, setPage] = useState(1);
-  const [activeColors, setActiveColors] = useState<Set<string>>(new Set());
+  const { filters, setFilters, debouncedFilters, activeColors, toggleColor, clearAll, page, setPage } = useCardFilters();
 
   const { leader, setLeader, deckCards, setDeckCards, deckName, setDeckName, deckId, setDeckId, validation, setValidation } = useDeckState();
   const [error, setError] = useState("");
@@ -41,33 +28,6 @@ export default function DeckBuilder() {
   const validateMutation = useValidateDeck();
 
   const { data: sets = [] } = useSets();
-
-  const toggleColor = (c: string) => {
-    setActiveColors(prev => {
-      const next = new Set(prev);
-      next.has(c) ? next.delete(c) : next.add(c);
-      return next;
-    });
-  };
-
-  const clearAll = () => {
-    setFilters(EMPTY_FILTERS);
-    setActiveColors(new Set());
-  };
-
-  useEffect(() => {
-    const t = setTimeout(() => {
-      const colorStr = activeColors.size === 1 ? [...activeColors][0] : "";
-      setDebouncedFilters({
-        ...filters,
-        search: filters.name,
-        name: "",
-        color: colorStr,
-      });
-      setPage(1);
-    }, 150);
-    return () => clearTimeout(t);
-  }, [filters, activeColors]);
 
   const handleCardClick = (card: Card) => {
     if (card.card_type === "Leader") {
@@ -114,10 +74,9 @@ export default function DeckBuilder() {
     setValidation(null);
   };
 
-  const { data: collectionData = {} } = useCollectionCounts();
+  const { data: collectionCounts } = useCollectionCountsMap();
   const deckCounts = new Map<string, number>();
   deckCards.forEach((v, k) => deckCounts.set(k, v.quantity));
-  const collectionCounts = new Map<string, number>(Object.entries(collectionData));
 
   const getDeckPayload = () => ({
     name: deckName,
@@ -155,13 +114,15 @@ export default function DeckBuilder() {
     }
   };
 
-  const handleLoad = async (id: number) => {
+  const loadDeckData = async <T extends { leader: Card; cards: { card: Card; quantity: number }[]; name: string }>(
+    fetcher: () => Promise<T>,
+    applyMeta: (deck: T) => void,
+  ) => {
     setLoadingDeck(true);
     setError("");
     try {
-      const deck = await getDeck(id);
-      setDeckId(deck.id);
-      setDeckName(deck.name);
+      const deck = await fetcher();
+      applyMeta(deck);
       setLeader(deck.leader);
       const entries = new Map<string, { card: Card; quantity: number }>();
       deck.cards.forEach((dc) => {
@@ -176,26 +137,17 @@ export default function DeckBuilder() {
     }
   };
 
-  const handleLoadMeta = async (id: number) => {
-    setLoadingDeck(true);
-    setError("");
-    try {
-      const deck = await getMetaDeck(id);
+  const handleLoad = (id: number) =>
+    loadDeckData(() => getDeck(id), (deck) => {
+      setDeckId(deck.id);
+      setDeckName(deck.name);
+    });
+
+  const handleLoadMeta = (id: number) =>
+    loadDeckData(() => getMetaDeck(id), (deck) => {
       setDeckId(null);
       setDeckName(`Copy of ${deck.name}`);
-      setLeader(deck.leader);
-      const entries = new Map<string, { card: Card; quantity: number }>();
-      deck.cards.forEach((dc) => {
-        entries.set(dc.card.card_set_id, { card: dc.card, quantity: dc.quantity });
-      });
-      setDeckCards(entries);
-      setValidation(null);
-    } catch (e: any) {
-      setError(e.message);
-    } finally {
-      setLoadingDeck(false);
-    }
-  };
+    });
 
   const handleNewDeck = () => {
     setDeckId(null);

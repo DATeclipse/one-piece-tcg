@@ -1,60 +1,24 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
+import { COLOR_NAMES, colorHex } from "../constants/colors";
 import CardDetailModal from "../components/CardDetailModal";
 import CardItem from "../components/CardItem";
 import CardSearchBar from "../components/CardSearchBar";
 import { useCardSearch, useSets } from "../hooks/useCards";
-import { useCollectionCounts, useUpdateCollection } from "../hooks/useCollection";
-import type { Card, SearchFilters } from "../types";
+import { useCardFilters } from "../hooks/useCardFilters";
+import { useCollectionCountsMap, useUpdateCollection } from "../hooks/useCollection";
+import type { Card } from "../types";
 
-const COLORS = ["Red", "Blue", "Green", "Purple", "Black", "Yellow"];
-
-const COLOR_HEX: Record<string, string> = {
-  Red: "#e63946", Blue: "#3a7ad9", Green: "#3aaa64",
-  Purple: "#8b5cf6", Black: "#5b6470", Yellow: "#e6b53a",
-};
-
-const EMPTY_FILTERS: SearchFilters = {
-  name: "",
-  color: "",
-  card_type: "",
-  cost_min: "",
-  cost_max: "",
-  set_id: "",
-  rarity: "",
-  art_style: "",
-};
+const COLLECTION_EXTRA = { in_collection: true } as const;
 
 export default function CollectionPage() {
-  const [filters, setFilters] = useState<SearchFilters>(EMPTY_FILTERS);
-  const [debouncedFilters, setDebouncedFilters] = useState<SearchFilters>(EMPTY_FILTERS);
-  const [page, setPage] = useState(1);
-  const [activeColors, setActiveColors] = useState<Set<string>>(new Set());
+  const { filters, setFilters, debouncedFilters, activeColors, toggleColor, clearAll, page, setPage } = useCardFilters({ extraFilters: COLLECTION_EXTRA });
   const [selectedCard, setSelectedCard] = useState<Card | null>(null);
 
   const { data: sets = [] } = useSets();
   const updateCollection = useUpdateCollection();
 
-  useEffect(() => {
-    const t = setTimeout(() => {
-      const colorStr = activeColors.size === 1 ? [...activeColors][0] : "";
-      setDebouncedFilters({
-        ...filters,
-        search: filters.name,
-        name: "",
-        color: colorStr,
-        in_collection: true,
-      });
-      setPage(1);
-    }, 150);
-    return () => clearTimeout(t);
-  }, [filters, activeColors]);
-
   const { data } = useCardSearch(debouncedFilters, page);
-  const { data: collectionData = {} } = useCollectionCounts();
-  const collectionCounts = useMemo(
-    () => new Map<string, number>(Object.entries(collectionData)),
-    [collectionData],
-  );
+  const { data: collectionCounts } = useCollectionCountsMap();
 
   const items = data?.items ?? [];
   const total = data?.total ?? 0;
@@ -75,23 +39,10 @@ export default function CollectionPage() {
         }
       }
     }
-    return COLORS.map(c => ({ color: c, count: counts[c] ?? 0 })).filter(d => d.count > 0);
+    return COLOR_NAMES.map(c => ({ color: c, count: counts[c] ?? 0 })).filter(d => d.count > 0);
   }, [items, collectionCounts]);
 
   const maxColorCount = Math.max(...colorDist.map(d => d.count), 1);
-
-  const toggleColor = (c: string) => {
-    setActiveColors(prev => {
-      const next = new Set(prev);
-      next.has(c) ? next.delete(c) : next.add(c);
-      return next;
-    });
-  };
-
-  const clearAll = () => {
-    setFilters(EMPTY_FILTERS);
-    setActiveColors(new Set());
-  };
 
   const adjustQty = (cardSetId: string, currentQty: number, delta: number) => {
     const newQty = Math.max(0, currentQty + delta);
@@ -145,7 +96,7 @@ export default function CollectionPage() {
               key={color}
               className="combo-tile"
               style={{
-                background: `linear-gradient(135deg, ${COLOR_HEX[color]}, ${COLOR_HEX[color]}88)`,
+                background: `linear-gradient(135deg, ${colorHex(color)}, ${colorHex(color)}88)`,
                 width: Math.max(80, (count / maxColorCount) * 160),
               }}
             >

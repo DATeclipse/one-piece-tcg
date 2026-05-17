@@ -1,16 +1,8 @@
 import { useState } from "react";
+import { colorHex } from "../constants/colors";
 import ManaCurve from "./ManaCurve";
 import { useCollectionCounts } from "../hooks/useCollection";
 import type { Card, DeckScore } from "../types";
-
-const COLOR_HEX: Record<string, string> = {
-  Red: "#e63946",
-  Blue: "#3a7ad9",
-  Green: "#3aaa64",
-  Purple: "#8b5cf6",
-  Black: "#5b6470",
-  Yellow: "#e6b53a",
-};
 
 interface DeckEntry {
   card: Card;
@@ -176,7 +168,7 @@ export default function DeckPanel({
   }
 
   const leaderColor = leader
-    ? (COLOR_HEX[leader.card_color[0]] ?? "#444")
+    ? (colorHex(leader.card_color[0]))
     : "#444";
   const countClass =
     totalCards === 50 ? "good" : totalCards >= 40 ? "warn" : "bad";
@@ -273,7 +265,7 @@ export default function DeckPanel({
         {entries.map((entry) => {
           const owned = counts[entry.card.card_set_id] ?? 0;
           const need = Math.max(0, entry.quantity - owned);
-          const swatch = COLOR_HEX[entry.card.card_color[0]] ?? "#444";
+          const swatch = colorHex(entry.card.card_color[0]);
           return (
             <div key={entry.card.card_set_id} className="mini-row">
               <div className="swatch" style={{ background: swatch }} />

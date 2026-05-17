@@ -1,22 +1,11 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import CardDetailModal from "../components/CardDetailModal";
 import CardItem from "../components/CardItem";
 import CardSearchBar from "../components/CardSearchBar";
 import { useCardSearch, useSets } from "../hooks/useCards";
-import { useCollectionCounts } from "../hooks/useCollection";
-import type { Card, SearchFilters } from "../types";
-
-const EMPTY_FILTERS: SearchFilters = {
-  name: "",
-  color: "",
-  card_type: "",
-  cost_min: "",
-  cost_max: "",
-  set_id: "",
-  rarity: "",
-  types_contains: "",
-  art_style: "",
-};
+import { useCardFilters } from "../hooks/useCardFilters";
+import { useCollectionCountsMap } from "../hooks/useCollection";
+import type { Card } from "../types";
 
 function rarityClass(r: string) {
   const key = r.toLowerCase();
@@ -32,33 +21,11 @@ function isRareOrAbove(r: string) {
 }
 
 export default function CardSearch() {
-  const [filters, setFilters] = useState<SearchFilters>(EMPTY_FILTERS);
-  const [debouncedFilters, setDebouncedFilters] = useState<SearchFilters>(EMPTY_FILTERS);
-  const [page, setPage] = useState(1);
+  const { filters, setFilters, debouncedFilters, activeColors, toggleColor, clearAll, page, setPage } = useCardFilters();
   const [selectedCard, setSelectedCard] = useState<Card | null>(null);
-  const [activeColors, setActiveColors] = useState<Set<string>>(new Set());
-
-  useEffect(() => {
-    const t = setTimeout(() => {
-      const colorStr = activeColors.size === 1 ? [...activeColors][0] : "";
-      setDebouncedFilters({
-        ...filters,
-        search: filters.name,
-        name: "",
-        types_contains: "",
-        color: colorStr,
-      });
-      setPage(1);
-    }, 150);
-    return () => clearTimeout(t);
-  }, [filters, activeColors]);
 
   const { data } = useCardSearch(debouncedFilters, page);
-  const { data: collectionData = {} } = useCollectionCounts();
-  const collectionCounts = useMemo(
-    () => new Map<string, number>(Object.entries(collectionData)),
-    [collectionData],
-  );
+  const { data: collectionCounts } = useCollectionCountsMap();
   const { data: sets = [] } = useSets();
 
   const items = data?.items ?? [];
@@ -79,19 +46,6 @@ export default function CardSearch() {
   );
 
   const rareCount = useMemo(() => items.filter(c => isRareOrAbove(c.rarity)).length, [items]);
-
-  const toggleColor = (c: string) => {
-    setActiveColors(prev => {
-      const next = new Set(prev);
-      next.has(c) ? next.delete(c) : next.add(c);
-      return next;
-    });
-  };
-
-  const clearAll = () => {
-    setFilters(EMPTY_FILTERS);
-    setActiveColors(new Set());
-  };
 
   return (
     <div>

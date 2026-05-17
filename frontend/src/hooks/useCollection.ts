@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getCollectionCounts, getFullCollection, updateCollectionItem } from "../api/client";
 
@@ -7,6 +8,15 @@ export function useCollectionCounts() {
     queryFn: getCollectionCounts,
     staleTime: 30_000,
   });
+}
+
+export function useCollectionCountsMap() {
+  const { data = {}, ...rest } = useCollectionCounts();
+  const map = useMemo(
+    () => new Map<string, number>(Object.entries(data)),
+    [data],
+  );
+  return { data: map, ...rest };
 }
 
 export function useFullCollection() {

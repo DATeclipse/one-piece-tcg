@@ -1,17 +1,13 @@
 import { useState } from "react";
+import { colorHex } from "../constants/colors";
 import CardDetailModal from "../components/CardDetailModal";
 import CardItem from "../components/CardItem";
 import { useDeck, useDeckList } from "../hooks/useDecks";
-import { useCollectionCounts } from "../hooks/useCollection";
+import { useCollectionCountsMap } from "../hooks/useCollection";
 import { useMetaDeck, useMetaDeckList } from "../hooks/useMeta";
 import type { Card } from "../types";
 
 const TYPE_ORDER = ["Character", "Event", "Stage"];
-
-const COLOR_HEX: Record<string, string> = {
-  Red: "#e63946", Blue: "#3a7ad9", Green: "#3aaa64",
-  Purple: "#8b5cf6", Black: "#5b6470", Yellow: "#e6b53a",
-};
 
 interface DeckSelection {
   type: "user" | "meta";
@@ -24,8 +20,7 @@ export default function DeckView() {
 
   const { data: decks = [], isLoading: decksLoading } = useDeckList();
   const { data: metaDecks = [] } = useMetaDeckList();
-  const { data: collectionData = {} } = useCollectionCounts();
-  const collectionCounts = new Map<string, number>(Object.entries(collectionData));
+  const { data: collectionCounts } = useCollectionCountsMap();
 
   const allDecks = [
     ...decks.map(d => ({ ...d, selType: "user" as const })),
@@ -136,7 +131,7 @@ function DeckDetail({
   if (isLoading) return <div style={{ color: "var(--color-muted-dim)" }}>Loading deck...</div>;
   if (!deck) return null;
 
-  const leaderColor = COLOR_HEX[deck.leader.card_color[0]] ?? "#444";
+  const leaderColor = colorHex(deck.leader.card_color[0]);
 
   const groupedCards = TYPE_ORDER.map((type) => ({
     type,

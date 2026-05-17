@@ -1,9 +1,10 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { getCard, updateCard } from "../api/client";
 import CardSearchBar from "../components/CardSearchBar";
 import { useCardSearch, useSets } from "../hooks/useCards";
-import type { Card, SearchFilters } from "../types";
+import { useCardFilters } from "../hooks/useCardFilters";
+import type { Card } from "../types";
 
 const ART_STYLES = ["standard", "manga", "full_art", "alt_art"] as const;
 const RARITIES = [
@@ -205,41 +206,12 @@ function CardTagger({
   );
 }
 
-const EMPTY_FILTERS: SearchFilters = {
-  name: "",
-  color: "",
-  card_type: "",
-  cost_min: "",
-  cost_max: "",
-  set_id: "",
-  rarity: "",
-  art_style: "",
-};
-
 export default function DevTagger() {
   const [mode, setMode] = useState<"search" | "paste">("search");
   const [input, setInput] = useState("");
   const [cardIds, setCardIds] = useState<string[]>([]);
-  const [filters, setFilters] = useState<SearchFilters>(EMPTY_FILTERS);
-  const [debouncedFilters, setDebouncedFilters] =
-    useState<SearchFilters>(EMPTY_FILTERS);
-  const [activeColors, setActiveColors] = useState<Set<string>>(new Set());
-  const [page, setPage] = useState(1);
+  const { filters, setFilters, debouncedFilters, activeColors, toggleColor, clearAll, page, setPage } = useCardFilters();
   const { data: sets = [] } = useSets();
-
-  useEffect(() => {
-    const t = setTimeout(() => {
-      const colorStr = activeColors.size === 1 ? [...activeColors][0] : "";
-      setDebouncedFilters({
-        ...filters,
-        search: filters.name,
-        name: "",
-        color: colorStr,
-      });
-      setPage(1);
-    }, 150);
-    return () => clearTimeout(t);
-  }, [filters, activeColors]);
 
   const { data: searchData } = useCardSearch(
     debouncedFilters,
@@ -249,19 +221,6 @@ export default function DevTagger() {
   const searchItems = searchData?.items ?? [];
   const total = searchData?.total ?? 0;
   const totalPages = Math.ceil(total / (searchData?.page_size ?? 50));
-
-  const toggleColor = (c: string) => {
-    setActiveColors((prev) => {
-      const next = new Set(prev);
-      next.has(c) ? next.delete(c) : next.add(c);
-      return next;
-    });
-  };
-
-  const clearAll = () => {
-    setFilters(EMPTY_FILTERS);
-    setActiveColors(new Set());
-  };
 
   const handleLoad = () => {
     const ids = input

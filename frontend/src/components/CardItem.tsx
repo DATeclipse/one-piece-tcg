@@ -1,3 +1,4 @@
+import { colorGlow, colorHex } from "../constants/colors";
 import type { Card } from "../types";
 
 interface Props {
@@ -7,15 +8,6 @@ interface Props {
   collectionCount?: number;
   isAltArt?: boolean;
 }
-
-const COLOR_HEX: Record<string, [string, string]> = {
-  Red: ["#e63946", "rgba(230,57,70,.55)"],
-  Blue: ["#3a7ad9", "rgba(58,122,217,.55)"],
-  Green: ["#3aaa64", "rgba(58,170,100,.55)"],
-  Purple: ["#8b5cf6", "rgba(139,92,246,.55)"],
-  Black: ["#5b6470", "rgba(91,100,112,.55)"],
-  Yellow: ["#e6b53a", "rgba(230,181,58,.55)"],
-};
 
 function initials(name: string) {
   return name
@@ -33,7 +25,8 @@ export default function CardItem({
   collectionCount,
   isAltArt,
 }: Props) {
-  const [hex, glow] = COLOR_HEX[card.card_color[0]] ?? ["#444", "transparent"];
+  const hex = colorHex(card.card_color[0]);
+  const glow = colorGlow(card.card_color[0]);
   const collectionBg =
     deckCount && collectionCount !== undefined && collectionCount < deckCount
       ? "var(--color-warn)"

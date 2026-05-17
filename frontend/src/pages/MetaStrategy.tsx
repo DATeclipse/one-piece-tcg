@@ -1,13 +1,9 @@
 import { useState } from "react";
+import { colorHex } from "../constants/colors";
 import ManaCurve from "../components/ManaCurve";
 import { useDeck, useDeckList } from "../hooks/useDecks";
 import { useDeleteMetaDeck, useMetaDeck, useMetaDeckList } from "../hooks/useMeta";
 import type { DeckCard } from "../types";
-
-const COLOR_HEX: Record<string, string> = {
-  Red: "#e63946", Blue: "#3a7ad9", Green: "#3aaa64",
-  Purple: "#8b5cf6", Black: "#5b6470", Yellow: "#e6b53a",
-};
 
 interface DeckStats {
   totalCards: number;
@@ -227,7 +223,7 @@ export default function MetaStrategy() {
                     <div key={color} className="bar-row">
                       <span className="bar-label">{color}</span>
                       <div className="bar-wrap">
-                        <div className="bar-fill" style={{ width: `${(count / globalMaxColor) * 100}%`, background: COLOR_HEX[color] ?? "var(--color-accent)" }} />
+                        <div className="bar-fill" style={{ width: `${(count / globalMaxColor) * 100}%`, background: colorHex(color) }} />
                       </div>
                       <span className="bar-val">{count}</span>
                     </div>
@@ -244,7 +240,7 @@ export default function MetaStrategy() {
                     <div key={color} className="bar-row">
                       <span className="bar-label">{color}</span>
                       <div className="bar-wrap">
-                        <div className="bar-fill" style={{ width: `${(count / globalMaxColor) * 100}%`, background: COLOR_HEX[color] ?? "var(--color-accent)" }} />
+                        <div className="bar-fill" style={{ width: `${(count / globalMaxColor) * 100}%`, background: colorHex(color) }} />
                       </div>
                       <span className="bar-val">{count}</span>
                     </div>
