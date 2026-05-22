@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import CardDetailModal from "../components/CardDetailModal";
 import CardItem from "../components/CardItem";
 import CardSearchBar from "../components/CardSearchBar";
@@ -22,7 +22,7 @@ function isRareOrAbove(r: string) {
 
 export default function CardSearch() {
   const { filters, setFilters, debouncedFilters, activeColors, toggleColor, clearAll, page, setPage } = useCardFilters();
-  const [selectedCard, setSelectedCard] = useState<Card | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const { data } = useCardSearch(debouncedFilters, page);
   const { data: collectionCounts } = useCollectionCountsMap();
@@ -46,6 +46,11 @@ export default function CardSearch() {
   );
 
   const rareCount = useMemo(() => items.filter(c => isRareOrAbove(c.rarity)).length, [items]);
+
+  const selectedCard = selectedIndex !== null ? displayItems[selectedIndex]?.card ?? null : null;
+  const onPrev = useCallback(() => setSelectedIndex(i => i !== null && i > 0 ? i - 1 : i), []);
+  const onNext = useCallback(() => setSelectedIndex(i => i !== null && i < displayItems.length - 1 ? i + 1 : i), [displayItems.length]);
+  const onClose = useCallback(() => setSelectedIndex(null), []);
 
   return (
     <div>
@@ -84,7 +89,7 @@ export default function CardSearch() {
               )}
               <CardItem
                 card={card}
-                onClick={() => setSelectedCard(card)}
+                onClick={() => setSelectedIndex(i)}
                 collectionCount={collectionCounts.get(card.card_set_id)}
                 isAltArt={altIndex > 0}
               />
@@ -112,7 +117,12 @@ export default function CardSearch() {
       )}
 
       {selectedCard && (
-        <CardDetailModal card={selectedCard} onClose={() => setSelectedCard(null)} />
+        <CardDetailModal
+          card={selectedCard}
+          onClose={onClose}
+          onPrev={selectedIndex! > 0 ? onPrev : undefined}
+          onNext={selectedIndex! < displayItems.length - 1 ? onNext : undefined}
+        />
       )}
     </div>
   );

@@ -1,14 +1,27 @@
+import { useEffect } from "react";
 import { useCollectionCounts, useUpdateCollection } from "../hooks/useCollection";
 import type { Card } from "../types";
 
 interface Props {
   card: Card;
   onClose: () => void;
+  onPrev?: () => void;
+  onNext?: () => void;
 }
 
-export default function CardDetailModal({ card, onClose }: Props) {
+export default function CardDetailModal({ card, onClose, onPrev, onNext }: Props) {
   const { data: counts = {} } = useCollectionCounts();
   const updateMutation = useUpdateCollection();
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") { e.preventDefault(); onPrev?.(); }
+      else if (e.key === "ArrowRight") { e.preventDefault(); onNext?.(); }
+      else if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [onPrev, onNext, onClose]);
 
   const owned = counts[card.card_set_id] ?? 0;
 
@@ -22,6 +35,22 @@ export default function CardDetailModal({ card, onClose }: Props) {
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
       onClick={onClose}
     >
+      {onPrev && (
+        <button
+          onClick={(e) => { e.stopPropagation(); onPrev(); }}
+          className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-50 bg-panel/80 text-light text-2xl rounded-full w-10 h-10 flex items-center justify-center border border-border hover:bg-card-bg"
+        >
+          &#8249;
+        </button>
+      )}
+      {onNext && (
+        <button
+          onClick={(e) => { e.stopPropagation(); onNext(); }}
+          className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-50 bg-panel/80 text-light text-2xl rounded-full w-10 h-10 flex items-center justify-center border border-border hover:bg-card-bg"
+        >
+          &#8250;
+        </button>
+      )}
       <div
         className="bg-panel rounded-lg max-w-2xl w-full max-h-[90vh] overflow-auto flex flex-col md:flex-row gap-4 p-4 relative"
         onClick={(e) => e.stopPropagation()}
