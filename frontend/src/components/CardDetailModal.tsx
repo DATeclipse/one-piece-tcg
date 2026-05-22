@@ -13,22 +13,24 @@ export default function CardDetailModal({ card, onClose, onPrev, onNext }: Props
   const { data: counts = {} } = useCollectionCounts();
   const updateMutation = useUpdateCollection();
 
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") { e.preventDefault(); onPrev?.(); }
-      else if (e.key === "ArrowRight") { e.preventDefault(); onNext?.(); }
-      else if (e.key === "Escape") onClose();
-    };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-  }, [onPrev, onNext, onClose]);
-
   const owned = counts[card.card_set_id] ?? 0;
 
   const handleUpdate = (delta: number) => {
     const newQty = Math.max(0, owned + delta);
     updateMutation.mutate({ card_set_id: card.card_set_id, quantity: newQty });
   };
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") { e.preventDefault(); onPrev?.(); }
+      else if (e.key === "ArrowRight") { e.preventDefault(); onNext?.(); }
+      else if (e.key === "ArrowUp") { e.preventDefault(); handleUpdate(1); }
+      else if (e.key === "ArrowDown") { e.preventDefault(); handleUpdate(-1); }
+      else if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [onPrev, onNext, onClose, handleUpdate]);
 
   return (
     <div
