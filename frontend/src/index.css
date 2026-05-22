@@ -259,7 +259,7 @@
 
 /* === Card Search Hero === */
 .cs-hero {
-  @apply relative rounded-[22px] border border-border overflow-hidden mb-5;
+  @apply relative rounded-[22px] border border-border mb-5;
   padding: 28px 28px 22px;
   background: linear-gradient(120deg, #11121d, #1c0e2a 35%, #2a0e1f 70%, #1a1530);
 }
@@ -431,7 +431,7 @@
 
 /* === Collection Page === */
 .col-hero {
-  @apply grid gap-4 p-6 rounded-[22px] border border-border mb-6 relative overflow-hidden;
+  @apply grid gap-4 p-6 rounded-[22px] border border-border mb-6 relative;
   background: linear-gradient(135deg, #11121d 0%, #1c0e2a 40%, #2a0e1f 70%, #1a1530 100%);
 }
 
