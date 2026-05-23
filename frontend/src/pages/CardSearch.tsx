@@ -5,7 +5,6 @@ import CardSearchBar from "../components/CardSearchBar";
 import { useCardSearch, useSets } from "../hooks/useCards";
 import { useCardFilters } from "../hooks/useCardFilters";
 import { useCollectionCountsMap } from "../hooks/useCollection";
-import type { Card } from "../types";
 
 function rarityClass(r: string) {
   const key = r.toLowerCase();

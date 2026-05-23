@@ -1,18 +1,28 @@
-app = "one-piece-tcg"
-primary_region = "sjc"
+# fly.toml app configuration file generated for one-piece-tcg on 2026-05-23T10:02:04+01:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'one-piece-tcg'
+primary_region = 'lhr'
 
 [build]
 
 [env]
-  DB_PATH = "/data/one_piece_tcg.db"
+  DB_PATH = '/data/one_piece_tcg.db'
+
+[[mounts]]
+  source = 'data'
+  destination = '/data'
 
 [http_service]
   internal_port = 8000
   force_https = true
-  auto_stop_machines = "stop"
+  auto_stop_machines = 'stop'
   auto_start_machines = true
   min_machines_running = 0
 
-[mounts]
-  source = "data"
-  destination = "/data"
+[[vm]]
+  memory = '1gb'
+  cpus = 1
+  memory_mb = 1024
