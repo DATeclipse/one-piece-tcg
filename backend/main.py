@@ -1,10 +1,12 @@
 import logging
+import os
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
-from config import LOCAL_CARDS_DIR
+from config import BASE_DIR, LOCAL_CARDS_DIR
 from database import Base, SessionLocal, engine
 from models import Card
 from routers import cards, collections, decks, meta, sync
@@ -17,7 +19,7 @@ app = FastAPI(title="One Piece TCG Deck Builder")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=os.environ.get("CORS_ORIGINS", "http://localhost:5173").split(","),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -31,6 +33,17 @@ app.include_router(meta.router)
 
 if LOCAL_CARDS_DIR.exists():
     app.mount("/static/cards", StaticFiles(directory=str(LOCAL_CARDS_DIR)), name="cards")
+
+FRONTEND_DIR = BASE_DIR.parent / "frontend" / "dist"
+if FRONTEND_DIR.exists():
+    app.mount("/assets", StaticFiles(directory=str(FRONTEND_DIR / "assets")), name="frontend-assets")
+
+    @app.get("/{path:path}")
+    async def serve_spa(path: str):
+        file = FRONTEND_DIR / path
+        if file.is_file():
+            return FileResponse(file)
+        return FileResponse(FRONTEND_DIR / "index.html")
 
 
 @app.on_event("startup")
