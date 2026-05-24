@@ -32,4 +32,11 @@ def card_id_to_image_path(card_set_id: str, cards_dir: Path) -> Optional[Path]:
         if path.exists():
             return path
 
+    for d in cards_dir.iterdir():
+        if not d.is_dir():
+            continue
+        path = d / filename
+        if path.exists():
+            return path
+
     return None

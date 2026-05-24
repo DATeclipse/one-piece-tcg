@@ -63,7 +63,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/EB-02/EB01-001_p2.webp",
     "set_id": "EB-02",
     "set_name": "Extra Booster: Anime 25th Collection",
     "market_price": null
@@ -217,7 +217,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Slash Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP14-EB04/EB01-003_p5.webp",
     "set_id": "EB-01",
     "set_name": "Extra Booster: Memorial Collection",
     "market_price": null
@@ -459,7 +459,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/EB01-009_p1.webp",
     "set_id": "EB-01",
     "set_name": "Extra Booster: Memorial Collection",
     "market_price": null
@@ -745,7 +745,7 @@
     "rarity": "R",
     "counter_amount": 2000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/ST-24/EB01-015_p3.webp",
     "set_id": "EB-01",
     "set_name": "Extra Booster: Memorial Collection",
     "market_price": null
@@ -789,7 +789,7 @@
     "rarity": "R",
     "counter_amount": 2000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/EB01-015_p5.webp",
     "set_id": "EB-01",
     "set_name": "Extra Booster: Memorial Collection",
     "market_price": null
@@ -877,7 +877,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/EB01-018_p1.webp",
     "set_id": "EB-01",
     "set_name": "Extra Booster: Memorial Collection",
     "market_price": null
@@ -990,7 +990,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/EB-02/EB01-021_p2.webp",
     "set_id": "EB-02",
     "set_name": "Extra Booster: Anime 25th Collection",
     "market_price": null
@@ -1078,7 +1078,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/OP14-EB04/EB01-023_p1.webp",
     "set_id": "EB-01",
     "set_name": "Extra Booster: Memorial Collection",
     "market_price": null
@@ -1518,7 +1518,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/EB01-038_p1.webp",
     "set_id": "EB-01",
     "set_name": "Extra Booster: Memorial Collection",
     "market_price": null
@@ -1609,7 +1609,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/EB-02/EB01-040_p2.webp",
     "set_id": "EB-02",
     "set_name": "Extra Booster: Anime 25th Collection",
     "market_price": null
@@ -2093,7 +2093,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/EB01-051_p1.webp",
     "set_id": "EB-01",
     "set_name": "Extra Booster: Memorial Collection",
     "market_price": null
@@ -2269,7 +2269,7 @@
     "rarity": "SP",
     "counter_amount": 2000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-10/EB01-056_p2.webp",
     "set_id": "OP-10",
     "set_name": "Royal Blood",
     "market_price": null
@@ -2335,7 +2335,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/OP-11/EB01-057_p2.webp",
     "set_id": "OP-11",
     "set_name": "A Fist of Divine Speed",
     "market_price": null
@@ -2423,7 +2423,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/EB01-060_p1.webp",
     "set_id": "EB-01",
     "set_name": "Extra Booster: Memorial Collection",
     "market_price": null
@@ -3417,7 +3417,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-13/EB02-028_p1.webp",
     "set_id": "EB-02",
     "set_name": "Extra Booster: Anime 25th Collection",
     "market_price": null
@@ -4121,7 +4121,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP15-EB04/EB02-052_p2.webp",
     "set_id": "EB-02",
     "set_name": "Extra Booster: Anime 25th Collection",
     "market_price": null
@@ -4473,7 +4473,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/EB02-061_p3.webp",
     "set_id": "EB-02",
     "set_name": "Extra Booster: Anime 25th Collection",
     "market_price": null
@@ -8595,7 +8595,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP01-006_p3.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -8617,7 +8617,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP01-006_p4.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -8639,7 +8639,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP01-006_p5.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -9079,7 +9079,7 @@
     "rarity": "R",
     "counter_amount": 2000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/ST-10/OP01-016_p3.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -9101,7 +9101,7 @@
     "rarity": "SP",
     "counter_amount": 2000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-05/OP01-016_p4.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -9167,7 +9167,7 @@
     "rarity": "R",
     "counter_amount": 2000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP01-016_p8.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -9519,7 +9519,7 @@
     "rarity": "SR",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP01-024_p3.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -9585,7 +9585,7 @@
     "rarity": "SR",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/ST-10/OP01-025_p2.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -9717,7 +9717,7 @@
     "rarity": "UC",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP01-029_p2.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -9739,7 +9739,7 @@
     "rarity": "UC",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP01-029_p3.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -9937,7 +9937,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Ranged",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP01-033_p3.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -9959,7 +9959,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Ranged",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP01-033_p4.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -9981,7 +9981,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Ranged",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP01-033_p5.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -10113,7 +10113,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/OP-07/OP01-035_p2.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -10245,7 +10245,7 @@
     "rarity": "UC",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP01-039_p1.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -10355,7 +10355,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP01-041_p3.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -10377,7 +10377,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP01-041_p4.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -10399,7 +10399,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP01-041_p5.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -10575,7 +10575,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/OP-04/OP01-047_p2.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -10597,7 +10597,7 @@
     "rarity": "SR",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP01-047_p4.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -10751,7 +10751,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-03/OP01-051_p2.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -10773,7 +10773,7 @@
     "rarity": "SR",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP01-051_p4.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -10839,7 +10839,7 @@
     "rarity": "UC",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP01-052_p3.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -10861,7 +10861,7 @@
     "rarity": "UC",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP01-052_p4.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -10949,7 +10949,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP01-055_p1.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -11125,7 +11125,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/ST-17/OP01-060_p2.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -11503,7 +11503,7 @@
     "rarity": "SR",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP01-070_p4.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -11613,7 +11613,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-07/OP01-073_p2.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -11789,7 +11789,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-04/OP01-078_p2.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -11811,7 +11811,7 @@
     "rarity": "SR",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP01-078_p4.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -12977,7 +12977,7 @@
     "rarity": "SEC",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP01-120_p5.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -13043,7 +13043,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/OP-05/OP01-121_p2.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -13065,7 +13065,7 @@
     "rarity": "SEC",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP01-121_p4.webp",
     "set_id": "OP-01",
     "set_name": "Romance Dawn",
     "market_price": null
@@ -13131,7 +13131,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/ST-15/OP02-001_p2.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -13265,7 +13265,7 @@
     "rarity": "SR",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-04/OP02-004_p2.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -13287,7 +13287,7 @@
     "rarity": "SR",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP02-004_p4.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -13331,7 +13331,7 @@
     "rarity": "UC",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP02-005_p1.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -13617,7 +13617,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-08/OP02-013_p3.webp",
     "set_id": "OP-08",
     "set_name": "Two Legends",
     "market_price": null
@@ -13727,7 +13727,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP02-015_p3.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -13749,7 +13749,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP02-015_p4.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -13881,7 +13881,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP02-018_p4.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -13903,7 +13903,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP02-018_p5.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -13925,7 +13925,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP02-018_p6.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -14235,7 +14235,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Ranged",
-    "card_image": null,
+    "card_image": "/static/cards/ST-11/OP02-028_p1.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -14411,7 +14411,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/ST-11/OP02-033_p1.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -14455,7 +14455,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/ST-11/OP02-034_p1.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -14543,7 +14543,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/ST-11/OP02-035_p2.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -14653,7 +14653,7 @@
     "rarity": "UC",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/ST-11/OP02-037_p1.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -14719,7 +14719,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/ST-11/OP02-039_p1.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -14763,7 +14763,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/ST-11/OP02-040_p1.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -14829,7 +14829,7 @@
     "rarity": "R",
     "counter_amount": 0,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/ST-11/OP02-041_p2.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -14895,7 +14895,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/ST-11/OP02-043_p1.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -14961,7 +14961,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/ST-11/OP02-045_p1.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -15643,7 +15643,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP02-068_p1.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -16129,7 +16129,7 @@
     "rarity": "SR",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-04/OP02-085_p2.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -16261,7 +16261,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP02-089_p2.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -16283,7 +16283,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP02-089_p3.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -16305,7 +16305,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP02-089_p4.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -16437,7 +16437,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/ST-19/OP02-093_p2.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -16547,7 +16547,7 @@
     "rarity": "SR",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP02-096_p3.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -16679,7 +16679,7 @@
     "rarity": "SR",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-04/OP02-099_p2.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -16701,7 +16701,7 @@
     "rarity": "SR",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP02-099_p4.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -16921,7 +16921,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP02-106_p4.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -16943,7 +16943,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP02-106_p5.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -17207,7 +17207,7 @@
     "rarity": "SR",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP02-114_p3.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -17317,7 +17317,7 @@
     "rarity": "UC",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP02-117_p5.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -17339,7 +17339,7 @@
     "rarity": "UC",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP02-117_p6.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -17471,7 +17471,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-05/OP02-120_p2.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -17537,7 +17537,7 @@
     "rarity": "SEC",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP02-121_p3.webp",
     "set_id": "OP-02",
     "set_name": "Paramount War",
     "market_price": null
@@ -17669,7 +17669,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Ranged",
-    "card_image": null,
+    "card_image": "/static/cards/OP-07/OP03-003_p1.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -17691,7 +17691,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Ranged",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-003_p4.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -17713,7 +17713,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Ranged",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-003_p5.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -17735,7 +17735,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Ranged",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-003_p6.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -17867,7 +17867,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/OP-06/OP03-008_p1.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -17889,7 +17889,7 @@
     "rarity": "UC",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP03-008_p2.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -19079,7 +19079,7 @@
     "rarity": "UC",
     "counter_amount": 1000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP03-048_p1.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -19255,7 +19255,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-055_p2.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -19277,7 +19277,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-055_p3.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -19321,7 +19321,7 @@
     "rarity": "UC",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-056_p2.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -19343,7 +19343,7 @@
     "rarity": "UC",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-056_p3.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -19365,7 +19365,7 @@
     "rarity": "UC",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-056_p4.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -19409,7 +19409,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-057_p2.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -19431,7 +19431,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-057_p3.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -19453,7 +19453,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-057_p4.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -19563,7 +19563,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-060_p2.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -19585,7 +19585,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-060_p3.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -19893,7 +19893,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP03-072_p1.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -20115,7 +20115,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/OP-07/OP03-078_p2.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -20159,7 +20159,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-079_p3.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -20181,7 +20181,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-079_p4.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -20555,7 +20555,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-089_p4.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -20577,7 +20577,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-089_p5.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -20599,7 +20599,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-089_p6.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -20709,7 +20709,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/OP-05/OP03-092_p2.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -20775,7 +20775,7 @@
     "rarity": "UC",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-094_p2.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -20797,7 +20797,7 @@
     "rarity": "UC",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-094_p3.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -20951,7 +20951,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/ST-20/OP03-099_p2.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -21237,7 +21237,7 @@
     "rarity": "SR",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-108_p3.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -21303,7 +21303,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-110_p3.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -21325,7 +21325,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-110_p4.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -21347,7 +21347,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-110_p5.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -21479,7 +21479,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/OP-08/OP03-112_p4.webp",
     "set_id": "OP-08",
     "set_name": "Two Legends",
     "market_price": null
@@ -21567,7 +21567,7 @@
     "rarity": "SR",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-113_p3.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -21633,7 +21633,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-06/OP03-114_p2.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -21787,7 +21787,7 @@
     "rarity": "UC",
     "counter_amount": 1000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-116_p5.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -21809,7 +21809,7 @@
     "rarity": "UC",
     "counter_amount": 1000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-116_p6.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -21963,7 +21963,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-121_p3.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -21985,7 +21985,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-121_p4.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -22161,7 +22161,7 @@
     "rarity": "SEC",
     "counter_amount": 0,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP03-123_p4.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -22625,7 +22625,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP04-016_p1.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -22893,7 +22893,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-06/OP04-024_p2.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -23047,7 +23047,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP04-029_p2.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -23069,7 +23069,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP04-029_p3.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -23179,7 +23179,7 @@
     "rarity": "SR",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP04-031_p3.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -23223,7 +23223,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP04-032_p2.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -23245,7 +23245,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP04-032_p3.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -23377,7 +23377,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP04-036_p2.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -23399,7 +23399,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP04-036_p3.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -23667,7 +23667,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/OP-05/OP04-044_p2.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -23689,7 +23689,7 @@
     "rarity": "SR",
     "counter_amount": 0,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP04-044_p4.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -23997,7 +23997,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP04-056_p2.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -24019,7 +24019,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP04-056_p3.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -24041,7 +24041,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP04-056_p4.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -24307,7 +24307,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/OP-06/OP04-064_p2.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -24637,7 +24637,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP04-077_p1.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -25033,7 +25033,7 @@
     "rarity": "R",
     "counter_amount": 2000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP04-089_p2.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -25055,7 +25055,7 @@
     "rarity": "R",
     "counter_amount": 2000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP04-089_p3.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -25077,7 +25077,7 @@
     "rarity": "R",
     "counter_amount": 2000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP04-089_p4.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -25319,7 +25319,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP04-095_p2.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -25341,7 +25341,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP04-095_p3.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -25385,7 +25385,7 @@
     "rarity": "C",
     "counter_amount": 0,
     "attribute": "NULL",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP04-096_p1.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -25517,7 +25517,7 @@
     "rarity": "R",
     "counter_amount": 2000,
     "attribute": "Ranged",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP04-100_p3.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -25539,7 +25539,7 @@
     "rarity": "R",
     "counter_amount": 2000,
     "attribute": "Ranged",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP04-100_p4.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -25561,7 +25561,7 @@
     "rarity": "R",
     "counter_amount": 2000,
     "attribute": "Ranged",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP04-100_p5.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -25693,7 +25693,7 @@
     "rarity": "SR",
     "counter_amount": 1000,
     "attribute": "Ranged",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP04-104_p3.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -25935,7 +25935,7 @@
     "rarity": "SR",
     "counter_amount": 0,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP04-112_p3.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -26155,7 +26155,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-09/OP04-119_p2.webp",
     "set_id": "OP-04",
     "set_name": "Kingdoms of Intrigue",
     "market_price": null
@@ -26224,7 +26224,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/EB-02/OP05-001_p2.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -26293,7 +26293,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/EB-02/OP05-002_p2.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -26359,7 +26359,7 @@
     "rarity": "UC",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP05-004_p1.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -26469,7 +26469,7 @@
     "rarity": "SR",
     "counter_amount": 2000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-006_p3.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -26557,7 +26557,7 @@
     "rarity": "SR",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-007_p3.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -26667,7 +26667,7 @@
     "rarity": "UC",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-010_p2.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -26689,7 +26689,7 @@
     "rarity": "UC",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-010_p3.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -26865,7 +26865,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-015_p3.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -26887,7 +26887,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-015_p4.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -26909,7 +26909,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-015_p5.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -27063,7 +27063,7 @@
     "rarity": "UC",
     "counter_amount": 0,
     "attribute": "NULL",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP05-021_p1.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -27132,7 +27132,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/EB-02/OP05-022_p2.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -27330,7 +27330,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP05-030_p1.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -27506,7 +27506,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-034_p3.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -27528,7 +27528,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-034_p4.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -27550,7 +27550,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-034_p5.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -27638,7 +27638,7 @@
     "rarity": "UC",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP05-036_p2.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -27904,7 +27904,7 @@
     "rarity": "SR",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-043_p3.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -28124,7 +28124,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-06/OP05-051_p2.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -28168,7 +28168,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP05-052_p1.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -28322,7 +28322,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-057_p2.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -28344,7 +28344,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-057_p3.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -28366,7 +28366,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-057_p4.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -28498,7 +28498,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/ST-18/OP05-060_p3.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -28520,7 +28520,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/EB-02/OP05-060_p4.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -28740,7 +28740,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/OP-09/OP05-067_p4.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -28982,7 +28982,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-073_p2.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -29004,7 +29004,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-073_p3.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -29092,7 +29092,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-07/OP05-074_p3.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -29114,7 +29114,7 @@
     "rarity": "SR",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-074_p5.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -29180,7 +29180,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/ST-18/OP05-076_p1.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -29290,7 +29290,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP05-077_p1.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -29400,7 +29400,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-081_p2.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -29422,7 +29422,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-081_p3.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -29444,7 +29444,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-081_p4.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -29488,7 +29488,7 @@
     "rarity": "R",
     "counter_amount": 2000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-082_p2.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -29510,7 +29510,7 @@
     "rarity": "R",
     "counter_amount": 2000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-082_p3.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -29532,7 +29532,7 @@
     "rarity": "R",
     "counter_amount": 2000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-082_p4.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -29818,7 +29818,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/OP-06/OP05-091_p2.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -29862,7 +29862,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP05-091_p4.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -29950,7 +29950,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/OP-09/OP05-093_p2.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -30058,7 +30058,7 @@
     "rarity": "C",
     "counter_amount": 0,
     "attribute": "NULL",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP05-097_p1.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -30080,7 +30080,7 @@
     "rarity": "C",
     "counter_amount": 0,
     "attribute": "NULL",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP05-097_p2.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -30146,7 +30146,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/EB-02/OP05-098_p2.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -30388,7 +30388,7 @@
     "rarity": "R",
     "counter_amount": 2000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-105_p2.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -30410,7 +30410,7 @@
     "rarity": "R",
     "counter_amount": 2000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-105_p3.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -30432,7 +30432,7 @@
     "rarity": "R",
     "counter_amount": 2000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-105_p4.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -30674,7 +30674,7 @@
     "rarity": "UC",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-114_p2.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -30696,7 +30696,7 @@
     "rarity": "UC",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-114_p3.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -30740,7 +30740,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-115_p2.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -30762,7 +30762,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-115_p3.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -30784,7 +30784,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-115_p4.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -30850,7 +30850,7 @@
     "rarity": "UC",
     "counter_amount": 0,
     "attribute": "NULL",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-117_p2.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -30872,7 +30872,7 @@
     "rarity": "UC",
     "counter_amount": 0,
     "attribute": "NULL",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-117_p3.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -30894,7 +30894,7 @@
     "rarity": "UC",
     "counter_amount": 0,
     "attribute": "NULL",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-117_p4.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -30960,7 +30960,7 @@
     "rarity": "SEC",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-118_p3.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -31048,7 +31048,7 @@
     "rarity": "SEC",
     "counter_amount": 0,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP05-119_p4.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -31070,7 +31070,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/OP-09/OP05-119_p6.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -31092,7 +31092,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/OP-11/OP05-119_p7.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -31114,7 +31114,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/OP-11/OP05-119_p8.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -31183,7 +31183,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/EB-02/OP06-001_p2.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -31249,7 +31249,7 @@
     "rarity": "UC",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-003_p2.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -31271,7 +31271,7 @@
     "rarity": "UC",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-003_p3.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -31403,7 +31403,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP06-007_p2.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -31799,7 +31799,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/EB-02/OP06-020_p2.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -31868,7 +31868,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/EB-02/OP06-021_p2.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -31937,7 +31937,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/EB-02/OP06-022_p2.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -31960,7 +31960,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/ST-28/OP06-022_p3.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -32004,7 +32004,7 @@
     "rarity": "R",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-023_p2.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -32026,7 +32026,7 @@
     "rarity": "R",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-023_p3.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -32048,7 +32048,7 @@
     "rarity": "R",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-023_p4.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -32378,7 +32378,7 @@
     "rarity": "SR",
     "counter_amount": 0,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-035_p3.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -32422,7 +32422,7 @@
     "rarity": "R",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-036_p2.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -32444,7 +32444,7 @@
     "rarity": "R",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-036_p3.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -32466,7 +32466,7 @@
     "rarity": "R",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-036_p4.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -32532,7 +32532,7 @@
     "rarity": "UC",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-038_p2.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -32554,7 +32554,7 @@
     "rarity": "UC",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-038_p3.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -32689,7 +32689,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/EB-02/OP06-042_p2.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -32777,7 +32777,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP06-044_p1.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -32887,7 +32887,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP06-047_p2.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -32953,7 +32953,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP06-049_p1.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -33019,7 +33019,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/OP-12/OP06-050_p2.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -33217,7 +33217,7 @@
     "rarity": "UC",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-056_p2.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -33239,7 +33239,7 @@
     "rarity": "UC",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-056_p3.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -33261,7 +33261,7 @@
     "rarity": "UC",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP06-056_p4.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -33327,7 +33327,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP06-058_p1.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -33371,7 +33371,7 @@
     "rarity": "UC",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP06-059_p1.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -33415,7 +33415,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-060_p2.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -33437,7 +33437,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-060_p3.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -33569,7 +33569,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP06-063_p1.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -33679,7 +33679,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-064_p2.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -33701,7 +33701,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-064_p3.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -33745,7 +33745,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-065_p2.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -33767,7 +33767,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-065_p3.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -33789,7 +33789,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-065_p4.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -33833,7 +33833,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-066_p2.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -33855,7 +33855,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-066_p3.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -33899,7 +33899,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-067_p2.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -33921,7 +33921,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-067_p3.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -33943,7 +33943,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-067_p4.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -33987,7 +33987,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-068_p2.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -34009,7 +34009,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-068_p3.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -34097,7 +34097,7 @@
     "rarity": "SR",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-069_p4.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -34207,7 +34207,7 @@
     "rarity": "UC",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP06-073_p1.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -34317,7 +34317,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP06-076_p2.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -34383,7 +34383,7 @@
     "rarity": "UC",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP06-078_p1.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -34427,7 +34427,7 @@
     "rarity": "C",
     "counter_amount": 0,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-079_p2.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -34449,7 +34449,7 @@
     "rarity": "C",
     "counter_amount": 0,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-079_p3.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -34471,7 +34471,7 @@
     "rarity": "C",
     "counter_amount": 0,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-079_p4.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -34537,7 +34537,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/EB-02/OP06-080_p2.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -34735,7 +34735,7 @@
     "rarity": "SR",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-086_p3.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -34889,7 +34889,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-091_p2.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -34911,7 +34911,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-091_p3.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -35043,7 +35043,7 @@
     "rarity": "SP",
     "counter_amount": 2000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP14-EB04/OP06-093_p5.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -35219,7 +35219,7 @@
     "rarity": "UC",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-100_p2.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -35241,7 +35241,7 @@
     "rarity": "UC",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-100_p3.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -35307,7 +35307,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-07/OP06-101_p2.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -35527,7 +35527,7 @@
     "rarity": "SR",
     "counter_amount": 2000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-106_p3.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -35681,7 +35681,7 @@
     "rarity": "UC",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-110_p3.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -35703,7 +35703,7 @@
     "rarity": "UC",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-110_p4.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -35813,7 +35813,7 @@
     "rarity": "UC",
     "counter_amount": 0,
     "attribute": "Ranged",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-114_p2.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -35835,7 +35835,7 @@
     "rarity": "UC",
     "counter_amount": 0,
     "attribute": "Ranged",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/OP06-114_p3.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -35879,7 +35879,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP06-115_p1.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -36077,7 +36077,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/OP-11/OP06-119_p2.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -36099,7 +36099,7 @@
     "rarity": "SEC",
     "counter_amount": 0,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP06-119_p3.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -36165,7 +36165,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/EB-02/OP07-001_p2.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -36495,7 +36495,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP07-014_p1.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -36561,7 +36561,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-09/OP07-015_p2.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -36627,7 +36627,7 @@
     "rarity": "UC",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP07-017_p1.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -36715,7 +36715,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/EB-02/OP07-019_p2.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -36737,7 +36737,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/ST-24/OP07-019_p3.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -36825,7 +36825,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/OP-10/OP07-021_p2.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -36957,7 +36957,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP07-021_p8.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -37265,7 +37265,7 @@
     "rarity": "UC",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP07-031_p1.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -37397,7 +37397,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/ST-24/OP07-036_p1.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -37507,7 +37507,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/EB-02/OP07-038_p2.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -37595,7 +37595,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP07-040_p2.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -37617,7 +37617,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP07-040_p3.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -37859,7 +37859,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/OP14-EB04/OP07-046_p2.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -38167,7 +38167,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-09/OP07-051_p3.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -38431,7 +38431,7 @@
     "rarity": "UC",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP07-056_p1.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -38563,7 +38563,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/EB-02/OP07-059_p2.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -39113,7 +39113,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP07-076_p1.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -39223,7 +39223,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/EB-02/OP07-079_p2.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -39421,7 +39421,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-11/OP07-085_p2.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -39751,7 +39751,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/EB-02/OP07-097_p2.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -40125,7 +40125,7 @@
     "rarity": "TR",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/OP-08/OP07-109_p2.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -40257,7 +40257,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/OP-13/OP07-111_p2.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -40367,7 +40367,7 @@
     "rarity": "UC",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP07-114_p1.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -40433,7 +40433,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/ST-28/OP07-116_p1.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -40543,7 +40543,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-13/OP07-118_p2.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -40700,7 +40700,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/EB-02/OP08-001_p2.webp",
     "set_id": "OP-08",
     "set_name": "Two Legends",
     "market_price": null
@@ -40769,7 +40769,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/EB-02/OP08-002_p2.webp",
     "set_id": "OP-08",
     "set_name": "Two Legends",
     "market_price": null
@@ -41275,7 +41275,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/EB-02/OP08-021_p2.webp",
     "set_id": "OP-08",
     "set_name": "Two Legends",
     "market_price": null
@@ -41363,7 +41363,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP08-023_p2.webp",
     "set_id": "OP-08",
     "set_name": "Two Legends",
     "market_price": null
@@ -42133,7 +42133,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-10/OP08-052_p2.webp",
     "set_id": "OP-08",
     "set_name": "Two Legends",
     "market_price": null
@@ -42290,7 +42290,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/EB-02/OP08-057_p2.webp",
     "set_id": "OP-08",
     "set_name": "Two Legends",
     "market_price": null
@@ -42359,7 +42359,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/EB-02/OP08-058_p2.webp",
     "set_id": "OP-08",
     "set_name": "Two Legends",
     "market_price": null
@@ -42931,7 +42931,7 @@
     "rarity": "UC",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP08-076_p1.webp",
     "set_id": "OP-08",
     "set_name": "Two Legends",
     "market_price": null
@@ -43283,7 +43283,7 @@
     "rarity": "UC",
     "counter_amount": 1000,
     "attribute": "Ranged",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP08-087_p1.webp",
     "set_id": "OP-08",
     "set_name": "Two Legends",
     "market_price": null
@@ -43569,7 +43569,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/EB-02/OP08-098_p2.webp",
     "set_id": "OP-08",
     "set_name": "Two Legends",
     "market_price": null
@@ -43613,7 +43613,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP08-099_p1.webp",
     "set_id": "OP-08",
     "set_name": "Two Legends",
     "market_price": null
@@ -43855,7 +43855,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-09/OP08-106_p2.webp",
     "set_id": "OP-08",
     "set_name": "Two Legends",
     "market_price": null
@@ -44383,7 +44383,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/ST-23/OP09-001_p2.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -44603,7 +44603,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/OP-13/OP09-004_p5.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -44625,7 +44625,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/OP-13/OP09-004_p6.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -44669,7 +44669,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/OP-11/OP09-005_p1.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -44845,7 +44845,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Ranged",
-    "card_image": null,
+    "card_image": "/static/cards/OP-13/OP09-009_p3.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -45043,7 +45043,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Ranged",
-    "card_image": null,
+    "card_image": "/static/cards/OP-12/OP09-013_p2.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -45087,7 +45087,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP09-014_p1.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -45109,7 +45109,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP09-014_p2.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -45153,7 +45153,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Ranged",
-    "card_image": null,
+    "card_image": "/static/cards/OP-11/OP09-015_p1.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -45285,7 +45285,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP09-020_p2.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -45507,7 +45507,7 @@
     "rarity": "UC",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP09-027_p1.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -45705,7 +45705,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP09-033_p1.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -45881,7 +45881,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/OP-12/OP09-037_p2.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -46035,7 +46035,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/ST-25/OP09-042_p2.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -46475,7 +46475,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/OP14-EB04/OP09-051_p4.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -46497,7 +46497,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/OP14-EB04/OP09-051_p5.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -46629,7 +46629,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP09-056_p1.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -46673,7 +46673,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP09-057_p2.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -46808,7 +46808,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/ST-26/OP09-061_p2.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -47338,7 +47338,7 @@
     "rarity": "R",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP09-076_p2.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -47382,7 +47382,7 @@
     "rarity": "UC",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP09-077_p1.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -47448,7 +47448,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/ST-26/OP09-078_p1.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -47470,7 +47470,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP09-078_p2.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -47514,7 +47514,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP09-079_p1.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -47602,7 +47602,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/ST-27/OP09-081_p2.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -47690,7 +47690,7 @@
     "rarity": "UC",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP09-084_p1.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -47756,7 +47756,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP09-086_p1.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -48064,7 +48064,7 @@
     "rarity": "SR",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-12/OP09-093_p4.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -48086,7 +48086,7 @@
     "rarity": "SR",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-12/OP09-093_p5.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -48196,7 +48196,7 @@
     "rarity": "R",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP09-096_p1.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -48240,7 +48240,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP09-097_p1.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -48284,7 +48284,7 @@
     "rarity": "UC",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP09-098_p1.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -49032,7 +49032,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/OP-13/OP09-118_p3.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -49120,7 +49120,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/OP-13/OP09-119_p3.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -49522,7 +49522,7 @@
     "rarity": "R",
     "counter_amount": 2000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP10-011_p1.webp",
     "set_id": "OP-10",
     "set_name": "Royal Blood",
     "market_price": null
@@ -49720,7 +49720,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP10-018_p2.webp",
     "set_id": "OP-10",
     "set_name": "Royal Blood",
     "market_price": null
@@ -50096,7 +50096,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/OP-13/OP10-030_p2.webp",
     "set_id": "OP-10",
     "set_name": "Royal Blood",
     "market_price": null
@@ -51067,7 +51067,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/OP-12/OP10-063_p1.webp",
     "set_id": "OP-10",
     "set_name": "Royal Blood",
     "market_price": null
@@ -51133,7 +51133,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP14-EB04/OP10-065_p1.webp",
     "set_id": "OP-10",
     "set_name": "Royal Blood",
     "market_price": null
@@ -51529,7 +51529,7 @@
     "rarity": "UC",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP10-079_p1.webp",
     "set_id": "OP-10",
     "set_name": "Royal Blood",
     "market_price": null
@@ -51639,7 +51639,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-12/OP10-082_p2.webp",
     "set_id": "OP-10",
     "set_name": "Royal Blood",
     "market_price": null
@@ -52035,7 +52035,7 @@
     "rarity": "R",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP10-095_p1.webp",
     "set_id": "OP-10",
     "set_name": "Royal Blood",
     "market_price": null
@@ -52299,7 +52299,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP10-105_p1.webp",
     "set_id": "OP-10",
     "set_name": "Royal Blood",
     "market_price": null
@@ -52453,7 +52453,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Ranged",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP10-108_p1.webp",
     "set_id": "OP-10",
     "set_name": "Royal Blood",
     "market_price": null
@@ -52519,7 +52519,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP10-109_p1.webp",
     "set_id": "OP-10",
     "set_name": "Royal Blood",
     "market_price": null
@@ -52695,7 +52695,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP10-114_p1.webp",
     "set_id": "OP-10",
     "set_name": "Royal Blood",
     "market_price": null
@@ -52717,7 +52717,7 @@
     "rarity": "UC",
     "counter_amount": 2000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP10-114_p2.webp",
     "set_id": "OP-10",
     "set_name": "Royal Blood",
     "market_price": null
@@ -52915,7 +52915,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/OP10-119_p3.webp",
     "set_id": "OP-10",
     "set_name": "Royal Blood",
     "market_price": null
@@ -54618,7 +54618,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/OP-13/OP11-058_p1.webp",
     "set_id": "OP-11",
     "set_name": "A Fist of Divine Speed",
     "market_price": null
@@ -55960,7 +55960,7 @@
     "rarity": "SP",
     "counter_amount": 2000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP15-EB04/OP11-106_p2.webp",
     "set_id": "OP-11",
     "set_name": "A Fist of Divine Speed",
     "market_price": null
@@ -56774,7 +56774,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP15-EB04/OP12-014_p2.webp",
     "set_id": "OP-12",
     "set_name": "Legacy of the Master",
     "market_price": null
@@ -57316,7 +57316,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/OP14-EB04/OP12-030_p2.webp",
     "set_id": "OP-12",
     "set_name": "Legacy of the Master",
     "market_price": null
@@ -59610,7 +59610,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP14-EB04/OP12-108_p2.webp",
     "set_id": "OP-12",
     "set_name": "Legacy of the Master",
     "market_price": null
@@ -60894,7 +60894,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/OP15-EB04/OP13-031_p1.webp",
     "set_id": "OP-13",
     "set_name": "Carrying On His Will",
     "market_price": null
@@ -61048,7 +61048,7 @@
     "rarity": "R",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/OP15-EB04/OP13-037_p1.webp",
     "set_id": "OP-13",
     "set_name": "Carrying On His Will",
     "market_price": null
@@ -61224,7 +61224,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP15-EB04/OP13-042_p2.webp",
     "set_id": "OP-13",
     "set_name": "Carrying On His Will",
     "market_price": null
@@ -75365,7 +75365,7 @@
     "rarity": "SP",
     "counter_amount": 2000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/OP14-EB04/PRB02-006_p2.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -75739,7 +75739,7 @@
     "rarity": "SP",
     "counter_amount": 2000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP15-EB04/PRB02-014_p2.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -76289,7 +76289,7 @@
     "rarity": "C",
     "counter_amount": 0,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST01-006_p6.webp",
     "set_id": "PRB-01",
     "set_name": "Premium Booster -The Best-",
     "market_price": null
@@ -76311,7 +76311,7 @@
     "rarity": "C",
     "counter_amount": 0,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST01-006_p7.webp",
     "set_id": "PRB-01",
     "set_name": "Premium Booster -The Best-",
     "market_price": null
@@ -76333,7 +76333,7 @@
     "rarity": "C",
     "counter_amount": 0,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST01-006_p8.webp",
     "set_id": "PRB-01",
     "set_name": "Premium Booster -The Best-",
     "market_price": null
@@ -76421,7 +76421,7 @@
     "rarity": "TR",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-06/ST01-007_p3.webp",
     "set_id": "OP-06",
     "set_name": "Wings of the Captain",
     "market_price": null
@@ -76751,7 +76751,7 @@
     "rarity": "C",
     "counter_amount": 2000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST01-011_p4.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -76817,7 +76817,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/OP-03/ST01-012_p1.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -76839,7 +76839,7 @@
     "rarity": "SR",
     "counter_amount": 0,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/OP-05/ST01-012_p2.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -76861,7 +76861,7 @@
     "rarity": "SR",
     "counter_amount": 0,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/OP-05/ST01-012_p3.webp",
     "set_id": "OP-05",
     "set_name": "Awakening of the New Era",
     "market_price": null
@@ -77037,7 +77037,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST01-014_p2.webp",
     "set_id": "PRB-01",
     "set_name": "Premium Booster -The Best-",
     "market_price": null
@@ -77059,7 +77059,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST01-014_p3.webp",
     "set_id": "PRB-01",
     "set_name": "Premium Booster -The Best-",
     "market_price": null
@@ -77257,7 +77257,7 @@
     "rarity": "C",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST02-004_p2.webp",
     "set_id": "PRB-01",
     "set_name": "Premium Booster -The Best-",
     "market_price": null
@@ -77279,7 +77279,7 @@
     "rarity": "C",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST02-004_p3.webp",
     "set_id": "PRB-01",
     "set_name": "Premium Booster -The Best-",
     "market_price": null
@@ -77301,7 +77301,7 @@
     "rarity": "C",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST02-004_p4.webp",
     "set_id": "PRB-01",
     "set_name": "Premium Booster -The Best-",
     "market_price": null
@@ -77411,7 +77411,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-08/ST02-007_p2.webp",
     "set_id": "OP-08",
     "set_name": "Two Legends",
     "market_price": null
@@ -77433,7 +77433,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST02-007_p3.webp",
     "set_id": "OP-08",
     "set_name": "Two Legends",
     "market_price": null
@@ -77829,7 +77829,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-08/ST03-004_p1.webp",
     "set_id": "OP-08",
     "set_name": "Two Legends",
     "market_price": null
@@ -77917,7 +77917,7 @@
     "rarity": "C",
     "counter_amount": 2000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST03-005_p4.webp",
     "set_id": "PRB-01",
     "set_name": "Premium Booster -The Best-",
     "market_price": null
@@ -77939,7 +77939,7 @@
     "rarity": "C",
     "counter_amount": 2000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST03-005_p5.webp",
     "set_id": "PRB-01",
     "set_name": "Premium Booster -The Best-",
     "market_price": null
@@ -78137,7 +78137,7 @@
     "rarity": "C",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST03-008_p6.webp",
     "set_id": "PRB-01",
     "set_name": "Premium Booster -The Best-",
     "market_price": null
@@ -78159,7 +78159,7 @@
     "rarity": "C",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST03-008_p7.webp",
     "set_id": "PRB-01",
     "set_name": "Premium Booster -The Best-",
     "market_price": null
@@ -78203,7 +78203,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-03/ST03-009_p1.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -78335,7 +78335,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST03-013_p2.webp",
     "set_id": "PRB-01",
     "set_name": "Premium Booster -The Best-",
     "market_price": null
@@ -78357,7 +78357,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST03-013_p3.webp",
     "set_id": "PRB-01",
     "set_name": "Premium Booster -The Best-",
     "market_price": null
@@ -78379,7 +78379,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST03-013_p4.webp",
     "set_id": "PRB-01",
     "set_name": "Premium Booster -The Best-",
     "market_price": null
@@ -78621,7 +78621,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/OP-03/ST04-003_p1.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -78665,7 +78665,7 @@
     "rarity": "SR",
     "counter_amount": 0,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST04-003_p4.webp",
     "set_id": "OP-03",
     "set_name": "Pillars of Strength",
     "market_price": null
@@ -78731,7 +78731,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/OP-08/ST04-005_p1.webp",
     "set_id": "OP-08",
     "set_name": "Two Legends",
     "market_price": null
@@ -78753,7 +78753,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST04-005_p3.webp",
     "set_id": "OP-08",
     "set_name": "Two Legends",
     "market_price": null
@@ -78775,7 +78775,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST04-005_p4.webp",
     "set_id": "OP-08",
     "set_name": "Two Legends",
     "market_price": null
@@ -79149,7 +79149,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST04-016_p2.webp",
     "set_id": "PRB-01",
     "set_name": "Premium Booster -The Best-",
     "market_price": null
@@ -79171,7 +79171,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST04-016_p3.webp",
     "set_id": "PRB-01",
     "set_name": "Premium Booster -The Best-",
     "market_price": null
@@ -79809,7 +79809,7 @@
     "rarity": "SP",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/OP-08/ST06-006_p2.webp",
     "set_id": "OP-08",
     "set_name": "Two Legends",
     "market_price": null
@@ -79919,7 +79919,7 @@
     "rarity": "C",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST06-008_p1.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -79985,7 +79985,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST06-010_p2.webp",
     "set_id": "PRB-01",
     "set_name": "Premium Booster -The Best-",
     "market_price": null
@@ -80007,7 +80007,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST06-010_p3.webp",
     "set_id": "PRB-01",
     "set_name": "Premium Booster -The Best-",
     "market_price": null
@@ -80117,7 +80117,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST06-014_p2.webp",
     "set_id": "PRB-01",
     "set_name": "Premium Booster -The Best-",
     "market_price": null
@@ -80139,7 +80139,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST06-014_p3.webp",
     "set_id": "PRB-01",
     "set_name": "Premium Booster -The Best-",
     "market_price": null
@@ -80381,7 +80381,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST07-007_p2.webp",
     "set_id": "PRB-01",
     "set_name": "Premium Booster -The Best-",
     "market_price": null
@@ -80403,7 +80403,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST07-007_p3.webp",
     "set_id": "PRB-01",
     "set_name": "Premium Booster -The Best-",
     "market_price": null
@@ -81327,7 +81327,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST09-014_p2.webp",
     "set_id": "PRB-01",
     "set_name": "Premium Booster -The Best-",
     "market_price": null
@@ -81349,7 +81349,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST09-014_p3.webp",
     "set_id": "PRB-01",
     "set_name": "Premium Booster -The Best-",
     "market_price": null
@@ -81528,7 +81528,7 @@
     "rarity": "C",
     "counter_amount": 2000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST10-005_p2.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -81726,7 +81726,7 @@
     "rarity": "C",
     "counter_amount": 2000,
     "attribute": "Ranged",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST10-008_p3.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -81814,7 +81814,7 @@
     "rarity": "TR",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/OP-07/ST10-010_p2.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -81836,7 +81836,7 @@
     "rarity": "SR",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST10-010_p4.webp",
     "set_id": "OP-07",
     "set_name": "500 Years in the Future",
     "market_price": null
@@ -82056,7 +82056,7 @@
     "rarity": "L",
     "counter_amount": null,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/ST-16/ST11-001_p1.webp",
     "set_id": "ST-11",
     "set_name": "Starter Deck 11: Uta",
     "market_price": null
@@ -82144,7 +82144,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/ST-16/ST11-003_p2.webp",
     "set_id": "ST-11",
     "set_name": "Starter Deck 11: Uta",
     "market_price": null
@@ -82210,7 +82210,7 @@
     "rarity": "SR",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/ST-16/ST11-004_p2.webp",
     "set_id": "ST-11",
     "set_name": "Starter Deck 11: Uta",
     "market_price": null
@@ -82276,7 +82276,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/ST-16/ST11-005_p2.webp",
     "set_id": "ST-11",
     "set_name": "Starter Deck 11: Uta",
     "market_price": null
@@ -82409,7 +82409,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST12-005_p1.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -82607,7 +82607,7 @@
     "rarity": "SP",
     "counter_amount": 2000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/OP-10/ST12-012_p1.webp",
     "set_id": "OP-10",
     "set_name": "Royal Blood",
     "market_price": null
@@ -82673,7 +82673,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST12-014_p2.webp",
     "set_id": "PRB-01",
     "set_name": "Premium Booster -The Best-",
     "market_price": null
@@ -82695,7 +82695,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-01/ST12-014_p3.webp",
     "set_id": "PRB-01",
     "set_name": "Premium Booster -The Best-",
     "market_price": null
@@ -82783,7 +82783,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST12-017_p1.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -83007,7 +83007,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST13-004_p2.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -83161,7 +83161,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST13-007_p2.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -83315,7 +83315,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST13-010_p2.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -83381,7 +83381,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-12/ST13-011_p2.webp",
     "set_id": "OP-12",
     "set_name": "Legacy of the Master",
     "market_price": null
@@ -83557,7 +83557,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST13-014_p2.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -83755,7 +83755,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST13-019_p1.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -83843,7 +83843,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/OP-10/ST14-003_p1.webp",
     "set_id": "OP-10",
     "set_name": "Royal Blood",
     "market_price": null
@@ -83953,7 +83953,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST14-007_p1.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -84041,7 +84041,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST14-010_p1.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -84129,7 +84129,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST14-013_p1.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -84217,7 +84217,7 @@
     "rarity": "C",
     "counter_amount": null,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST14-016_p1.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -84261,7 +84261,7 @@
     "rarity": "C",
     "counter_amount": 0,
     "attribute": null,
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST14-017_p1.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -84327,7 +84327,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/OP-10/ST15-002_p1.webp",
     "set_id": "OP-10",
     "set_name": "Royal Blood",
     "market_price": null
@@ -84349,7 +84349,7 @@
     "rarity": "SR",
     "counter_amount": 0,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST15-002_p2.webp",
     "set_id": "OP-10",
     "set_name": "Royal Blood",
     "market_price": null
@@ -84591,7 +84591,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST16-003_p1.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -84635,7 +84635,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/OP-11/ST16-004_p1.webp",
     "set_id": "OP-11",
     "set_name": "A Fist of Divine Speed",
     "market_price": null
@@ -84657,7 +84657,7 @@
     "rarity": "SR",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST16-004_p2.webp",
     "set_id": "OP-11",
     "set_name": "A Fist of Divine Speed",
     "market_price": null
@@ -84701,7 +84701,7 @@
     "rarity": "C",
     "counter_amount": 2000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST16-005_p1.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -84767,7 +84767,7 @@
     "rarity": "SR",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST17-002_p1.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -84855,7 +84855,7 @@
     "rarity": "C",
     "counter_amount": 2000,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST17-003_p3.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -84943,7 +84943,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST17-005_p1.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -85009,7 +85009,7 @@
     "rarity": "SP",
     "counter_amount": 2000,
     "attribute": "Ranged",
-    "card_image": null,
+    "card_image": "/static/cards/OP-10/ST18-001_p1.webp",
     "set_id": "OP-10",
     "set_name": "Royal Blood",
     "market_price": null
@@ -85031,7 +85031,7 @@
     "rarity": "C",
     "counter_amount": 2000,
     "attribute": "Ranged",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST18-001_p2.webp",
     "set_id": "OP-10",
     "set_name": "Royal Blood",
     "market_price": null
@@ -85053,7 +85053,7 @@
     "rarity": "C",
     "counter_amount": 2000,
     "attribute": "Ranged",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST18-001_p3.webp",
     "set_id": "OP-10",
     "set_name": "Royal Blood",
     "market_price": null
@@ -85097,7 +85097,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST18-002_p1.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -85185,7 +85185,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST18-003_p2.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -85229,7 +85229,7 @@
     "rarity": "TR",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/OP-09/ST18-004_p1.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -85251,7 +85251,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Slash",
-    "card_image": null,
+    "card_image": "/static/cards/OP-12/ST18-004_p2.webp",
     "set_id": "OP-09",
     "set_name": "Emperors in the New World",
     "market_price": null
@@ -85295,7 +85295,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/OP-11/ST18-005_p1.webp",
     "set_id": "OP-11",
     "set_name": "A Fist of Divine Speed",
     "market_price": null
@@ -85405,7 +85405,7 @@
     "rarity": "C",
     "counter_amount": 1000,
     "attribute": "Wisdom",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST19-002_p3.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -85559,7 +85559,7 @@
     "rarity": "C",
     "counter_amount": 2000,
     "attribute": "Special",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST20-003_p1.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -85779,7 +85779,7 @@
     "rarity": "C",
     "counter_amount": 2000,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/PRB-02/ST21-003_p2.webp",
     "set_id": "PRB-02",
     "set_name": "Premium Booster -The Best- Vol. 2",
     "market_price": null
@@ -87605,7 +87605,7 @@
     "rarity": "SP",
     "counter_amount": 0,
     "attribute": "Strike",
-    "card_image": null,
+    "card_image": "/static/cards/OP15-EB04/ST26-005_p1.webp",
     "set_id": "OP15-EB04",
     "set_name": "Adventure on Kami's Island",
     "market_price": null
