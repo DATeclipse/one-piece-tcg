@@ -13,7 +13,7 @@ def card_id_to_image_path(card_set_id: str, cards_dir: Path) -> Optional[Path]:
         return None
 
     dir_name = f"{match.group(1)}-{match.group(2)}"
-    filename = f"{card_set_id}.png"
+    filename = f"{card_set_id}.webp"
 
     path = cards_dir / dir_name / filename
     if path.exists():
