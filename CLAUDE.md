@@ -39,8 +39,15 @@ Always invoke at the start of every conversation:
 - 4,013 cards (2,505 base + 1,508 `_p` variants)
 - Rarities: C(1286) UC(626) R(865) SR(615) SEC(120) L(289) P(125) PR(75) SP(4) TR(8)
 - 328 cards have `alt_images` (`_r` variants)
-- Card images in `cards/` by set dir (e.g. `cards/OP-01/`, `cards/Promotion_card/`)
+- Card images in `cards/` as WebP by set dir (e.g. `cards/OP-01/`, `cards/Promotion_card/`)
+- `_p` variant images may live in different set directories than their base card
+
+## Deployment
+
+Production: `one-piece-tcg.fly.dev` on Fly.io free tier. Deploy with `fly deploy`.
+Upload local DB: see `DEPLOYMENT.md` for full instructions.
 
 ## Reference
 
 See `ARCHITECTURE.md` for file map, patterns, API endpoints, and tech stack details.
+See `DEPLOYMENT.md` for Fly.io deployment, DB management, and troubleshooting.
